@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AbstractWheelPicker">
+        <attr name="wheel_data" format="reference" />
+        <attr name="wheel_style" format="enum">
+            <enum name="straight" value="0" />
+            <enum name="curved" value="1" />
+        </attr>
+        <attr name="wheel_direction" format="enum">
+            <enum name="horizontal" value="0" />
+            <enum name="vertical" value="1" />
+        </attr>
+        <attr name="wheel_item_index" format="integer" />
+        <attr name="wheel_item_same_size" format="boolean" />
+        <attr name="wheel_item_count" format="integer" />
+        <attr name="wheel_item_space" format="dimension" />
+        <attr name="wheel_text_size" format="dimension" />
+        <attr name="wheel_text_color" format="color" />
+        <attr name="wheel_text_color_current" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="Rotate3dAnimation">
+        <attr name="rollType" format="enum">
+            <enum name="x" value="0"/>
+            <enum name="y" value="1"/>
+            <enum name="z" value="2"/>
+        </attr>
+        <attr name="fromDeg" format="float" />
+        <attr name="toDeg" format="float" />
+        <attr name="pivotX" format="fraction"/>
+        <attr name="pivotY" format="fraction" />
+    </declare-styleable>
+
+</resources>
