@@ -29,6 +29,7 @@ import butterknife.OnItemClick;
 
 public class MainActivity extends AppCompatActivity {
 
+    private ComponentAdapter mComponentAdapter;
 
     @BindView(R.id.lv_list)
     ListView mLvList;
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
         final List<Map.Entry<String, Class<?>>> data = new ArrayList<>();
         Set<Map.Entry<String, Class<?>>> entries = map.entrySet();
-        for (Iterator<Map.Entry<String, Class<?>>> iterator = entries.iterator(); iterator.hasNext();) {
+        for (Iterator<Map.Entry<String, Class<?>>> iterator = entries.iterator(); iterator.hasNext(); ) {
             data.add(iterator.next());
         }
 
@@ -59,61 +60,75 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        final List<Map.Entry<String, Class<?>>> data = getData();
-
-        mLvList.setAdapter(new BaseAdapter() {
-            @Override
-            public int getCount() {
-                return data.size();
-            }
-
-            @Override
-            public Object getItem(int i) {
-                return null;
-            }
-
-            @Override
-            public long getItemId(int i) {
-                return 0;
-            }
-
-            @Override
-            public View getView(int i, View view, ViewGroup viewGroup) {
-                ViewHolder holder = null;
-                if (view == null) {
-                    view = getLayoutInflater().inflate(R.layout.list_main_item, null);
-                    holder = new ViewHolder(view);
-                    view.setTag(holder);
-                } else {
-                    holder = (ViewHolder) view.getTag();
-                }
-
-                Map.Entry<String, Class<?>> entry = data.get(i);
-                if (entry != null) {
-                    holder.tvTitle.setText(entry.getKey());
-                }
-
-                return view;
-            }
-
-
-            class ViewHolder {
-                private final TextView tvTitle;
-
-                ViewHolder(View root) {
-                    tvTitle = (TextView) root.findViewById(R.id.tv_title);
-                }
-            }
-
-        });
+        mComponentAdapter = new ComponentAdapter(getData());
+        mLvList.setAdapter(mComponentAdapter);
     }
 
     @OnItemClick({R.id.lv_list})
     public void onItemClick(android.widget.AdapterView<?> parent, android.view.View view, int position, long id) {
-        Map.Entry<String, Class<?>> entry = getData().get(position);
+        Map.Entry<String, Class<?>> entry = (Map.Entry<String, Class<?>>) parent.getAdapter().getItem(position);
         if (entry != null) {
             startActivity(new Intent(this, entry.getValue()));
         }
+    }
+
+    private class ComponentAdapter extends BaseAdapter {
+
+        private List<Map.Entry<String, Class<?>>> data;
+
+        public ComponentAdapter(List<Map.Entry<String, Class<?>>> data) {
+            this.data = data;
+        }
+
+        @Override
+        public int getCount() {
+            if (data != null) {
+                return data.size();
+            }
+            return 0;
+        }
+
+        @Override
+        public Object getItem(int position) {
+            if (data != null) {
+                return data.get(position);
+            }
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int position, View view, ViewGroup viewGroup) {
+            ViewHolder holder = null;
+            if (view == null) {
+                view = getLayoutInflater().inflate(R.layout.list_main_item, null);
+                holder = new ViewHolder(view);
+                view.setTag(holder);
+            } else {
+                holder = (ViewHolder) view.getTag();
+            }
+
+            Map.Entry<String, Class<?>> entry = data.get(position);
+            if (entry != null) {
+                holder.tvTitle.setText(entry.getKey());
+            }
+
+            return view;
+        }
+
+
+        class ViewHolder {
+            private final TextView tvTitle;
+
+            ViewHolder(View root) {
+                tvTitle = (TextView) root.findViewById(R.id.tv_title);
+            }
+        }
+
     }
 
 
