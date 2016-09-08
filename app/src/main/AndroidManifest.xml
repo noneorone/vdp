@@ -3,6 +3,11 @@
           xmlns:tools="http://schemas.android.com/tools"
           package="com.dmio.org.tut">
 
+    <uses-permission android:name="android.permission.CAMERA"/>
+
+    <uses-feature android:name="android.hardware.camera"/>
+    <uses-feature android:name="android.hardware.camera.autofocus"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,6 +26,7 @@
         <activity android:name=".activity.demo.paint.PaintActivity"/>
         <activity android:name=".activity.demo.widget.wheelpicker.WheelPickerActivity"/>
         <activity android:name=".activity.demo.widget.sweetalert.SweetAlertActivity"/>
+        <activity android:name=".activity.demo.widget.qrcode.DecoderActivity"/>
 
     </application>
 
