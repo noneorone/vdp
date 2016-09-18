@@ -28,6 +28,7 @@
         <activity android:name=".activity.demo.widget.wheelpicker.WheelPickerActivity"/>
         <activity android:name=".activity.demo.widget.sweetalert.SweetAlertActivity"/>
         <activity android:name=".activity.demo.widget.qrcode.DecoderActivity"/>
+        <activity android:name=".activity.demo.widget.marqueeview.MarqueeViewActivity"/>
 
     </application>
 

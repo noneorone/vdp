@@ -5,6 +5,9 @@ apply plugin: 'com.antfortune.freeline'
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.0"
+    enforceUniquePackageName=false
+    publishNonDefault true
+    defaultPublishConfig "debug"
 
     defaultConfig {
         applicationId "com.dmio.org.tut"

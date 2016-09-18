@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.dmio.org.tut.R;
 import com.dmio.org.tut.activity.demo.paint.PaintActivity;
+import com.dmio.org.tut.activity.demo.widget.marqueeview.MarqueeViewActivity;
 import com.dmio.org.tut.activity.demo.widget.qrcode.DecoderActivity;
 import com.dmio.org.tut.activity.demo.widget.sweetalert.SweetAlertActivity;
 import com.dmio.org.tut.activity.demo.widget.wheelpicker.WheelPickerActivity;
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         map.put("WheelPicker", WheelPickerActivity.class);
         map.put("SweetAlert", SweetAlertActivity.class);
         map.put("Decoder", DecoderActivity.class);
+        map.put("MarqueeView", MarqueeViewActivity.class);
 
 
         final List<Map.Entry<String, Class<?>>> data = new ArrayList<>();
