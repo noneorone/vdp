@@ -4,6 +4,10 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
+    <color name="red">#f16d7a</color>
+    <color name="green">#b7d28d</color>
+    <color name="blue">#b8f1ed</color>
+
     <!--DoughnutView-->
     <color name="doughnut_circle_from">#20bacd</color>
     <color name="doughnut_circle_to">#208fd2</color>

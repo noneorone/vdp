@@ -1,4 +1,4 @@
-package com.dmio.org.tut.activity.demo.paint;
+package com.dmio.org.tut.activity.demo.view.paint;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

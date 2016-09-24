@@ -7,11 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.dmio.org.tut.R;
-import com.dmio.org.tut.activity.demo.paint.PaintActivity;
+import com.dmio.org.tut.activity.demo.view.image.WaveViewActivity;
+import com.dmio.org.tut.activity.demo.view.paint.PaintActivity;
 import com.dmio.org.tut.activity.demo.widget.marqueeview.MarqueeViewActivity;
 import com.dmio.org.tut.activity.demo.widget.qrcode.DecoderActivity;
 import com.dmio.org.tut.activity.demo.widget.sweetalert.SweetAlertActivity;
@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         map.put("SweetAlert", SweetAlertActivity.class);
         map.put("Decoder", DecoderActivity.class);
         map.put("MarqueeView", MarqueeViewActivity.class);
+        map.put("WaveView", WaveViewActivity.class);
 
 
         final List<Map.Entry<String, Class<?>>> data = new ArrayList<>();
