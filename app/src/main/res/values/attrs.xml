@@ -37,6 +37,16 @@
         <attr name="autoStart" format="boolean"/>
     </declare-styleable>
 
+    <declare-styleable name="MarqueeTextView">
+        <attr name="marqueeEnabled" format="boolean" />
+        <attr name="edgeEffectEnabled" format="boolean" />
+        <attr name="edgeEffectWidth" format="integer" />
+        <attr name="edgeEffectColor" format="color" />
+        <attr name="pauseDuration" format="integer" />
+        <attr name="forceMarquee" format="boolean" />
+        <attr name="centerText" format="boolean" />
+    </declare-styleable>
+
     <declare-styleable name="WaveView">
         <attr name="above_wave_color" format="color"/>
         <attr name="blow_wave_color" format="color"/>

@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:marquee="http://schemas.android.com/apk/res-auto"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               xmlns:tools="http://schemas.android.com/tools"
-              android:orientation="vertical"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
+              android:orientation="vertical"
     >
 
     <TextView
-        android:text="First MarqueeView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="@android:style/TextAppearance"
-        android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:text="First MarqueeView"
+        android:textAppearance="@android:style/TextAppearance"
         />
 
     <com.dmio.org.tut.widget.marqueeview.MarqueeView
@@ -26,19 +26,19 @@
             android:id="@+id/textView1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do."
-            android:singleLine="true"
             android:ellipsize="end"
+            android:singleLine="true"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do."
             tools:ignore="HardcodedText"/>
     </com.dmio.org.tut.widget.marqueeview.MarqueeView>
 
     <TextView
-        android:text="Second MarqueeView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="@android:style/TextAppearance"
-        android:layout_marginTop="50dp"
         android:layout_marginBottom="20dp"
+        android:layout_marginTop="50dp"
+        android:text="Second MarqueeView"
+        android:textAppearance="@android:style/TextAppearance"
         />
 
     <!--Marquee #2: Configuration using XML attributes.-->
@@ -46,37 +46,37 @@
         android:id="@+id/marqueeView150"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        marquee:speed="5"
-        marquee:pause="1000"
-        marquee:autoStart="true"
+        app:autoStart="true"
+        app:pause="1000"
+        app:speed="5"
         >
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:singleLine="true"
             android:text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do."
             android:textSize="20sp"
             android:textStyle="bold"
-            android:singleLine="true"
-            android:ellipsize="end"
             tools:ignore="HardcodedText"/>
     </com.dmio.org.tut.widget.marqueeview.MarqueeView>
 
     <Button
         android:id="@+id/btnChangeText"
-        android:text="Change MarqueeView 2 text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="Change MarqueeView 2 text"
         />
 
     <TextView
-        android:text="Second MarqueeView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="@android:style/TextAppearance"
-        android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Second MarqueeView"
+        android:textAppearance="@android:style/TextAppearance"
         />
 
     <!--Marquee #3: Configuration using XML attributes. -->
@@ -85,20 +85,20 @@
         android:id="@+id/marqueeView3"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        marquee:speed="10"
-        marquee:pause="700"
-        marquee:autoStart="false"
+        app:autoStart="false"
+        app:pause="700"
+        app:speed="10"
         >
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:singleLine="true"
             android:text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do."
             android:textSize="20sp"
             android:textStyle="bold"
-            android:singleLine="true"
-            android:ellipsize="end"
             tools:ignore="HardcodedText"/>
     </com.dmio.org.tut.widget.marqueeview.MarqueeView>
 
@@ -109,19 +109,34 @@
 
         <Button
             android:id="@+id/btnStop"
-            android:text="Stop"
             android:layout_width="0dp"
-            android:layout_weight="50"
             android:layout_height="wrap_content"
+            android:layout_weight="50"
+            android:text="Stop"
             />
 
         <Button
             android:id="@+id/btnStart"
-            android:text="Start"
             android:layout_width="0dp"
-            android:layout_weight="50"
             android:layout_height="wrap_content"
+            android:layout_weight="50"
+            android:text="Start"
             />
     </LinearLayout>
+
+
+    <com.dmio.org.tut.widget.marqueeview.MarqueeTextView
+        android:id="@+id/mtv_sys_tip"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_marginTop="30dp"
+        android:background="#fff9b3"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do."
+        android:textColor="#336699"
+        android:textSize="24dp"
+        app:centerText="true"
+        app:edgeEffectColor="#aa39b3"
+        app:edgeEffectEnabled="true"
+        app:pauseDuration="2000"/>
 </LinearLayout>
 
