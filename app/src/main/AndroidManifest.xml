@@ -30,6 +30,7 @@
         <activity android:name=".activity.demo.widget.sweetalert.SweetAlertActivity"/>
         <activity android:name=".activity.demo.widget.qrcode.DecoderActivity"/>
         <activity android:name=".activity.demo.widget.marqueeview.MarqueeViewActivity"/>
+        <activity android:name=".activity.demo.security.ca.SecurityCAActivity"/>
 
     </application>
 
