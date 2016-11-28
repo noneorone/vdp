@@ -32,6 +32,8 @@
         <activity android:name=".activity.demo.widget.marqueeview.MarqueeViewActivity"/>
         <activity android:name=".activity.demo.security.ca.SecurityCAActivity"/>
 
+        <activity android:name=".activity.guide.GuideMainActivity"/>
+
     </application>
 
 </manifest>

@@ -17,6 +17,7 @@ import com.dmio.org.tut.activity.demo.widget.qrcode.DecoderActivity;
 import com.dmio.org.tut.activity.demo.widget.sweetalert.SweetAlertActivity;
 import com.dmio.org.tut.activity.demo.widget.wheelpicker.WheelPickerActivity;
 import com.dmio.org.tut.activity.demo.security.ca.SecurityCAActivity;
+import com.dmio.org.tut.activity.guide.GuideMainActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -53,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         map.put("MarqueeView", MarqueeViewActivity.class);
         map.put("WaveView", WaveViewActivity.class);
         map.put("SecurityCA", SecurityCAActivity.class);
+        map.put("GuideTransformer", GuideMainActivity.class);
 
 
         final List<Map.Entry<String, Class<?>>> data = new ArrayList<>();
