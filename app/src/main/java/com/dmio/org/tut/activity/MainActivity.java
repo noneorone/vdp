@@ -2,12 +2,17 @@ package com.dmio.org.tut.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dmio.org.tut.R;
 import com.dmio.org.tut.activity.demo.view.image.WaveViewActivity;
@@ -19,6 +24,11 @@ import com.dmio.org.tut.activity.demo.widget.wheelpicker.WheelPickerActivity;
 import com.dmio.org.tut.activity.demo.security.ca.SecurityCAActivity;
 import com.dmio.org.tut.activity.guide.GuideMainActivity;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -43,6 +53,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         initView();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuItem item = menu.add("test");
+        item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                trackANRTrace();
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
     }
 
     private List<Map.Entry<String, Class<?>>> getData() {
@@ -138,5 +161,61 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void trackANRTrace() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    String dataAnrDirPath = "/data/anr/";
+                    File dataAnrDir = new File(dataAnrDirPath);
+                    if (dataAnrDir.exists() && dataAnrDir.isDirectory()) {
+                        File extDir = Environment.getExternalStorageDirectory();
+                        if (extDir.exists() && extDir.isDirectory()) {
+                            File pyAnrDir = new File(extDir + "/noneorone/" + getPackageName() + "/anr");
+                            if (!pyAnrDir.exists()) {
+                                pyAnrDir.mkdirs();
+                            }
+                            if (pyAnrDir.exists()) {
+                                File[] dataAnrFiles = dataAnrDir.listFiles();
+                                if (dataAnrFiles != null) {
+                                    for (int i = 0, len = dataAnrFiles.length; i < len; i++) {
+                                        File dataAnrFile = dataAnrFiles[i];
+                                        if (dataAnrFile != null) {
+                                            File anrFile = new File(pyAnrDir, dataAnrFile.getName());
+                                            if (!anrFile.exists()) {
+                                                anrFile.createNewFile();
+                                            }
+                                            if (anrFile.exists()) {
+                                                BufferedReader br = new BufferedReader(new FileReader(dataAnrFile));
+                                                BufferedWriter bw = new BufferedWriter(new FileWriter(anrFile, true));
+                                                String line = null;
+                                                while ((line = br.readLine()) != null) {
+                                                    Log.e(getClass().getName(), line);
+                                                    bw.write(line.concat("\r\n"));
+                                                }
+                                                bw.close();
+                                                br.close();
+                                            }
+
+                                        }
+                                    }
+
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            Toast.makeText(MainActivity.this, "anr files copyed", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                                }
+                            }
+
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
 
 }
