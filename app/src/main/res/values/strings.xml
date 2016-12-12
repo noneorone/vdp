@@ -17,4 +17,7 @@
     <string name="welcom_head_04">Edit Excel spreadsheets</string>
     <string name="welcom_content_04">Open, edit, and save Excel files - all within Sheets.</string>
 
+    <string name="dpiValue">defaultdpi</string>
+    <string name="screenValue">unknow</string>
+
 </resources>
