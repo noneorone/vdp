@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
@@ -22,16 +23,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dmio.org.tut.R;
-import com.dmio.org.tut.activity.demo.view.image.WaveViewActivity;
-import com.dmio.org.tut.activity.demo.view.paint.PaintActivity;
-import com.dmio.org.tut.activity.demo.widget.marqueeview.MarqueeViewActivity;
-import com.dmio.org.tut.activity.demo.widget.qrcode.DecoderActivity;
-import com.dmio.org.tut.activity.demo.widget.sweetalert.SweetAlertActivity;
-import com.dmio.org.tut.activity.demo.widget.wheelpicker.WheelPickerActivity;
-import com.dmio.org.tut.activity.demo.security.ca.SecurityCAActivity;
-import com.dmio.org.tut.activity.guide.GuideMainActivity;
-
-import org.json.JSONStringer;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -40,12 +31,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.lang.reflect.Field;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -81,45 +68,29 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    private List<Map.Entry<String, Class<?>>> getData() {
-        final HashMap<String, Class<?>> map = new HashMap<>();
-        map.put("Paint", PaintActivity.class);
-        map.put("WheelPicker", WheelPickerActivity.class);
-        map.put("SweetAlert", SweetAlertActivity.class);
-        map.put("Decoder", DecoderActivity.class);
-        map.put("MarqueeView", MarqueeViewActivity.class);
-        map.put("WaveView", WaveViewActivity.class);
-        map.put("SecurityCA", SecurityCAActivity.class);
-        map.put("GuideTransformer", GuideMainActivity.class);
-
-
-        final List<Map.Entry<String, Class<?>>> data = new ArrayList<>();
-        Set<Map.Entry<String, Class<?>>> entries = map.entrySet();
-        for (Iterator<Map.Entry<String, Class<?>>> iterator = entries.iterator(); iterator.hasNext(); ) {
-            data.add(iterator.next());
-        }
-
-        return data;
-    }
-
     private void initView() {
-        mComponentAdapter = new ComponentAdapter(getData());
+        List<String> data = Arrays.asList(getResources().getStringArray(R.array.Entrance));
+        mComponentAdapter = new ComponentAdapter(data);
         mLvList.setAdapter(mComponentAdapter);
     }
 
     @OnItemClick({R.id.lv_list})
     public void onItemClick(android.widget.AdapterView<?> parent, android.view.View view, int position, long id) {
-        Map.Entry<String, Class<?>> entry = (Map.Entry<String, Class<?>>) parent.getAdapter().getItem(position);
-        if (entry != null) {
-            startActivity(new Intent(this, entry.getValue()));
+        try {
+            String entry = (String) parent.getAdapter().getItem(position);
+            if (!TextUtils.isEmpty(entry)) {
+                startActivity(new Intent(this, Class.forName(entry)));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
     private class ComponentAdapter extends BaseAdapter {
 
-        private List<Map.Entry<String, Class<?>>> data;
+        private List<String> data;
 
-        public ComponentAdapter(List<Map.Entry<String, Class<?>>> data) {
+        public ComponentAdapter(List<String> data) {
             this.data = data;
         }
 
@@ -155,9 +126,14 @@ public class MainActivity extends AppCompatActivity {
                 holder = (ViewHolder) view.getTag();
             }
 
-            Map.Entry<String, Class<?>> entry = data.get(position);
-            if (entry != null) {
-                holder.tvTitle.setText(entry.getKey());
+            String entry = data.get(position);
+            if (!TextUtils.isEmpty(entry)) {
+                entry = entry.substring(entry.lastIndexOf(".") + 1);
+                int index = entry.toLowerCase().lastIndexOf("activity");
+                if (index != -1) {
+                    entry = entry.substring(0, index);
+                }
+                holder.tvTitle.setText(entry);
             }
 
             return view;

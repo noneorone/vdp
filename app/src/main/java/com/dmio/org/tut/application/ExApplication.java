@@ -12,6 +12,18 @@ import com.antfortune.freeline.FreelineCore;
  */
 
 public class ExApplication extends Application {
+
+    private static ExApplication instance;
+
+    public static ExApplication getInstance() {
+        return instance;
+    }
+
+    public ExApplication() {
+        super();
+        instance = this;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();

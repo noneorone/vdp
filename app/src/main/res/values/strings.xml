@@ -20,4 +20,23 @@
     <string name="dpiValue">defaultdpi</string>
     <string name="screenValue">unknow</string>
 
+
+    <string name="date_format_timestamp_en">yyyy-MM-dd HH:mm:ss</string>
+    <string name="date_format_timestamp_cn">yyyy年MM月dd日  HH:mm:ss</string>
+    <string name="date_week_bunch">,天,一,二,三,四,五,六</string>
+    <string name="date_msg_today">今天&#032;%1$s&#058;%2$s</string>
+    <string name="date_msg_yesterday">昨天&#032;%1$s&#058;%2$s</string>
+    <string name="date_msg_week">星期%1$s&#032;%2$s&#058;%3$s</string>
+    <string name="date_hour_minute">%1$s&#058;%2$s</string>
+    <string name="date_yesterday">昨天</string>
+    <string name="date_week">星期%s</string>
+    <string name="date_year_month">%1$s-%2$s-%3$s</string>
+    <string name="date_month_day">%1$s-%2$s</string>
+    <string name="date_month_day_hm">%1$s月%2$s日&#032;%3$s&#058;%4$s</string>
+    <string name="date_time_span_now">刚刚</string>
+    <string name="date_time_span_minutes">%1$s分钟以前</string>
+    <string name="date_time_span_hours">%1$s小时以前</string>
+    <string name="date_time_span_days">%1$s天以前</string>
+
+
 </resources>
