@@ -34,6 +34,7 @@
         <activity android:name=".activity.demo.security.ca.SecurityCAActivity"/>
         <activity android:name=".activity.guide.GuideMainActivity"/>
         <activity android:name=".activity.demo.widget.swipecard.SwipeCardActivity"/>
+        <activity android:name=".activity.demo.widget.blurry.BlurryActivity"/>
     </application>
 
 </manifest>
