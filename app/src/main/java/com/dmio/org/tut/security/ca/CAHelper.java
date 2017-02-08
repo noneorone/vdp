@@ -19,8 +19,8 @@ import java.util.Locale;
 
 /**
  * 功能说明：CA工具类
- * 作者：huangx on 2016/10/29 11:22
- * 邮箱：huangx@pycredit.cn
+ * 作者：wangmeng on 2016/10/29 11:22
+ * 邮箱：noneorone@yeah.net
  */
 
 public class CAHelper {

@@ -3,7 +3,7 @@ package com.dmio.org.tut.utils;
 /**
  * 功能说明：字符串处理工具
  * 作者：wangmeng on 2016/8/29 15:12
- * 邮箱：wangmeng@pycredit.cn
+ * 邮箱：noneorone@yeah.net
  */
 public class StringUtils {
 

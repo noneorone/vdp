@@ -10,6 +10,11 @@
     <uses-feature android:name="android.hardware.camera"/>
     <uses-feature android:name="android.hardware.camera.autofocus"/>
 
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.READ_PROFILE"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+
     <application
         android:name=".application.ExApplication"
         android:allowBackup="true"
@@ -18,7 +23,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activity.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -35,6 +40,14 @@
         <activity android:name=".activity.guide.GuideMainActivity"/>
         <activity android:name=".activity.demo.widget.swipecard.SwipeCardActivity"/>
         <activity android:name=".activity.demo.widget.blurry.BlurryActivity"/>
+        <activity
+            android:name=".activity.MainActivity"
+            android:label="@string/title_activity_login">
+        </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_login">
+        </activity>
     </application>
 
 </manifest>
