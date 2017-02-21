@@ -3,9 +3,12 @@ package com.dmio.org.tut.utils;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Environment;
 import android.os.Looper;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.widget.Toast;
@@ -18,7 +21,10 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.lang.reflect.Field;
+import java.net.NetworkInterface;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * 功能说明：设备工具类
@@ -128,5 +134,45 @@ public class DeviceUtils {
 
         return info.toString();
     }
+
+    /**
+     * 获取MAC地址，兼容6.0
+     *
+     * @param context
+     * @return
+     */
+    public static String getMacAddress(Context context) {
+        StringBuilder macAddress = new StringBuilder();
+        try {
+            WifiManager wm = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+            WifiInfo wifiInfo = wm.getConnectionInfo();
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+                macAddress.append(wifiInfo.getMacAddress());
+            } else {
+                ArrayList<NetworkInterface> netfaces = Collections.list(NetworkInterface.getNetworkInterfaces());
+                if (netfaces != null) {
+                    for (NetworkInterface netface : netfaces) {
+                        if ("wlan0".equalsIgnoreCase(netface.getName())) {
+                            byte[] hardwareAddress = netface.getHardwareAddress();
+                            if (hardwareAddress != null) {
+                                for (byte b : hardwareAddress) {
+                                    macAddress.append(Integer.toHexString(b & 0xFF) + ":");
+                                }
+                                if (macAddress.length() > 0) {
+                                    macAddress.deleteCharAt(macAddress.length() - 1);
+                                }
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return TextUtils.isEmpty(macAddress) ? "" : macAddress.toString();
+    }
+
 
 }
