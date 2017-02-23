@@ -1,10 +1,18 @@
 package com.dmio.org.tut.utils;
 
+import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.ActivityManager.RunningTaskInfo;
+import android.app.Application;
+import android.app.Service;
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.pm.PackageItemInfo;
+import android.content.pm.PackageManager;
+import android.os.Build;
+import android.text.TextUtils;
 
 import java.util.List;
 
@@ -70,6 +78,50 @@ public class AppUtils {
             }
         }
         return false;
+    }
+
+    /**
+     * 获取manifest中配置的不同类型meta节点下面指定名称对应值
+     *
+     * @param context
+     * @param clz     分为{@link Application} | {@link Service} | {@link BroadcastReceiver} | {@link Activity}
+     * @param name
+     * @return
+     */
+    public static final String getMetaData(Context context, Class<?> clz, String name) {
+        String value = null;
+
+        try {
+            PackageItemInfo info = null;
+            PackageManager manager = context.getPackageManager();
+
+            if (clz == Application.class) {
+                info = manager.getApplicationInfo(context.getPackageName(), PackageManager.GET_META_DATA);
+            } else if (clz == Service.class) {
+                info = manager.getServiceInfo(new ComponentName(context, clz), PackageManager.GET_META_DATA);
+            } else if (clz == BroadcastReceiver.class) {
+                info = manager.getReceiverInfo(new ComponentName(context, clz), PackageManager.GET_META_DATA);
+            } else if (clz == Activity.class) {
+                if (context instanceof Activity) {
+                    boolean isActive = false;
+                    Activity activity = (Activity) context;
+                    if (activity != null && !activity.isFinishing()) {
+                        isActive = true;
+                    }
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                        isActive = isActive && !activity.isDestroyed();
+                    }
+                    if (isActive) {
+                        info = manager.getActivityInfo(activity.getComponentName(), PackageManager.GET_META_DATA);
+                    }
+                }
+            }
+
+            value = info.metaData.getString(name);
+        } catch (Exception e) {
+        }
+
+        return TextUtils.isEmpty(value) ? "" : value;
     }
 
 }

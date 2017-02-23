@@ -1,9 +1,11 @@
 package com.dmio.org.tut.activity;
 
+import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,6 +15,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.dmio.org.tut.R;
+import com.dmio.org.tut.utils.AppUtils;
 import com.dmio.org.tut.utils.DeviceUtils;
 
 import java.util.Arrays;
@@ -37,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         initView();
+        Log.d(TAG, "twlis: " + AppUtils.getMetaData(this, Application.class, "twcal"));
     }
 
     @Override

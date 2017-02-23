@@ -45,10 +45,9 @@
             android:name=".activity.MainActivity"
             android:label="@string/title_activity_login">
         </activity>
-        <activity
-            android:name=".LoginActivity"
-            android:label="@string/title_activity_login">
-        </activity>
+
+        <meta-data android:name="twcal" android:value="E60BD8CEB3E4F587"/>
+
     </application>
 
 </manifest>
