@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center">
 
-    <com.dmio.org.tut.view.paint.DoughnutView
+    <com.dmio.org.tut.widget.DoughnutView
         android:id="@+id/dv_quota_percent"
         android:layout_width="250dp"
         android:layout_height="250dp"

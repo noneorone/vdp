@@ -1,4 +1,4 @@
-package com.dmio.org.tut.security.ca;
+package com.dmio.org.tut.utils;
 
 import android.content.Context;
 import android.text.TextUtils;

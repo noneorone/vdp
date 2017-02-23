@@ -12,7 +12,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.dmio.org.tut.R;
-import com.dmio.org.tut.security.ca.CAHelper;
+import com.dmio.org.tut.utils.CAHelper;
 
 import java.io.File;
 import java.io.FileWriter;

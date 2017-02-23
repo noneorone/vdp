@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.dmio.org.tut.R;
-import com.dmio.org.tut.view.paint.DoughnutView;
+import com.dmio.org.tut.widget.DoughnutView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

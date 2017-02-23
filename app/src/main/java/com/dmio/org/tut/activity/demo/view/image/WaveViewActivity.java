@@ -16,9 +16,9 @@ import android.widget.RadioGroup;
 import android.widget.SeekBar;
 
 import com.dmio.org.tut.R;
-import com.dmio.org.tut.view.image.GNWaveView;
-import com.dmio.org.tut.view.image.GNWaveHelper;
-import com.dmio.org.tut.view.image.WaveView;
+import com.dmio.org.tut.widget.wavewiew.GNWaveHelper;
+import com.dmio.org.tut.widget.wavewiew.GNWaveView;
+import com.dmio.org.tut.widget.wavewiew.WaveView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -113,38 +113,38 @@ public class WaveViewActivity extends AppCompatActivity {
         mWaveHelper = new GNWaveHelper(gnWave);
 
         ((RadioGroup) findViewById(R.id.shapeChoice)).setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                        switch (i) {
-                            case R.id.shapeCircle:
-                                gnWave.setShapeType(GNWaveView.ShapeType.CIRCLE);
-                                break;
-                            case R.id.shapeSquare:
-                                gnWave.setShapeType(GNWaveView.ShapeType.SQUARE);
-                                break;
-                            default:
-                                break;
-                        }
-                    }
-                });
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (i) {
+                    case R.id.shapeCircle:
+                        gnWave.setShapeType(GNWaveView.ShapeType.CIRCLE);
+                        break;
+                    case R.id.shapeSquare:
+                        gnWave.setShapeType(GNWaveView.ShapeType.SQUARE);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
 
         ((SeekBar) findViewById(R.id.seekBar)).setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-                    @Override
-                    public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                        mBorderWidth = i;
-                        gnWave.setBorder(mBorderWidth, mBorderColor);
-                    }
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                mBorderWidth = i;
+                gnWave.setBorder(mBorderWidth, mBorderColor);
+            }
 
-                    @Override
-                    public void onStartTrackingTouch(SeekBar seekBar) {
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
 
-                    }
+            }
 
-                    @Override
-                    public void onStopTrackingTouch(SeekBar seekBar) {
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
 
-                    }
-                });
+            }
+        });
 
         CompoundButtonCompat.setButtonTintList((RadioButton) findViewById(R.id.colorDefault), getResources().getColorStateList(android.R.color.white));
         CompoundButtonCompat.setButtonTintList((RadioButton) findViewById(R.id.colorRed), getResources().getColorStateList(R.color.red));
@@ -152,32 +152,32 @@ public class WaveViewActivity extends AppCompatActivity {
         CompoundButtonCompat.setButtonTintList((RadioButton) findViewById(R.id.colorBlue), getResources().getColorStateList(R.color.blue));
 
         ((RadioGroup) findViewById(R.id.colorChoice)).setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                        switch (i) {
-                            case R.id.colorRed:
-                                gnWave.setWaveColor(Color.parseColor("#28f16d7a"), Color.parseColor("#3cf16d7a"));
-                                mBorderColor = Color.parseColor("#44f16d7a");
-                                gnWave.setBorder(mBorderWidth, mBorderColor);
-                                break;
-                            case R.id.colorGreen:
-                                gnWave.setWaveColor(Color.parseColor("#40b7d28d"), Color.parseColor("#80b7d28d"));
-                                mBorderColor = Color.parseColor("#B0b7d28d");
-                                gnWave.setBorder(mBorderWidth, mBorderColor);
-                                break;
-                            case R.id.colorBlue:
-                                gnWave.setWaveColor(Color.parseColor("#88b8f1ed"), Color.parseColor("#b8f1ed"));
-                                mBorderColor = Color.parseColor("#b8f1ed");
-                                gnWave.setBorder(mBorderWidth, mBorderColor);
-                                break;
-                            default:
-                                gnWave.setWaveColor(GNWaveView.DEFAULT_BEHIND_WAVE_COLOR, GNWaveView.DEFAULT_FRONT_WAVE_COLOR);
-                                mBorderColor = Color.parseColor("#44FFFFFF");
-                                gnWave.setBorder(mBorderWidth, mBorderColor);
-                                break;
-                        }
-                    }
-                });
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (i) {
+                    case R.id.colorRed:
+                        gnWave.setWaveColor(Color.parseColor("#28f16d7a"), Color.parseColor("#3cf16d7a"));
+                        mBorderColor = Color.parseColor("#44f16d7a");
+                        gnWave.setBorder(mBorderWidth, mBorderColor);
+                        break;
+                    case R.id.colorGreen:
+                        gnWave.setWaveColor(Color.parseColor("#40b7d28d"), Color.parseColor("#80b7d28d"));
+                        mBorderColor = Color.parseColor("#B0b7d28d");
+                        gnWave.setBorder(mBorderWidth, mBorderColor);
+                        break;
+                    case R.id.colorBlue:
+                        gnWave.setWaveColor(Color.parseColor("#88b8f1ed"), Color.parseColor("#b8f1ed"));
+                        mBorderColor = Color.parseColor("#b8f1ed");
+                        gnWave.setBorder(mBorderWidth, mBorderColor);
+                        break;
+                    default:
+                        gnWave.setWaveColor(GNWaveView.DEFAULT_BEHIND_WAVE_COLOR, GNWaveView.DEFAULT_FRONT_WAVE_COLOR);
+                        mBorderColor = Color.parseColor("#44FFFFFF");
+                        gnWave.setBorder(mBorderWidth, mBorderColor);
+                        break;
+                }
+            }
+        });
     }
 
     @Override

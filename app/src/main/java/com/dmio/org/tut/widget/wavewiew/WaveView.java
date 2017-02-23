@@ -1,4 +1,4 @@
-package com.dmio.org.tut.view.image;
+package com.dmio.org.tut.widget.wavewiew;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

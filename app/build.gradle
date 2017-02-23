@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
 apply plugin: 'com.antfortune.freeline'
+apply plugin: 'realm-android'
 
 android {
     compileSdkVersion 24
@@ -15,6 +16,10 @@ android {
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
+
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a"
+        }
     }
 
     dexOptions {
@@ -24,7 +29,7 @@ android {
 
     sourceSets {
         main {
-            jniLibs.srcDirs = ['libs']
+            jniLibs.srcDirs("jniLibs")
         }
 
         // Move the tests to tests/java, tests/res, etc...
@@ -50,6 +55,7 @@ android {
     freeline {
         hack true
     }
+
 }
 
 dependencies {
@@ -64,5 +70,6 @@ dependencies {
     compile files('libs/ikey_sdk.jar')
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'jp.wasabeef:blurry:2.1.0'
+    compile files('libs/Native_Libs2.jar')
 }
 

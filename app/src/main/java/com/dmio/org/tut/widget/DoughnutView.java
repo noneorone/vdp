@@ -1,4 +1,4 @@
-package com.dmio.org.tut.view.paint;
+package com.dmio.org.tut.widget;
 
 import android.animation.ValueAnimator;
 import android.content.Context;

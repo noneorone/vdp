@@ -19,7 +19,7 @@
             android:layout_height="match_parent">
 
 
-            <com.dmio.org.tut.view.image.WaveView
+            <com.dmio.org.tut.widget.wavewiew.WaveView
                 android:id="@+id/wv_content"
                 android:layout_width="300dp"
                 android:layout_height="200dp"
@@ -38,7 +38,7 @@
                 wave:wave_mask_res="@drawable/ic_home_score_mask" />
             -->
 
-            <com.dmio.org.tut.view.image.GNWaveView
+            <com.dmio.org.tut.widget.wavewiew.GNWaveView
                 android:id="@+id/wave"
                 android:layout_width="300dp"
                 android:layout_height="300dp"
