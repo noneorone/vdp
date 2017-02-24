@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
+import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
@@ -30,11 +31,11 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
 
     // UI references.
-    private AutoCompleteTextView mEmailView;
+    private AutoCompleteTextView mAccountView;
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
-    private Button mEmailSignInButton;
+    private Button mSignInButton;
 
     private LoginPresenter mLoginPresenter;
 
@@ -42,8 +43,9 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        setTitle(R.string.title_login);
         // Set up the login form.
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
+        mAccountView = (AutoCompleteTextView) findViewById(R.id.account);
 
         mPasswordView = (EditText) findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -57,8 +59,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
             }
         });
 
-        mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
-        mEmailSignInButton.setOnClickListener(new OnClickListener() {
+        mSignInButton = (Button) findViewById(R.id.account_sign_in_button);
+        mSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 attemptLogin();
@@ -71,6 +73,11 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         mLoginPresenter = new LoginPresenterImpl(this);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return super.onCreateOptionsMenu(menu);
+    }
+
     /**
      * Attempts to sign in or register the account specified by the login form.
      * If there are form errors (invalid email, missing fields, etc.), the
@@ -79,11 +86,11 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     @Override
     public void attemptLogin() {
         // Reset errors.
-        mEmailView.setError(null);
+        mAccountView.setError(null);
         mPasswordView.setError(null);
 
         // Store values at the time of the login attempt.
-        String email = mEmailView.getText().toString();
+        String email = mAccountView.getText().toString();
         String password = mPasswordView.getText().toString();
 
         mLoginPresenter.validateLogin(email, password);
@@ -102,22 +109,25 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
             int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
 
             mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-            mLoginFormView.animate().setDuration(shortAnimTime).alpha(
-                    show ? 0 : 1).setListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-                }
-            });
+            mLoginFormView.animate()
+                    .setDuration(shortAnimTime).alpha(show ? 0 : 1)
+                    .setListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
+                        }
+                    });
 
             mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-            mProgressView.animate().setDuration(shortAnimTime).alpha(
-                    show ? 1 : 0).setListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-                }
-            });
+            mProgressView.animate()
+                    .setDuration(shortAnimTime)
+                    .alpha(show ? 1 : 0)
+                    .setListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
+                        }
+                    });
         } else {
             // The ViewPropertyAnimator APIs are not available, so simply show
             // and hide the relevant UI components.
@@ -128,13 +138,13 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void usernameError() {
-        mEmailView.setError(getString(R.string.error_invalid_email));
-        mEmailView.requestFocus();
+        mAccountView.setError(getString(R.string.error_invalid_account));
+        mAccountView.requestFocus();
     }
 
     @Override
     public void passwordError() {
-        mPasswordView.setError(getString(R.string.error_incorrect_password));
+        mPasswordView.setError(getString(R.string.error_invalid_password));
         mPasswordView.requestFocus();
     }
 
@@ -142,12 +152,13 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     public void loginSuccess() {
         showProgress(false);
         mLoginFormView.setVisibility(View.GONE);
-        Snackbar.make(mEmailSignInButton, "login success!", Snackbar.LENGTH_INDEFINITE)
+        Snackbar.make(mSignInButton, R.string.prompt_login_success, Snackbar.LENGTH_INDEFINITE)
                 .setAction(android.R.string.ok, new View.OnClickListener() {
                     @Override
                     @TargetApi(Build.VERSION_CODES.M)
                     public void onClick(View v) {
                         startActivity(new Intent(LoginActivity.this, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                        finish();
                     }
                 }).show();
     }
