@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         initView();
         Log.d(TAG, "twlis: " + AppUtils.getMetaData(this, Application.class, "twcal"));
+        Log.d(TAG, "appName: " + AppUtils.getAppName(this));
     }
 
     @Override

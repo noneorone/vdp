@@ -9,6 +9,7 @@ import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageItemInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -119,9 +120,46 @@ public class AppUtils {
 
             value = info.metaData.getString(name);
         } catch (Exception e) {
+            e.printStackTrace();
         }
 
         return TextUtils.isEmpty(value) ? "" : value;
     }
+
+    /**
+     * 获取应用包信息
+     *
+     * @param context
+     * @return
+     */
+    public static final PackageInfo getPackageInfo(Context context) {
+        PackageInfo packageInfo = null;
+
+        try {
+            PackageManager packageManager = context.getPackageManager();
+            packageInfo = packageManager.getPackageInfo(context.getPackageName(), 0);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return packageInfo;
+    }
+
+    /**
+     * 获取应用名
+     *
+     * @param contex
+     * @return
+     */
+    public static final String getAppName(Context contex) {
+        String appName = null;
+        PackageInfo packageInfo = getPackageInfo(contex);
+        if (packageInfo != null) {
+            int labelRes = packageInfo.applicationInfo.labelRes;
+            appName = contex.getResources().getString(labelRes);
+        }
+        return appName;
+    }
+
 
 }
