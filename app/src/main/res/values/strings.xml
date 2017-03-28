@@ -48,5 +48,7 @@
     <string name="error_invalid_password">This password is invalid</string>
     <string name="error_field_required">This field is required</string>
 
+    <!-- moxie -->
+    <string name="moxie_agreement_entry_text">同意数据获取协议</string>
 
 </resources>

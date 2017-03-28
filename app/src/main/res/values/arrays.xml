@@ -67,6 +67,7 @@
         <item>com.dmio.org.tut.activity.guide.GuideMainActivity</item>
         <item>com.dmio.org.tut.activity.demo.widget.swipecard.SwipeCardActivity</item>
         <item>com.dmio.org.tut.activity.demo.widget.blurry.BlurryActivity</item>
+        <item>com.dmio.org.tut.activity.demo.moxie.MoxieActivity</item>
     </string-array>
 
 </resources>

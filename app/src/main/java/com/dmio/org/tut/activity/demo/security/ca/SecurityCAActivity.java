@@ -22,6 +22,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * CA generator test.
+ */
 public class SecurityCAActivity extends AppCompatActivity {
 
     private int count;
