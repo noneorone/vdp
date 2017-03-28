@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
 
 import com.dmio.org.tut.R;
 import com.dmio.org.tut.application.ExApplication;
@@ -66,6 +67,29 @@ public final class MoxieHelper {
                 Intent intent = new Intent(activity, com.moxie.client.MainActivity.class);
                 intent.putExtras(bundle);
                 activity.startActivityForResult(intent, resultCode);
+            }
+        }
+    }
+
+    /**
+     * 身份验证
+     *
+     * @param idVerify
+     */
+    public static void identityVerification(FragmentActivity activity, IDVerify idVerify) {
+        if (activity != null && idVerify != null) {
+            boolean actived = !activity.isFinishing();
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                actived = actived && !activity.isDestroyed();
+            }
+            if (actived) {
+                String openUrl = String.format(Config.VERTIFICATION_URL, idVerify.getType(), Config.TOKEN);
+                Bundle bundle = new Bundle();
+                bundle.putString("openUrl", openUrl);
+                bundle.putString("title", idVerify.getTitle());
+                Intent intent = new Intent(activity, WebViewActivity.class);
+                intent.putExtras(bundle);
+                activity.startActivity(intent);
             }
         }
     }

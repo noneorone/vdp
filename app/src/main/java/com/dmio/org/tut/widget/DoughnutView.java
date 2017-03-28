@@ -79,7 +79,7 @@ public class DoughnutView extends View {
         float doughnutWidth = Math.min(width, height) / 2 * 0.15f;
         paint.setStrokeWidth(doughnutWidth);
         paint.setStyle(Paint.Style.STROKE);
-        paint.setColor(getResources().getColor(R.color.py_color_c6));
+        paint.setColor(getResources().getColor(R.color.c6));
         paint.setAntiAlias(true);
         RectF rectF = new RectF((width > height ? Math.abs(width - height) / 2 : 0) + doughnutWidth / 2, (height > width ? Math.abs(height - width) / 2 : 0) + doughnutWidth / 2, width
                 - (width > height ? Math.abs(width - height) / 2 : 0) - doughnutWidth / 2, height - (height > width ? Math.abs(height - width) / 2 : 0) - doughnutWidth / 2);
@@ -100,7 +100,7 @@ public class DoughnutView extends View {
         // 画中间数值的背景
         initPaint();
         paint.setStyle(Paint.Style.FILL);
-        paint.setColor(ContextCompat.getColor(getContext(), R.color.py_color_c8));
+        paint.setColor(ContextCompat.getColor(getContext(), R.color.c8));
         canvas.drawCircle(width / 2, height / 2, width / 2 - 20, paint);
 
         // 画中间数值

@@ -50,5 +50,6 @@
 
     <!-- moxie -->
     <string name="moxie_agreement_entry_text">同意数据获取协议</string>
+    <string name="moxie_title_import_result">导入结果</string>
 
 </resources>

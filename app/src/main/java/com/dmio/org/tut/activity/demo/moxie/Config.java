@@ -15,7 +15,12 @@ public class Config {
     /**
      * 获取任务状态时使用
      */
-    public static final String API_KEY = "00a4be26195d4856965c5293629b84b2";
+    public static final String API_KEY = "e684f3ca689248048353d45c67bae426";
+
+    /**
+     * 魔蝎分配的token
+     */
+    public static final String TOKEN = "6540e3e241b04332885ebda8e4df2c3e";
 
     /**
      * 标题栏背景色
@@ -36,5 +41,10 @@ public class Config {
      * 协议URL
      */
     public static final String AGREEMENT_URL = "https://api.51datakey.com/h5/agreement.html";
+
+    /**
+     * 身份验证URL
+     */
+    public static final String VERTIFICATION_URL = "https://api.51datakey.com/h5/vertification/%s/index.html?token=%s";
 
 }

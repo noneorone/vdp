@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 文字大小 -->
+    <dimen name="ts1">18sp</dimen>
+    <dimen name="ts2">17sp</dimen>
+    <dimen name="ts3">16sp</dimen>
+    <dimen name="ts4">15sp</dimen>
+    <dimen name="ts5">13sp</dimen>
+    <dimen name="ts6">12sp</dimen>
+    <dimen name="ts7">11.33sp</dimen>
+
+    <dimen name="t1">12sp</dimen>
+    <dimen name="t2">14sp</dimen>
+    <dimen name="t3">18sp</dimen>
+    <dimen name="t4">24sp</dimen>
+    <dimen name="t5">32sp</dimen>
+
+    <color name="c1">#2084d3</color>
+    <color name="c2">#222222</color>
+    <color name="c3">#333333</color>
+    <color name="c4">#666666</color>
+    <color name="c5">#999999</color>
+    <color name="c6">#d8d8d8</color>
+    <color name="c7">#ededed</color>
+    <color name="c8">#ffffff</color>
+    <color name="c9">#f55c54</color>
+    <color name="c10">#22b573</color>
+    <color name="c11">#ff9c00</color>
+    <color name="c12">#f2f2f2</color>
+
+</resources>

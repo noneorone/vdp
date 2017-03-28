@@ -12,9 +12,6 @@
     <color name="doughnut_circle_from">#20bacd</color>
     <color name="doughnut_circle_to">#208fd2</color>
     <color name="doughnut_cs_text">#6cb2e7</color>
-    <color name="py_color_c6">#d8d8d8</color>
-    <color name="py_color_c7">#ededed</color>
-    <color name="py_color_c8">#ffffff</color>
 
     <!--WheelPicker-->
     <color name="ColorButtonRelease">#FCC689</color>

@@ -23,13 +23,16 @@ public class MoxieActivity extends AppCompatActivity implements View.OnClickList
     @BindView(R.id.btn_func_email)
     Button btnFuncEmail;
 
+    @BindView(R.id.btn_func_id_verify)
+    Button btnFuncIdVerify;
+
     @BindView(R.id.tv_result)
     TextView tvResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.act_moxie);
+        setContentView(R.layout.activity_moxie);
         ButterKnife.bind(this);
 
         Log.e(getLocalClassName(), AppUtils.getPackageInfo(getBaseContext()).packageName);
@@ -71,6 +74,7 @@ public class MoxieActivity extends AppCompatActivity implements View.OnClickList
 
     private void initView() {
         btnFuncEmail.setOnClickListener(this);
+        btnFuncIdVerify.setOnClickListener(this);
     }
 
 
@@ -79,6 +83,9 @@ public class MoxieActivity extends AppCompatActivity implements View.OnClickList
         switch (v.getId()) {
             case R.id.btn_func_email:
                 MoxieHelper.normalIdentify(this, Function.EMAIL, REQ_CODE_INDENTIFY);
+                break;
+            case R.id.btn_func_id_verify:
+                MoxieHelper.identityVerification(this, IDVerify.ID_CARD);
                 break;
         }
     }
