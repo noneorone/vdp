@@ -1,16 +1,17 @@
 package com.dmio.org.tut.utils;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.TimeZone;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 
 import com.dmio.org.tut.R;
 import com.dmio.org.tut.application.ExApplication;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
 
 /**
  * 日期处理
@@ -25,9 +26,9 @@ public class DateUtils {
     private static Context mContext;
 
     private static final SimpleDateFormat formator = new SimpleDateFormat();
-    private static final String FORMAT_DEFAULT_TIMESTAMP = "yyyy-MM-dd HH:mm:ss";
-    @SuppressWarnings("unused")
     private static final String FORMAT_DEFAULT_DATE = "yyyy-MM-dd";
+    private static final String FORMAT_DEFAULT_TIMESTAMP = "yyyy-MM-dd HH:mm:ss";
+    private static final String FORMAT_EN_DATE = "EEE MMM dd kk:mm:ss yyyy";
 
     public static final int DAY = 1000 * 60 * 60 * 24;
     public static final int HOUR = 1000 * 60 * 60;
@@ -270,6 +271,41 @@ public class DateUtils {
         } else {
             return String.format(getString(R.string.date_time_span_days), days);
         }
+    }
+
+    /**
+     * 转换日期格式串
+     *
+     * @param dateStr eg.2016-11-02
+     * @return
+     */
+    public static Date parseDate(String dateStr) {
+        Date date = null;
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat(FORMAT_DEFAULT_DATE);
+            date = dateFormat.parse(dateStr);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return date;
+    }
+
+
+    /**
+     * 转换英文日期时间格式
+     *
+     * @param dateStr eg.Mon Nov 14 20:28:24 2016
+     * @return
+     */
+    public static Date parseENDateTime(String dateStr) {
+        Date date = null;
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat(FORMAT_EN_DATE, Locale.ENGLISH);
+            date = dateFormat.parse(dateStr);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return date;
     }
 
 }
