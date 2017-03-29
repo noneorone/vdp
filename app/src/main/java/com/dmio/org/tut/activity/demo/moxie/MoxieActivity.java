@@ -82,10 +82,10 @@ public class MoxieActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_func_email:
-                MoxieHelper.normalIdentify(this, Function.EMAIL, REQ_CODE_INDENTIFY);
+                MoxieHelper.normalIdentify(MoxieActivity.this, Function.EMAIL, REQ_CODE_INDENTIFY);
                 break;
             case R.id.btn_func_id_verify:
-                MoxieHelper.identityVerification(this, IDVerify.ID_CARD);
+                MoxieHelper.identityVerification(MoxieActivity.this, IDVerify.ID_CARD);
                 break;
         }
     }

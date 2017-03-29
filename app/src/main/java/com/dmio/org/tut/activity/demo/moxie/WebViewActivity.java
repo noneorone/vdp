@@ -1,11 +1,11 @@
 package com.dmio.org.tut.activity.demo.moxie;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
 import android.net.http.SslError;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.webkit.JavascriptInterface;
@@ -20,12 +20,12 @@ import com.dmio.org.tut.R;
 /**
  * Created by taoweisong on 16/4/1.
  */
-public class WebViewActivity extends Activity implements
+public class WebViewActivity extends FragmentActivity implements
         View.OnClickListener {
 
     private WebView webView;
     private TitleLayout mTitleLayout;
-    private String mTitle = getString(R.string.moxie_title_import_result);
+    private String mTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,7 @@ public class WebViewActivity extends Activity implements
         if (null != bundle) {
             init(bundle.getString("openUrl"));
             if (!TextUtils.isEmpty(bundle.getString("title")))
-                mTitle = bundle.getString("title");
+                mTitle = bundle.getString("title", getString(R.string.moxie_title_import_result));
         } else {
             finish();
         }
@@ -52,7 +52,7 @@ public class WebViewActivity extends Activity implements
         try {
             if (id == R.id.TextView_Back) {
 
-                if (webView.getUrl().contains("https://api.51datakey.com/h5/credit/index.html"))
+                if (webView.getUrl().contains(Config.CREDIT_URL))
                     finish();
 
                 if (webView.canGoBack()) {

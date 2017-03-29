@@ -3,20 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#319fde"
-    tools:context=".MainActivity">
+    android:orientation="vertical"
+    tools:context=".activity.demo.moxie.MoxieActivity">
 
-    <com.moxie.crawler.common.TitleLayout
+    <com.dmio.org.tut.activity.demo.moxie.TitleLayout
         android:id="@+id/TitleLayout"
         android:layout_width="fill_parent"
         android:layout_height="48dp"
         android:background="#FF2A2F33" />
 
     <WebView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:id="@+id/webView"
-        />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>

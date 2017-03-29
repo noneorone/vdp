@@ -1,14 +1,15 @@
 package com.dmio.org.tut.activity.demo.moxie;
 
 /**
- * 配置项</br>
+ * 配置项<br/>
+ * 备注: apiKey和token跟应用的包名和应用名称没有关联关系<br/>
  * wangmeng on 2017/3/28 9:16
  * wangmeng@pycredit.cn
  */
 public class Config {
 
     /**
-     * 合作方系统中的客户ID
+     * 合作方系统中的客户ID（用来做用户标识，魔蝎不做强校验，只提供回传）
      */
     public static final String USER_ID = "1111";
 
@@ -41,6 +42,11 @@ public class Config {
      * 协议URL
      */
     public static final String AGREEMENT_URL = "https://api.51datakey.com/h5/agreement.html";
+
+    /**
+     * 人行征信URL
+     */
+    public static final String CREDIT_URL = "https://api.51datakey.com/h5/credit/index.html";
 
     /**
      * 身份验证URL

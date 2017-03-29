@@ -39,6 +39,9 @@
         <activity android:name=".activity.demo.moxie.MoxieActivity" />
         <activity android:name=".activity.MainActivity"></activity>
 
+        <activity android:name=".activity.demo.moxie.WebViewActivity"></activity>
+        <activity android:name="com.moxie.client.MainActivity"></activity>
+
         <meta-data
             android:name="twcal"
             android:value="E60BD8CEB3E4F587" />
