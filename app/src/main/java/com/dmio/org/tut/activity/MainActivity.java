@@ -1,11 +1,14 @@
 package com.dmio.org.tut.activity;
 
+import android.Manifest;
 import android.app.Application;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,7 +18,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.dmio.org.tut.R;
-import com.dmio.org.tut.utils.AppUtils;
+import com.dmio.org.tut.core.log.Logger;
+import com.dmio.org.tut.core.utils.AppUtils;
 import com.dmio.org.tut.utils.DeviceUtils;
 
 import java.util.Arrays;
@@ -26,6 +30,8 @@ import butterknife.ButterKnife;
 import butterknife.OnItemClick;
 
 public class MainActivity extends AppCompatActivity {
+
+    private final int REQ_CODE_PERM_WES = 0x001;
 
     private static final String TAG = "MainActivity";
 
@@ -40,8 +46,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         initView();
-        Log.d(TAG, "twlis: " + AppUtils.getMetaData(this, Application.class, "twcal"));
-        Log.d(TAG, "appName: " + AppUtils.getAppName(this));
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQ_CODE_PERM_WES);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case REQ_CODE_PERM_WES:
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Logger.d("twlis: " + AppUtils.getMetaData(this, Application.class, "twcal"));
+                }
+                break;
+        }
     }
 
     @Override

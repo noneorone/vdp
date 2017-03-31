@@ -1,4 +1,4 @@
-package com.dmio.org.tut.utils;
+package com.dmio.org.tut.core.utils;
 
 import android.os.Build;
 import android.os.Bundle;

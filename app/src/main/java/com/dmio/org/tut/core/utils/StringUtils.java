@@ -1,4 +1,4 @@
-package com.dmio.org.tut.utils;
+package com.dmio.org.tut.core.utils;
 
 /**
  * 功能说明：字符串处理工具

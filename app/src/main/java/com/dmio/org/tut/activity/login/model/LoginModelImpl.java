@@ -5,7 +5,7 @@ import android.os.Looper;
 import android.util.Log;
 
 import com.dmio.org.tut.data.model.LoginInfo;
-import com.dmio.org.tut.utils.AssertUtils;
+import com.dmio.org.tut.core.utils.AssertUtils;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 

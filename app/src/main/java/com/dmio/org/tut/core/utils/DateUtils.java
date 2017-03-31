@@ -1,4 +1,4 @@
-package com.dmio.org.tut.utils;
+package com.dmio.org.tut.core.utils;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -46,15 +46,20 @@ public class DateUtils {
         return mContext.getResources().getString(resId);
     }
 
-    public static String getDateCN(Date date) {
+    public static String getDateTimeCN(Date date) {
         String formatCN = getString(R.string.date_format_timestamp_cn);
-        formator.applyPattern(null != formatCN ? formatCN : FORMAT_DEFAULT_TIMESTAMP);
+        formator.applyPattern(formatCN);
+        return formator.format(date);
+    }
+
+    public static String getDateTimeEN(Date date) {
+        String formatEN = getString(R.string.date_format_timestamp_en);
+        formator.applyPattern(formatEN);
         return formator.format(date);
     }
 
     public static String getDateEN(Date date) {
-        String formatEN = getString(R.string.date_format_timestamp_en);
-        formator.applyPattern(null == formatEN ? formatEN : FORMAT_DEFAULT_TIMESTAMP);
+        formator.applyPattern(FORMAT_DEFAULT_DATE);
         return formator.format(date);
     }
 
@@ -95,10 +100,14 @@ public class DateUtils {
     }
 
     public static String getNowCN() {
-        return getDateCN(new Date());
+        return getDateTimeCN(new Date());
     }
 
     public static String getNowEN() {
+        return getDateTimeEN(new Date());
+    }
+
+    public static String getDateNowEN() {
         return getDateEN(new Date());
     }
 
@@ -306,6 +315,22 @@ public class DateUtils {
             e.printStackTrace();
         }
         return date;
+    }
+
+    /**
+     * 获取两个日期之间相差的天数
+     *
+     * @param m1 日期1毫秒数
+     * @param m2 日期2毫秒数
+     * @return
+     */
+    public static int getTwoDaysGap(long m1, long m2) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(m1);
+        int day1 = calendar.get(Calendar.DAY_OF_YEAR);
+        calendar.setTimeInMillis(m2);
+        int day2 = calendar.get(Calendar.DAY_OF_YEAR);
+        return Math.abs(day2 - day1);
     }
 
 }

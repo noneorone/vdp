@@ -11,7 +11,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.dmio.org.tut.R;
-import com.dmio.org.tut.utils.AppUtils;
+import com.dmio.org.tut.core.log.Logger;
+import com.dmio.org.tut.core.utils.AppUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,8 +35,6 @@ public class MoxieActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_moxie);
         ButterKnife.bind(this);
-
-        Log.e(getLocalClassName(), AppUtils.getPackageInfo(getBaseContext()).packageName);
         initView();
     }
 
@@ -47,7 +46,7 @@ public class MoxieActivity extends AppCompatActivity implements View.OnClickList
                 if (resultCode == RESULT_OK && data != null) {
                     Bundle b = data.getExtras();              //data为B中回传的Intent
                     String json = b.getString("result");    //result即为回传的值(JSON格式)
-                    Log.e("MoxieActivity", "result=" + json);
+                    Logger.d("result=" + json);
                     tvResult.setText(json);
 
                     Result result = Result.getValue(json);

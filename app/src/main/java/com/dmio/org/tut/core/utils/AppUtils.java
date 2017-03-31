@@ -1,4 +1,4 @@
-package com.dmio.org.tut.utils;
+package com.dmio.org.tut.core.utils;
 
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -13,8 +13,13 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageItemInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
+import android.os.Environment;
+import android.support.v4.os.EnvironmentCompat;
 import android.text.TextUtils;
 
+import com.dmio.org.tut.application.ExApplication;
+
+import java.io.File;
 import java.util.List;
 
 /**
@@ -129,13 +134,13 @@ public class AppUtils {
     /**
      * 获取应用包信息
      *
-     * @param context
      * @return
      */
-    public static final PackageInfo getPackageInfo(Context context) {
+    public static final PackageInfo getPackageInfo() {
         PackageInfo packageInfo = null;
 
         try {
+            Context context = ExApplication.getInstance().getBaseContext();
             PackageManager packageManager = context.getPackageManager();
             packageInfo = packageManager.getPackageInfo(context.getPackageName(), 0);
         } catch (Exception e) {
@@ -148,17 +153,41 @@ public class AppUtils {
     /**
      * 获取应用名
      *
-     * @param contex
-     * @return
+     * @return 应用名
      */
-    public static final String getAppName(Context contex) {
+    public static final String getAppName() {
         String appName = null;
-        PackageInfo packageInfo = getPackageInfo(contex);
+        PackageInfo packageInfo = getPackageInfo();
         if (packageInfo != null) {
             int labelRes = packageInfo.applicationInfo.labelRes;
-            appName = contex.getResources().getString(labelRes);
+            Context context = ExApplication.getInstance().getBaseContext();
+            appName = context.getResources().getString(labelRes);
         }
         return appName;
+    }
+
+    /**
+     * 获取应用包名<br/>
+     *
+     * @return 应用包名
+     */
+    public static final String getPackageName() {
+        PackageInfo packageInfo = getPackageInfo();
+        if (packageInfo != null) {
+            return packageInfo.packageName;
+        }
+        return "";
+    }
+
+    /**
+     * 检测内存卡是否挂载<br/>
+     *
+     * @return 挂载true，未挂载false
+     */
+    public static final boolean isStorageMounted() {
+        File storageDirectory = Environment.getExternalStorageDirectory();
+        String storageState = EnvironmentCompat.getStorageState(storageDirectory);
+        return Environment.MEDIA_MOUNTED.equals(storageState);
     }
 
 

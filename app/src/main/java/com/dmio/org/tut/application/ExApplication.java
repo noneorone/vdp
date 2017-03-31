@@ -3,6 +3,8 @@ package com.dmio.org.tut.application;
 import android.app.Application;
 
 import com.antfortune.freeline.FreelineCore;
+import com.dmio.org.tut.core.ExceptionHandler;
+import com.dmio.org.tut.core.log.LoggerRecorder;
 import com.facebook.stetho.InspectorModulesProvider;
 import com.facebook.stetho.Stetho;
 import com.uphyca.stetho_realm.RealmInspectorModulesProvider;
@@ -34,6 +36,9 @@ public class ExApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
+        // init logger recorder
+        LoggerRecorder.getInstance().init();
+
         // Freeline
         FreelineCore.init(this);
 
@@ -47,5 +52,9 @@ public class ExApplication extends Application {
                         .enableWebKitInspector(RealmInspectorModulesProvider.builder(this).build())
                         .build()
         );
+
+        // set default uncaught exception handler for gloabal error that can be stored in log files.
+        Thread.setDefaultUncaughtExceptionHandler(new ExceptionHandler());
     }
+
 }
