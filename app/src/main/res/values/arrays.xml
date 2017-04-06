@@ -55,19 +55,4 @@
         <item>Boar</item>
     </string-array>
 
-
-    <string-array name="Entrance">
-        <item>com.dmio.org.tut.activity.demo.view.paint.PaintActivity</item>
-        <item>com.dmio.org.tut.activity.demo.widget.wheelpicker.WheelPickerActivity</item>
-        <item>com.dmio.org.tut.activity.demo.widget.sweetalert.SweetAlertActivity</item>
-        <item>com.dmio.org.tut.activity.demo.widget.qrcode.DecoderActivity</item>
-        <item>com.dmio.org.tut.activity.demo.widget.marqueeview.MarqueeViewActivity</item>
-        <item>com.dmio.org.tut.activity.demo.view.image.WaveViewActivity</item>
-        <item>com.dmio.org.tut.activity.demo.security.ca.SecurityCAActivity</item>
-        <item>com.dmio.org.tut.activity.guide.GuideMainActivity</item>
-        <item>com.dmio.org.tut.activity.demo.widget.swipecard.SwipeCardActivity</item>
-        <item>com.dmio.org.tut.activity.demo.widget.blurry.BlurryActivity</item>
-        <item>com.dmio.org.tut.activity.demo.moxie.MoxieActivity</item>
-    </string-array>
-
 </resources>

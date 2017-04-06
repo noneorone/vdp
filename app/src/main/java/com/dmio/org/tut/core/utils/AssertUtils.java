@@ -1,6 +1,5 @@
 package com.dmio.org.tut.core.utils;
 
-import android.content.Context;
 import android.content.res.AssetManager;
 
 import com.dmio.org.tut.application.ExApplication;
@@ -18,14 +17,20 @@ import java.io.InputStreamReader;
  */
 public class AssertUtils {
 
-    public static final String getLoginInfo() {
+    /**
+     * 获取json文件中的数据
+     *
+     * @param jsonFileName json文件名称
+     * @return
+     */
+    public static final String getJsonData(String jsonFileName) {
         InputStream is = null;
         BufferedReader br = null;
         InputStreamReader isr = null;
         StringBuilder content = new StringBuilder();
         try {
             AssetManager assets = ExApplication.getInstance().getAssets();
-            is = assets.open("login.json");
+            is = assets.open(jsonFileName);
             isr = new InputStreamReader(is);
             br = new BufferedReader(isr);
             String line = null;

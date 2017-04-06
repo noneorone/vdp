@@ -8,22 +8,22 @@ package com.dmio.org.tut.data.model;
 
 public class Warrior {
 
-    private String description;
-    private String portraitUrl;
+    private String desc;
+    private String imgUrl;
 
-    public String getDescription() {
-        return description;
+    public String getDesc() {
+        return desc;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
-    public String getPortraitUrl() {
-        return portraitUrl;
+    public String getImgUrl() {
+        return imgUrl;
     }
 
-    public void setPortraitUrl(String portraitUrl) {
-        this.portraitUrl = portraitUrl;
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 }

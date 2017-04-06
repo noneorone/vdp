@@ -30,7 +30,7 @@ public class LoginModelImpl implements LoginModel {
         boolean usernameError = true;
         boolean passwordError = true;
 
-        String jsonContent = AssertUtils.getLoginInfo();
+        String jsonContent = AssertUtils.getJsonData("login.json");
         Gson gson = new Gson();
         Type type = new TypeToken<List<LoginInfo>>() {
         }.getType();

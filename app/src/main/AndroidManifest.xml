@@ -38,6 +38,7 @@
         <activity android:name=".activity.guide.GuideMainActivity" />
         <activity android:name=".activity.demo.widget.swipecard.SwipeCardActivity" />
         <activity android:name=".activity.demo.widget.blurry.BlurryActivity" />
+        <activity android:name=".activity.list.ListRecyclerActivity" />
         <activity android:name=".activity.demo.moxie.MoxieActivity" />
         <activity android:name=".activity.MainActivity" />
         <activity android:name=".activity.demo.moxie.WebViewActivity" />
@@ -47,7 +48,6 @@
             android:name="twcal"
             android:value="E60BD8CEB3E4F587" />
 
-        <activity android:name=".activity.list.ListRefreshRecyclerViewActivity"></activity>
     </application>
 
 </manifest>
