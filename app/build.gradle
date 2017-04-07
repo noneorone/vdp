@@ -81,7 +81,7 @@ dependencies {
 
     compile files('libs/ikey_sdk.jar')
 
-    compile(name: 'moxie-client-1.2.6', ext: 'aar')
+    compile(name: 'moxie-client-1.2.7', ext: 'aar')
 
     compile 'com.android.support:appcompat-v7:24.2.0'
     compile 'com.jakewharton:butterknife:8.4.0'

@@ -11,6 +11,10 @@ import com.moxie.client.model.MxParam;
  */
 public enum Function {
     /**
+     * 资产信息-网银
+     */
+    ONLINE_BANK(MxParam.PARAM_FUNCTION_ONLINEBANK),
+    /**
      * 资产信息-邮箱账单
      */
     EMAIL(MxParam.PARAM_FUNCTION_EMAIL),
@@ -19,11 +23,29 @@ public enum Function {
      */
     INSURANCE(MxParam.PARAM_FUNCTION_INSURANCE),
     /**
-     * 资产信息-网银
+     * 资产信息-公积金
      */
-    ONLINE_BANK(MxParam.PARAM_FUNCTION_ONLINEBANK),
+    FUND(MxParam.PARAM_FUNCTION_FUND),
 
 
+    /**
+     * 消费信息-支付宝
+     */
+    ALIPAY(MxParam.PARAM_FUNCTION_ALIPAY),
+    /**
+     * 消费信息-京东
+     */
+    JINGDONG(MxParam.PARAM_FUNCTION_JINGDONG),
+    /**
+     * 消费信息-淘宝
+     */
+    TAOBAO(MxParam.PARAM_FUNCTION_TAOBAO),
+
+
+    /**
+     * 社交信息验证-运营商
+     */
+    CARRIER(MxParam.PARAM_FUNCTION_CARRIER),
     /**
      * 社交信息验证-QQ
      */
@@ -33,43 +55,19 @@ public enum Function {
      */
     MAIMAI(MxParam.PARAM_FUNCTION_MAIMAI),
     /**
-     * 社交信息验证-运营商
-     */
-    CARRIER(MxParam.PARAM_FUNCTION_CARRIER),
-    /**
      * 社交信息验证-领英
      */
     LINKEDIN(MxParam.PARAM_FUNCTION_LINKEDIN),
 
 
     /**
-     * 消费信息-支付宝
-     */
-    ALIPAY(MxParam.PARAM_FUNCTION_ALIPAY),
-    /**
-     * 消费信息-淘宝
-     */
-    TAOBAO(MxParam.PARAM_FUNCTION_TAOBAO),
-    /**
-     * 消费信息-京东
-     */
-    JINGDONG(MxParam.PARAM_FUNCTION_JINGDONG),
-
-
-    /**
-     * 身份信息-学信网
+     * 身份信息验证-学信网
      */
     CHSI(MxParam.PARAM_FUNCTION_CHSI),
-
-
     /**
-     * 个人征信-个人所得税
+     * 身份信息验证-社保
      */
-    TAX(MxParam.PARAM_FUNCTION_TAX),
-    /**
-     * 个人征信-征信报告
-     */
-    ZHENGXIN(MxParam.PARAM_FUNCTION_ZHENGXIN),
+    SECURITY(MxParam.PARAM_FUNCTION_SECURITY),
 
 
     /**
@@ -79,7 +77,18 @@ public enum Function {
     /**
      * 法院查询-法院执行人
      */
-    ZHIXINGCOURT(MxParam.PARAM_FUNCTION_ZHIXINGCOURT);
+    ZHIXINGCOURT(MxParam.PARAM_FUNCTION_ZHIXINGCOURT),
+
+
+    /**
+     * 个人征信-征信报告
+     */
+    ZHENGXIN(MxParam.PARAM_FUNCTION_ZHENGXIN),
+    /**
+     * 个人征信-个人所得税
+     */
+    TAX(MxParam.PARAM_FUNCTION_TAX);
+
 
     private String value;
 

@@ -5,14 +5,12 @@ import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.dmio.org.tut.R;
 import com.dmio.org.tut.core.log.Logger;
-import com.dmio.org.tut.core.utils.AppUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,6 +24,34 @@ public class MoxieActivity extends AppCompatActivity implements View.OnClickList
 
     @BindView(R.id.btn_func_id_verify)
     Button btnFuncIdVerify;
+
+
+    @BindView(R.id.btn_func_renhangzhengxin)
+    Button btnFuncRenhangzhengxin;
+
+    @BindView(R.id.btn_func_shebao)
+    Button btnFuncShebao;
+
+    @BindView(R.id.btn_func_gongjijin)
+    Button btnFuncGongjijin;
+
+    @BindView(R.id.btn_func_geshui)
+    Button btnFuncGeshui;
+
+    @BindView(R.id.btn_func_yunyingshang)
+    Button btnFuncYunyingshang;
+
+    @BindView(R.id.btn_func_xuexinwang)
+    Button btnFuncXuexinwang;
+
+    @BindView(R.id.btn_func_taobao)
+    Button btnFuncTaobao;
+
+    @BindView(R.id.btn_func_jingdong)
+    Button btnFuncJingdong;
+
+    @BindView(R.id.btn_func_xinyongka)
+    Button btnFuncXinyongka;
 
     @BindView(R.id.tv_result)
     TextView tvResult;
@@ -71,9 +97,20 @@ public class MoxieActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
+
     private void initView() {
         btnFuncEmail.setOnClickListener(this);
         btnFuncIdVerify.setOnClickListener(this);
+
+        btnFuncRenhangzhengxin.setOnClickListener(this);
+        btnFuncShebao.setOnClickListener(this);
+        btnFuncGongjijin.setOnClickListener(this);
+        btnFuncGeshui.setOnClickListener(this);
+        btnFuncYunyingshang.setOnClickListener(this);
+        btnFuncXuexinwang.setOnClickListener(this);
+        btnFuncTaobao.setOnClickListener(this);
+        btnFuncJingdong.setOnClickListener(this);
+        btnFuncXinyongka.setOnClickListener(this);
     }
 
 
@@ -85,6 +122,34 @@ public class MoxieActivity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.btn_func_id_verify:
                 MoxieHelper.identityVerification(MoxieActivity.this, IDVerify.ID_CARD);
+                break;
+
+            case R.id.btn_func_renhangzhengxin:
+                MoxieHelper.normalIdentify(MoxieActivity.this, Function.ZHENGXIN, REQ_CODE_INDENTIFY);
+                break;
+            case R.id.btn_func_shebao:
+                MoxieHelper.normalIdentify(MoxieActivity.this, Function.SECURITY, REQ_CODE_INDENTIFY);
+                break;
+            case R.id.btn_func_gongjijin:
+                MoxieHelper.normalIdentify(MoxieActivity.this, Function.FUND, REQ_CODE_INDENTIFY);
+                break;
+            case R.id.btn_func_geshui:
+                MoxieHelper.normalIdentify(MoxieActivity.this, Function.TAX, REQ_CODE_INDENTIFY);
+                break;
+            case R.id.btn_func_yunyingshang:
+                MoxieHelper.normalIdentify(MoxieActivity.this, Function.CARRIER, REQ_CODE_INDENTIFY);
+                break;
+            case R.id.btn_func_xuexinwang:
+                MoxieHelper.normalIdentify(MoxieActivity.this, Function.CHSI, REQ_CODE_INDENTIFY);
+                break;
+            case R.id.btn_func_taobao:
+                MoxieHelper.normalIdentify(MoxieActivity.this, Function.TAOBAO, REQ_CODE_INDENTIFY);
+                break;
+            case R.id.btn_func_jingdong:
+                MoxieHelper.normalIdentify(MoxieActivity.this, Function.JINGDONG, REQ_CODE_INDENTIFY);
+                break;
+            case R.id.btn_func_xinyongka:
+                MoxieHelper.normalIdentify(MoxieActivity.this, Function.ONLINE_BANK, REQ_CODE_INDENTIFY);
                 break;
         }
     }
