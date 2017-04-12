@@ -3,6 +3,7 @@ package com.dmio.org.tut.activity.demo.moxie;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import com.dmio.org.tut.R;
 import com.dmio.org.tut.core.log.Logger;
+import com.dmio.org.tut.widget.flowlayout.FlowLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,39 +21,42 @@ public class MoxieActivity extends AppCompatActivity implements View.OnClickList
 
     private static final int REQ_CODE_INDENTIFY = 0x1001;
 
+    @BindView(R.id.fl_func)
+    FlowLayout flFunc;
+
     @BindView(R.id.btn_func_email)
-    Button btnFuncEmail;
+    TextView btnFuncEmail;
 
     @BindView(R.id.btn_func_id_verify)
-    Button btnFuncIdVerify;
+    TextView btnFuncIdVerify;
 
 
     @BindView(R.id.btn_func_renhangzhengxin)
-    Button btnFuncRenhangzhengxin;
+    TextView btnFuncRenhangzhengxin;
 
     @BindView(R.id.btn_func_shebao)
-    Button btnFuncShebao;
+    TextView btnFuncShebao;
 
     @BindView(R.id.btn_func_gongjijin)
-    Button btnFuncGongjijin;
+    TextView btnFuncGongjijin;
 
     @BindView(R.id.btn_func_geshui)
-    Button btnFuncGeshui;
+    TextView btnFuncGeshui;
 
     @BindView(R.id.btn_func_yunyingshang)
-    Button btnFuncYunyingshang;
+    TextView btnFuncYunyingshang;
 
     @BindView(R.id.btn_func_xuexinwang)
-    Button btnFuncXuexinwang;
+    TextView btnFuncXuexinwang;
 
     @BindView(R.id.btn_func_taobao)
-    Button btnFuncTaobao;
+    TextView btnFuncTaobao;
 
     @BindView(R.id.btn_func_jingdong)
-    Button btnFuncJingdong;
+    TextView btnFuncJingdong;
 
     @BindView(R.id.btn_func_xinyongka)
-    Button btnFuncXinyongka;
+    TextView btnFuncXinyongka;
 
     @BindView(R.id.tv_result)
     TextView tvResult;
@@ -152,6 +157,21 @@ public class MoxieActivity extends AppCompatActivity implements View.OnClickList
                 MoxieHelper.normalIdentify(MoxieActivity.this, Function.ONLINE_BANK, REQ_CODE_INDENTIFY);
                 break;
         }
+
+        // 改变当前选中项样式
+        int count = flFunc.getChildCount();
+        for (int index = 0; index < count; index++) {
+            View view = flFunc.getChildAt(index);
+            if (view instanceof TextView) {
+                TextView tv = (TextView) view;
+                if (view.getId() == v.getId()) {
+                    tv.setTextColor(ContextCompat.getColor(this, R.color.c1));
+                } else {
+                    tv.setTextColor(ContextCompat.getColor(this, R.color.c8));
+                }
+            }
+        }
+
     }
 
 }

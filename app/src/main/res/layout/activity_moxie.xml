@@ -8,166 +8,155 @@
     tools:context="com.dmio.org.tut.activity.demo.moxie.MoxieActivity">
 
 
-    <Button
-        android:id="@+id/btn_func_renhangzhengxin"
-        android:layout_width="wrap_content"
+    <com.dmio.org.tut.widget.flowlayout.FlowLayout
+        android:id="@+id/fl_func"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="24dp"
-        android:background="@color/gray_btn_bg_color"
-        android:text="CREDIT_REPORT"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_func_email" />
-
-    <Button
-        android:id="@+id/btn_func_shebao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="13dp"
-        android:background="@color/gray_btn_bg_color"
-        android:text="SOCIAL_SECURITY"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_func_geshui" />
-
-    <Button
-        android:id="@+id/btn_func_gongjijin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="96dp"
-        android:background="@color/gray_btn_bg_color"
-        android:text="PROVIDENT_FUNDS"
-        app:layout_constraintHorizontal_bias="0.783"
-        app:layout_constraintLeft_toRightOf="@+id/btn_func_geshui"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_func_id_verify" />
-
-    <Button
-        android:id="@+id/btn_func_geshui"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="24dp"
-        android:background="@color/gray_btn_bg_color"
-        android:text="PERSONAL_INCOME_TAX"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_func_renhangzhengxin" />
-
-    <Button
-        android:id="@+id/btn_func_yunyingshang"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/gray_btn_bg_color"
-        android:text="ISP"
-        app:layout_constraintHorizontal_bias="0.933"
-        app:layout_constraintLeft_toRightOf="@+id/btn_func_shebao"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_func_gongjijin" />
-
-    <Button
-        android:id="@+id/btn_func_xuexinwang"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="154dp"
-        android:background="@color/gray_btn_bg_color"
-        android:text="CHSI"
-        app:layout_constraintHorizontal_bias="0.031"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_func_gongjijin" />
-
-    <Button
-        android:id="@+id/btn_func_taobao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:background="@color/gray_btn_bg_color"
-        android:text="TAOBAO"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.031"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_func_shebao"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/btn_func_jingdong"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="32dp"
-        android:background="@color/gray_btn_bg_color"
-        android:text="JINGDONG"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/btn_func_taobao" />
+        <TextView
+            android:id="@+id/btn_func_renhangzhengxin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/c5"
+            android:padding="10dp"
+            android:text="CREDIT_REPORT"
+            android:textColor="@color/c8"
+            android:textSize="@dimen/ts6" />
 
-    <Button
-        android:id="@+id/btn_func_xinyongka"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="17dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="19dp"
-        android:background="@color/gray_btn_bg_color"
-        android:text="ONLINE_BANK"
-        app:layout_constraintHorizontal_bias="0.578"
-        app:layout_constraintLeft_toRightOf="@+id/btn_func_jingdong"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_func_yunyingshang"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintVertical_bias="0.0" />
+        <TextView
+            android:id="@+id/btn_func_shebao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="@color/c5"
+            android:padding="10dp"
+            android:text="SOCIAL_SECURITY"
+            android:textColor="@color/c8"
+            android:textSize="@dimen/ts6" />
 
-    <Button
-        android:id="@+id/btn_func_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="183dp"
-        android:background="@color/gray_btn_bg_color"
-        android:text="EMAIL"
-        app:layout_constraintHorizontal_bias="0.031"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/btn_func_gongjijin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@color/c5"
+            android:padding="10dp"
+            android:text="PROVIDENT_FUNDS"
+            android:textColor="@color/c8"
+            android:textSize="@dimen/ts6" />
 
-    <Button
-        android:id="@+id/btn_func_id_verify"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="183dp"
-        android:background="@color/gray_btn_bg_color"
-        android:text="ID_VERIFY"
-        app:layout_constraintHorizontal_bias="0.968"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/btn_func_geshui"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/c5"
+            android:padding="10dp"
+            android:text="PERSONAL_INCOME_TAX"
+            android:textColor="@color/c8"
+            android:textSize="@dimen/ts6" />
+
+        <TextView
+            android:id="@+id/btn_func_yunyingshang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/c5"
+            android:padding="10dp"
+            android:text="ISP"
+            android:textColor="@color/c8"
+            android:textSize="@dimen/ts6" />
+
+        <TextView
+            android:id="@+id/btn_func_xuexinwang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@color/c5"
+            android:padding="10dp"
+            android:text="CHSI"
+            android:textColor="@color/c8"
+            android:textSize="@dimen/ts6" />
+
+        <TextView
+            android:id="@+id/btn_func_taobao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/c5"
+            android:padding="10dp"
+            android:text="TAOBAO"
+            android:textColor="@color/c8"
+            android:textSize="@dimen/ts6" />
+
+        <TextView
+            android:id="@+id/btn_func_jingdong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/c5"
+            android:padding="10dp"
+            android:text="JINGDONG"
+            android:textColor="@color/c8"
+            android:textSize="@dimen/ts6" />
+
+        <TextView
+            android:id="@+id/btn_func_xinyongka"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/c5"
+            android:padding="10dp"
+            android:text="ONLINE_BANK"
+            android:textColor="@color/c8"
+            android:textSize="@dimen/ts6" />
+
+        <TextView
+            android:id="@+id/btn_func_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@color/c5"
+            android:padding="10dp"
+            android:text="EMAIL"
+            android:textColor="@color/c8"
+            android:textSize="@dimen/ts6" />
+
+        <TextView
+            android:id="@+id/btn_func_id_verify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/c5"
+            android:padding="10dp"
+            android:text="ID_VERIFY"
+            android:textColor="@color/c8"
+            android:textSize="@dimen/ts6" />
+
+    </com.dmio.org.tut.widget.flowlayout.FlowLayout>
 
     <TextView
         android:id="@+id/tv_result"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:padding="10dp"
         android:textColor="@color/c1"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
+        app:layout_constraintTop_toBottomOf="@+id/fl_func" />
 </android.support.constraint.ConstraintLayout>
