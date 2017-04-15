@@ -39,7 +39,7 @@
     <string name="date_time_span_days">%1$s天以前</string>
 
     <!-- list load -->
-    <string name="list_load_more_tip">加载中&#8230;</string>
+    <string name="list_load_more_tip">loading more &#8230;</string>
 
     <!-- login -->
     <string name="title_login">Login</string>

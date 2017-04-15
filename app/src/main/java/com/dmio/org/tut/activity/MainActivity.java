@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -42,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
     private final int REQ_CODE_PERM_WES = 0x001;
 
     private ComponentAdapter mComponentAdapter;
+
+    @BindView(R.id.toolbar)
+    Toolbar mToolBar;
 
     @BindView(R.id.lv_list)
     ListView mLvList;
@@ -81,6 +85,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
+        setSupportActionBar(mToolBar);
+        mToolBar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
         mComponentAdapter = new ComponentAdapter();
         mLvList.setAdapter(mComponentAdapter);
     }

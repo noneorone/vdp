@@ -40,7 +40,7 @@ public class ListRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == TYPE_ITEM) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_refresh_recycler_view_item, parent, false);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_recycler_view_item, parent, false);
             return new ItemViewHolder(view);
         } else if (viewType == TYPE_FOOTER) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_list_recycler_view_footer, parent, false);

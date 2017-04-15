@@ -3,10 +3,13 @@ package com.dmio.org.tut.activity.list;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.dmio.org.tut.R;
@@ -28,6 +31,8 @@ import java.util.List;
  * 邮箱：wangmeng@pycredit.cn
  */
 public class ListRecyclerActivity extends AppCompatActivity implements Task.CallBack<List<Warrior>> {
+
+    private Toolbar mToolBar;
 
     private RecyclerView mRvList;
     private SwipeRefreshLayout cmpRefresh;
@@ -55,6 +60,15 @@ public class ListRecyclerActivity extends AppCompatActivity implements Task.Call
     }
 
     private void initView() {
+        mToolBar = ViewUtils.get(this, R.id.toolbar);
+        mToolBar.setTitle("RecyclerView Refresh List");
+        mToolBar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
         data = new ArrayList<>();
         mAdapter = new ListRecyclerAdapter(this, data);
         mRvList = ViewUtils.get(this, R.id.rv_list);
