@@ -29,6 +29,7 @@
         android:layout_marginRight="5dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
+        android:background="?attr/selectableItemBackground"
         android:ellipsize="end"
         android:maxLines="10"
         android:textColor="@color/c4"

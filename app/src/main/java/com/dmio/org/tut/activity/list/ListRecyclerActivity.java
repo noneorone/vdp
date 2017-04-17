@@ -3,9 +3,7 @@ package com.dmio.org.tut.activity.list;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -34,7 +32,7 @@ public class ListRecyclerActivity extends AppCompatActivity implements Task.Call
 
     private Toolbar mToolBar;
 
-    private RecyclerView mRvList;
+    private RecyclerView mRecyclerView;
     private SwipeRefreshLayout cmpRefresh;
 
     private List<Warrior> data;
@@ -71,14 +69,14 @@ public class ListRecyclerActivity extends AppCompatActivity implements Task.Call
 
         data = new ArrayList<>();
         mAdapter = new ListRecyclerAdapter(this, data);
-        mRvList = ViewUtils.get(this, R.id.rv_list);
-        mRvList.setHasFixedSize(true);
-        mRvList.setLayoutManager(new LinearLayoutManager(this));
-        mRvList.addItemDecoration(new VerticalLineDecorator(2));
-        mRvList.setAdapter(mAdapter);
+        mRecyclerView = ViewUtils.get(this, R.id.rv_list);
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.addItemDecoration(new VerticalLineDecorator(2));
+        mRecyclerView.setAdapter(mAdapter);
         final LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        mRvList.setLayoutManager(layoutManager);
-        mRvList.addOnScrollListener(new RecyclerView.OnScrollListener() {
+        mRecyclerView.setLayoutManager(layoutManager);
+        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
