@@ -1,6 +1,7 @@
 package com.dmio.org.tut.activity.list;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,13 +29,16 @@ public class ListRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     private static final int TYPE_ITEM = 0;
     private static final int TYPE_FOOTER = 1;
 
+    private final Typeface tf;
+
     public void setData(List<Warrior> data) {
         this.data = data;
     }
 
     public ListRecyclerAdapter(Context context, List<Warrior> data) {
-        this.context = context;
         this.data = data;
+        this.context = context;
+        this.tf = Typeface.createFromAsset(context.getAssets(), "font/DancingScript-Regular.otf");
     }
 
     @Override
@@ -85,6 +89,7 @@ public class ListRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         public ItemViewHolder(View view) {
             super(view);
             tvDesc = (TextView) view.findViewById(R.id.tv_desc);
+            tvDesc.setTypeface(tf);
             ivPortrait = (ImageView) view.findViewById(R.id.iv_portrait);
         }
 
