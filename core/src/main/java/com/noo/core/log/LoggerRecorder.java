@@ -1,22 +1,24 @@
-package com.dmio.org.tut.core.log;
+package com.noo.core.log;
 
+import android.content.Context;
 import android.os.Environment;
 
-import com.dmio.org.tut.core.utils.AppUtils;
-import com.dmio.org.tut.core.utils.DateUtils;
-import com.dmio.org.tut.core.utils.IOUtils;
+import com.noo.core.utils.AppUtils;
+import com.noo.core.utils.DateUtils;
+import com.noo.core.utils.IOUtils;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * 功能说明：日志记录器<br/>
- * 作者：wangmeng on 2017/3/30 14:39<br/>
- * 邮箱：noneorone@yeah.net
+ * 日志记录器<br/>
+ *
+ * @author Mars.Wong(noneorone@yeah.net) at 2017/3/30 14:39<br/>
+ * @since 1.0
  */
-
 public class LoggerRecorder {
 
     /**
@@ -29,43 +31,41 @@ public class LoggerRecorder {
      */
     private static final long MAX_LENGTH_SINGLE_FILE = 5 * 1024 * 1024;
 
-    /**
-     * 日志文件根目录路径
-     */
-    private static final String LOG_FILE_ROOT_DIR_PATH = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + AppUtils.getAppName() + "/log";
+    private static ExecutorService executor;
 
-    private ExecutorService executor;
-    private static LoggerRecorder instance;
+    private static String logPath;
+    private static SimpleDateFormat dateFormat;
 
     private LoggerRecorder() {
-        executor = Executors.newFixedThreadPool(5);
-    }
-
-    public static final LoggerRecorder getInstance() {
-        if (instance == null) {
-            synchronized (LoggerRecorder.class) {
-                if (instance == null) {
-                    instance = new LoggerRecorder();
-                }
-            }
-        }
-        return instance;
     }
 
     /**
      * 初始化
      */
-    public void init() {
+    public static void init(Context context) {
+        executor = Executors.newFixedThreadPool(5);
+        dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        logPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + AppUtils.getAppName(context) + "/log";
+
         mkLogRootDir();
         startCheckCrudLogFiles();
     }
 
     /**
+     * 清除资源
+     */
+    public static void releaseResource() {
+        if (executor != null && !executor.isShutdown() && !executor.isTerminated()) {
+            executor.shutdown();
+        }
+    }
+
+    /**
      * 创建日志根目录
      */
-    private boolean mkLogRootDir() {
+    private static boolean mkLogRootDir() {
         if (AppUtils.isStorageMounted()) {
-            File file = new File(LOG_FILE_ROOT_DIR_PATH);
+            File file = new File(logPath);
             File parentFile = file.getParentFile();
             if (!parentFile.exists()) {
                 parentFile.mkdirs();
@@ -81,7 +81,7 @@ public class LoggerRecorder {
     /**
      * 开始检查脏日志以便腾出空间
      */
-    private void startCheckCrudLogFiles() {
+    private static void startCheckCrudLogFiles() {
         executor.submit(new Runnable() {
             @Override
             public void run() {
@@ -93,8 +93,8 @@ public class LoggerRecorder {
     /**
      * 删除日志文件
      */
-    private void removeLogFiles() {
-        File rootDir = new File(LOG_FILE_ROOT_DIR_PATH);
+    private static void removeLogFiles() {
+        File rootDir = new File(logPath);
         if (rootDir.exists()) {
             File[] dirs = rootDir.listFiles();
             if (dirs != null) {
@@ -121,7 +121,7 @@ public class LoggerRecorder {
      * @param type    类型串
      * @param content 内容
      */
-    public void asynWriteToFile(final String type, final String content) {
+    public static void asynWriteToFile(final String type, final String content) {
         executor.submit(new Callable<Boolean>() {
             @Override
             public Boolean call() {
@@ -136,9 +136,9 @@ public class LoggerRecorder {
      * @param type    类型串
      * @param content 内容
      */
-    public boolean writeToFile(String type, String content) {
+    public static boolean writeToFile(String type, String content) {
         try {
-            File dir = new File(LOG_FILE_ROOT_DIR_PATH, type);
+            File dir = new File(logPath, type);
             if (!dir.getParentFile().exists()) {
                 mkLogRootDir();
             }
@@ -146,7 +146,7 @@ public class LoggerRecorder {
                 dir.mkdirs();
             }
             if (dir.exists()) {
-                String name = DateUtils.getDateNowEN();
+                String name = dateFormat.format(System.currentTimeMillis());
                 File file = new File(dir, name + ".log");
                 synchronized (file) {
                     if (!file.exists()) {

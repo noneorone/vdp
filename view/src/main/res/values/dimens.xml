@@ -1,0 +1,6 @@
+<resources>
+
+    <item name="animDuration" type="integer">@android:integer/config_mediumAnimTime</item>
+    <integer name="animation_default_duration">@integer/animDuration</integer>
+
+</resources>

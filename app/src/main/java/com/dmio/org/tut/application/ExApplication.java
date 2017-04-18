@@ -4,21 +4,18 @@ import android.app.Application;
 
 import com.antfortune.freeline.FreelineCore;
 import com.dmio.org.tut.core.ExceptionHandler;
-import com.dmio.org.tut.core.log.LoggerRecorder;
-import com.facebook.stetho.InspectorModulesProvider;
 import com.facebook.stetho.Stetho;
+import com.noo.core.log.LoggerRecorder;
 import com.uphyca.stetho_realm.RealmInspectorModulesProvider;
 
 import io.realm.Realm;
-import io.realm.RealmConfiguration;
 
 /**
  * Application Extension
  *
- * @author mars.wong noneorone@yeah.net
- * @since 2016/9/14 14:28
+ * @author Mars.Wong(noneorone@yeah.net) at 2016/9/14 14:28<br/>
+ * @since 1.0
  */
-
 public class ExApplication extends Application {
 
     private static ExApplication instance;
@@ -37,7 +34,7 @@ public class ExApplication extends Application {
         super.onCreate();
 
         // init logger recorder
-        LoggerRecorder.getInstance().init();
+        LoggerRecorder.init(this);
 
         // Freeline
         FreelineCore.init(this);
@@ -54,7 +51,12 @@ public class ExApplication extends Application {
         );
 
         // set default uncaught exception handler for gloabal error that can be stored in log files.
-        Thread.setDefaultUncaughtExceptionHandler(new ExceptionHandler());
+        Thread.setDefaultUncaughtExceptionHandler(new ExceptionHandler(this));
     }
 
+    @Override
+    public void onTerminate() {
+        LoggerRecorder.releaseResource();
+        super.onTerminate();
+    }
 }

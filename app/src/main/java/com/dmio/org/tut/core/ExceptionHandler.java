@@ -1,19 +1,25 @@
 package com.dmio.org.tut.core;
 
+import android.content.Context;
 import android.os.Looper;
 import android.os.Process;
 import android.widget.Toast;
 
-import com.dmio.org.tut.application.ExApplication;
-import com.dmio.org.tut.core.log.Logger;
+import com.noo.core.log.Logger;
 
 /**
- * 功能说明：异常处理类<br/>
- * 作者：wangmeng on 2017/3/31 22:14<br/>
- * 邮箱：noneorone@yeah.net
+ * 异常处理类
+ *
+ * @author Mars.Wong(noneorone@yeah.net) at 2017/3/31 22:14<br/>
+ * @since 1.0
  */
-
 public class ExceptionHandler implements Thread.UncaughtExceptionHandler {
+
+    final private Context mContext;
+
+    public ExceptionHandler(Context context) {
+        this.mContext = context;
+    }
 
     @Override
     public void uncaughtException(final Thread t, final Throwable th) {
@@ -25,7 +31,7 @@ public class ExceptionHandler implements Thread.UncaughtExceptionHandler {
             @Override
             public void run() {
                 Looper.prepare();
-                Toast.makeText(ExApplication.getInstance().getBaseContext(), "Exception Occured!!!", Toast.LENGTH_LONG).show();
+                Toast.makeText(mContext, "Exception Occured!!!", Toast.LENGTH_LONG).show();
                 Looper.loop();
             }
         }) {

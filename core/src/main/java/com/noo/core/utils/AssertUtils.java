@@ -1,8 +1,7 @@
-package com.dmio.org.tut.core.utils;
+package com.noo.core.utils;
 
+import android.content.Context;
 import android.content.res.AssetManager;
-
-import com.dmio.org.tut.application.ExApplication;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,25 +11,25 @@ import java.io.InputStreamReader;
 /**
  * Assert Utils
  *
- * @author wangmeng noneorone@yeah.net
- * @since 2017/2/23 20:09
+ * @author Mars.Wong(noneorone@yeah.net) at 2017/2/23 20:09<br/>
+ * @since 1.0
  */
 public class AssertUtils {
 
     /**
      * 获取json文件中的数据
      *
-     * @param jsonFileName json文件名称
+     * @param jsonFilePath json文件在assert目录中的路径
      * @return
      */
-    public static final String getJsonData(String jsonFileName) {
+    public static final String getJsonData(Context context, String jsonFilePath) {
         InputStream is = null;
         BufferedReader br = null;
         InputStreamReader isr = null;
         StringBuilder content = new StringBuilder();
         try {
-            AssetManager assets = ExApplication.getInstance().getAssets();
-            is = assets.open(jsonFileName);
+            AssetManager assets = context.getAssets();
+            is = assets.open(jsonFilePath);
             isr = new InputStreamReader(is);
             br = new BufferedReader(isr);
             String line = null;

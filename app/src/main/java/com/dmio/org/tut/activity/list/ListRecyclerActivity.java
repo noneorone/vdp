@@ -11,13 +11,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.dmio.org.tut.R;
-import com.dmio.org.tut.core.log.Logger;
-import com.dmio.org.tut.core.task.Task;
-import com.dmio.org.tut.core.utils.AssertUtils;
-import com.dmio.org.tut.core.utils.ViewUtils;
 import com.dmio.org.tut.data.model.Warrior;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.noo.core.log.Logger;
+import com.noo.core.task.Task;
+import com.noo.core.utils.AssertUtils;
+import com.noo.view.utils.ViewUtils;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -134,7 +134,7 @@ public class ListRecyclerActivity extends AppCompatActivity implements Task.Call
 
     @Override
     public List<Warrior> inHandle() {
-        String jsonData = AssertUtils.getJsonData("list_recycler.json");
+        String jsonData = AssertUtils.getJsonData(this, "list_recycler.json");
         Gson gson = new Gson();
         Type type = new TypeToken<List<Warrior>>() {
         }.getType();

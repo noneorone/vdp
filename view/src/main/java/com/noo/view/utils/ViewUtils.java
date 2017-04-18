@@ -1,4 +1,4 @@
-package com.dmio.org.tut.core.utils;
+package com.noo.view.utils;
 
 import android.os.Build;
 import android.support.annotation.IdRes;
@@ -7,9 +7,10 @@ import android.util.SparseArray;
 import android.view.View;
 
 /**
- * 功能说明：视图工具类<br/>
- * 作者：wangmeng on 2017/3/29 19:56<br/>
- * 邮箱：noneorone@yeah.net
+ * 视图工具类<br/>
+ *
+ * @author Mars.Wong(noneorone@yeah.net) at 2017/3/29 19:56<br/>
+ * @since 1.0
  */
 public final class ViewUtils {
 

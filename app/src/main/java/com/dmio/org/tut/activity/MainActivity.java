@@ -30,9 +30,9 @@ import com.dmio.org.tut.activity.demo.widget.swipecard.SwipeCardActivity;
 import com.dmio.org.tut.activity.demo.widget.wheelpicker.WheelPickerActivity;
 import com.dmio.org.tut.activity.guide.GuideMainActivity;
 import com.dmio.org.tut.activity.list.ListRecyclerActivity;
-import com.dmio.org.tut.core.log.Logger;
-import com.dmio.org.tut.core.utils.AppUtils;
+import com.noo.core.log.Logger;
 import com.dmio.org.tut.utils.DeviceUtils;
+import com.noo.core.utils.AppUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

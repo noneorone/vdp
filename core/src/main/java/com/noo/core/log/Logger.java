@@ -1,4 +1,4 @@
-package com.dmio.org.tut.core.log;
+package com.noo.core.log;
 
 import android.text.TextUtils;
 import android.util.Log;
@@ -9,11 +9,11 @@ import java.net.UnknownHostException;
 import java.text.SimpleDateFormat;
 
 /**
- * 功能说明：日志处理<br/>
- * 作者：wangmeng on 2017/3/29 21:17<br/>
- * 邮箱：noneorone@yeah.net
+ * 日志处理<br/>
+ *
+ * @author Mars.Wong(noneorone@yeah.net) at 2017/3/29 21:17<br/>
+ * @since 1.0
  */
-
 public class Logger {
 
     /**
@@ -152,9 +152,9 @@ public class Logger {
                     msg
             );
             if (asyn) {
-                LoggerRecorder.getInstance().asynWriteToFile(priority.getFlag(), content);
+                LoggerRecorder.asynWriteToFile(priority.getFlag(), content);
             } else {
-                LoggerRecorder.getInstance().writeToFile(priority.getFlag(), content);
+                LoggerRecorder.writeToFile(priority.getFlag(), content);
             }
         }
     }

@@ -1,6 +1,6 @@
-package com.dmio.org.tut.core.task;
+package com.noo.core.task;
 
-import com.dmio.org.tut.core.log.Logger;
+import com.noo.core.log.Logger;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
@@ -8,12 +8,13 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
-/**
- * 功能说明：基础任务处理<br/>
- * 作者：wangmeng on 2017/3/29 21:15<br/>
- * 邮箱：noneorone@yeah.net
- */
 
+/**
+ * 基础任务处理<br/>
+ *
+ * @author Mars.Wong(noneorone@yeah.net) at 2017/3/29 21:15<br/>
+ * @since 1.0
+ */
 public class Task {
 
     public interface CallBack<T> {

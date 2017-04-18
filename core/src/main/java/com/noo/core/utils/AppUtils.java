@@ -1,4 +1,4 @@
-package com.dmio.org.tut.core.utils;
+package com.noo.core.utils;
 
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -17,13 +17,14 @@ import android.os.Environment;
 import android.support.v4.os.EnvironmentCompat;
 import android.text.TextUtils;
 
-import com.dmio.org.tut.application.ExApplication;
-
 import java.io.File;
 import java.util.List;
 
 /**
  * Application Utils
+ *
+ * @author Mars.Wong(noneorone@yeah.net) at 2017/2/21 11:09<br/>
+ * @since 1.0
  */
 public class AppUtils {
 
@@ -136,11 +137,10 @@ public class AppUtils {
      *
      * @return
      */
-    public static final PackageInfo getPackageInfo() {
+    public static final PackageInfo getPackageInfo(Context context) {
         PackageInfo packageInfo = null;
 
         try {
-            Context context = ExApplication.getInstance().getBaseContext();
             PackageManager packageManager = context.getPackageManager();
             packageInfo = packageManager.getPackageInfo(context.getPackageName(), 0);
         } catch (Exception e) {
@@ -155,12 +155,11 @@ public class AppUtils {
      *
      * @return 应用名
      */
-    public static final String getAppName() {
+    public static final String getAppName(Context context) {
         String appName = null;
-        PackageInfo packageInfo = getPackageInfo();
+        PackageInfo packageInfo = getPackageInfo(context);
         if (packageInfo != null) {
             int labelRes = packageInfo.applicationInfo.labelRes;
-            Context context = ExApplication.getInstance().getBaseContext();
             appName = context.getResources().getString(labelRes);
         }
         return appName;
@@ -171,8 +170,8 @@ public class AppUtils {
      *
      * @return 应用包名
      */
-    public static final String getPackageName() {
-        PackageInfo packageInfo = getPackageInfo();
+    public static final String getPackageName(Context context) {
+        PackageInfo packageInfo = getPackageInfo(context);
         if (packageInfo != null) {
             return packageInfo.packageName;
         }

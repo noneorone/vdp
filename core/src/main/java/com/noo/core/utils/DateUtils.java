@@ -1,10 +1,6 @@
-package com.dmio.org.tut.core.utils;
+package com.noo.core.utils;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
-
-import com.dmio.org.tut.R;
-import com.dmio.org.tut.application.ExApplication;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -14,52 +10,54 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 /**
- * 日期处理
+ * 日期处理<br/>
  *
- * @author Mars.Wong
- * @date 2013-9-7 下午1:12:37
- * @copyright QH Technology Co.,LTD.
+ * @author Mars.Wong(noneorone@yeah.net) at 2013-9-7 13:12:37<br/>
+ * @since 1.0
  */
 @SuppressLint("SimpleDateFormat")
 public class DateUtils {
 
-    private static Context mContext;
-
     private static final SimpleDateFormat formator = new SimpleDateFormat();
-    private static final String FORMAT_DEFAULT_DATE = "yyyy-MM-dd";
-    private static final String FORMAT_DEFAULT_TIMESTAMP = "yyyy-MM-dd HH:mm:ss";
-    private static final String FORMAT_EN_DATE = "EEE MMM dd kk:mm:ss yyyy";
+    private static final String DEFAULT_DATE = "yyyy-MM-dd";
+    private static final String EN_DATE = "EEE MMM dd kk:mm:ss yyyy";
+    private static final String TIMESTAMP_EN = "yyyy-MM-dd HH:mm:ss";
+    private static final String TIMESTAMP_CN = "yyyy年MM月dd日  HH:mm:ss";
+    private static final String DATE_WEEK_BUNCH = ",天,一,二,三,四,五,六";
+    private static final String DATE_MSG_TODAY = "今天 %1$s:%2$s";
+    private static final String DATE_MSG_YESTERDAY = "昨天 %1$s:%2$s";
+    private static final String DATE_MSG_WEEK = "星期%1$s %2$s:%3$s";
+    private static final String DATE_HOUR_MINUTE = "%1$s:%2$s";
+    private static final String DATE_YESTERDAY = "昨天";
+    private static final String DATE_WEEK = "星期%s";
+    private static final String DATE_YEAR_MONTH = "%1$s-%2$s-%3$s";
+    private static final String DATE_MONTH_DAY = "%1$s-%2$s";
+    private static final String DATE_MONTH_DAY_HM = "%1$s月%2$s日 %3$s:%4$s";
+    private static final String DATE_TIME_SPAN_NOW = "刚刚";
+    private static final String DATE_TIME_SPAN_MINUTES = "%1$s分钟以前";
+    private static final String DATE_TIME_SPAN_HOURS = "%1$s小时以前";
+    private static final String DATE_TIME_SPAN_DAYS = "%1$s天以前";
 
     public static final int DAY = 1000 * 60 * 60 * 24;
     public static final int HOUR = 1000 * 60 * 60;
     public static final int MINUTE = 1000 * 60;
 
-    static {
-        mContext = ExApplication.getInstance().getBaseContext();
-    }
-
     public enum Type {
         message, conversation
     }
 
-    private static String getString(int resId) {
-        return mContext.getResources().getString(resId);
-    }
-
     public static String getDateTimeCN(Date date) {
-        String formatCN = getString(R.string.date_format_timestamp_cn);
-        formator.applyPattern(formatCN);
+        formator.applyPattern(TIMESTAMP_CN);
         return formator.format(date);
     }
 
     public static String getDateTimeEN(Date date) {
-        String formatEN = getString(R.string.date_format_timestamp_en);
-        formator.applyPattern(formatEN);
+        formator.applyPattern(TIMESTAMP_EN);
         return formator.format(date);
     }
 
     public static String getDateEN(Date date) {
-        formator.applyPattern(FORMAT_DEFAULT_DATE);
+        formator.applyPattern(DEFAULT_DATE);
         return formator.format(date);
     }
 
@@ -94,8 +92,7 @@ public class DateUtils {
             dayType = "HH:mm";
         }
 
-        String formatEN = getString(R.string.date_format_timestamp_en);
-        formator.applyPattern(null == formatEN ? formatEN : dayType);
+        formator.applyPattern(dayType);
         return formator.format(dateTime);
     }
 
@@ -134,8 +131,6 @@ public class DateUtils {
      * @return 如果是今天或昨天就返回今天 HH:mm 或 昨天 HH:mm，其它如果是本周则返回“星期x HH:mm”，如果不是则返回“yyyy-MM-dd HH:mm”
      */
     public static String dateToString(Date date, Type type) {
-        // 获取一周星期数字符串
-        String weekBunch = getString(R.string.date_week_bunch);
         // 获取时区
         TimeZone timeZone = TimeZone.getDefault();
 
@@ -158,7 +153,7 @@ public class DateUtils {
         int nowWay = todayDay.get(Calendar.DAY_OF_WEEK); // 一周内的第几天
 
         // 分隔一周星期串
-        String[] days = weekBunch.split(",");
+        String[] days = DATE_WEEK_BUNCH.split(",");
         // 当前星期
         // String weekDate = days[nowWay];
         String weekDate = days[currentWay];
@@ -172,48 +167,48 @@ public class DateUtils {
                 if (n == 0) {
                     // 当前天
                     if (Type.message.equals(type)) {
-                        return String.format(getString(R.string.date_msg_today), (hour > 9 ? hour : "0" + hour), (minute > 9 ? minute : "0" + minute));
+                        return String.format(DATE_MSG_TODAY, (hour > 9 ? hour : "0" + hour), (minute > 9 ? minute : "0" + minute));
                     } else if (Type.conversation.equals(type)) {
-                        return String.format(getString(R.string.date_hour_minute), (hour > 9 ? hour : "0" + hour), (minute > 9 ? minute : "0" + minute));
+                        return String.format(DATE_HOUR_MINUTE, (hour > 9 ? hour : "0" + hour), (minute > 9 ? minute : "0" + minute));
                     }
                 } else if (n == -1) {
                     // 前一天
                     if (Type.message.equals(type)) {
-                        return String.format(getString(R.string.date_msg_yesterday), (hour > 9 ? hour : "0" + hour), (minute > 9 ? minute : "0" + minute));
+                        return String.format(DATE_MSG_YESTERDAY, (hour > 9 ? hour : "0" + hour), (minute > 9 ? minute : "0" + minute));
                     } else if (Type.conversation.equals(type)) {
-                        return getString(R.string.date_yesterday);
+                        return DATE_YESTERDAY;
                     }
                 } else if ((n >= 1 - nowWay) && (n < 8 - nowWay)) {
                     // 同一个星期
                     if (Type.message.equals(type)) {
-                        return String.format(getString(R.string.date_msg_week), weekDate, (hour > 9 ? hour : "0" + hour), (minute > 9 ? minute : "0" + minute));
+                        return String.format(DATE_MSG_WEEK, weekDate, (hour > 9 ? hour : "0" + hour), (minute > 9 ? minute : "0" + minute));
                     } else if (Type.conversation.equals(type)) {
-                        return String.format(getString(R.string.date_week), weekDate);
+                        return String.format(DATE_WEEK, weekDate);
                     }
                 } else {
                     // 当前月其他天
                     if (Type.message.equals(type)) {
-                        return String.format(getString(R.string.date_month_day_hm), (month > 9 ? month : "0" + month), (day > 9 ? day : "0" + day), (hour > 9 ? hour : "0" + hour), (minute > 9 ? minute : "0" + minute));
+                        return String.format(DATE_MONTH_DAY_HM, (month > 9 ? month : "0" + month), (day > 9 ? day : "0" + day), (hour > 9 ? hour : "0" + hour), (minute > 9 ? minute : "0" + minute));
                     } else if (Type.conversation.equals(type)) {
-                        return String.format(getString(R.string.date_month_day), (month > 9 ? month : "0" + month), (day > 9 ? day : "0" + day));
+                        return String.format(DATE_MONTH_DAY, (month > 9 ? month : "0" + month), (day > 9 ? day : "0" + day));
                     }
                 }
             } else {
                 // 非当前月
                 if (Type.message.equals(type)) {
-                    return String.format(getString(R.string.date_month_day_hm), (month > 9 ? month : "0" + month), (day > 9 ? day : "0" + day), (hour > 9 ? hour : "0" + hour), (minute > 9 ? minute : "0" + minute));
+                    return String.format(DATE_MONTH_DAY_HM, (month > 9 ? month : "0" + month), (day > 9 ? day : "0" + day), (hour > 9 ? hour : "0" + hour), (minute > 9 ? minute : "0" + minute));
                 } else if (Type.conversation.equals(type)) {
-                    return String.format(getString(R.string.date_month_day), (month > 9 ? month : "0" + month), (day > 9 ? day : "0" + day));
+                    return String.format(DATE_MONTH_DAY, (month > 9 ? month : "0" + month), (day > 9 ? day : "0" + day));
                 }
             }
         }
 
         if (Type.conversation.equals(type)) {
-            // formator.applyPattern(FORMAT_DEFAULT_DATE);
-            return String.format(getString(R.string.date_year_month), String.valueOf(year).substring(2, 4), (month > 9 ? month : "0" + month), (day > 9 ? day : "0" + day));
+            // formator.applyPattern(DEFAULT_DATE);
+            return String.format(DATE_YEAR_MONTH, String.valueOf(year).substring(2, 4), (month > 9 ? month : "0" + month), (day > 9 ? day : "0" + day));
         } else {
             // 其他显示默认格式
-            formator.applyPattern(FORMAT_DEFAULT_TIMESTAMP);
+            formator.applyPattern(TIMESTAMP_EN);
             return formator.format(date);
         }
 
@@ -261,7 +256,7 @@ public class DateUtils {
         long diff = now.getTime() - date.getTime();
 
         if (diff < 0) {
-            return getString(R.string.date_time_span_now);
+            return DATE_TIME_SPAN_NOW;
         }
 
         long days = diff / DAY;
@@ -270,15 +265,15 @@ public class DateUtils {
             if (hours < 1) {
                 long minuts = diff / MINUTE;
                 if (minuts < 1) {
-                    return getString(R.string.date_time_span_now);
+                    return DATE_TIME_SPAN_NOW;
                 } else {
-                    return String.format(getString(R.string.date_time_span_minutes), minuts);
+                    return String.format(DATE_TIME_SPAN_MINUTES, minuts);
                 }
             } else {
-                return String.format(getString(R.string.date_time_span_hours), hours);
+                return String.format(DATE_TIME_SPAN_HOURS, hours);
             }
         } else {
-            return String.format(getString(R.string.date_time_span_days), days);
+            return String.format(DATE_TIME_SPAN_DAYS, days);
         }
     }
 
@@ -291,7 +286,7 @@ public class DateUtils {
     public static Date parseDate(String dateStr) {
         Date date = null;
         try {
-            SimpleDateFormat dateFormat = new SimpleDateFormat(FORMAT_DEFAULT_DATE);
+            SimpleDateFormat dateFormat = new SimpleDateFormat(DEFAULT_DATE);
             date = dateFormat.parse(dateStr);
         } catch (Exception e) {
             e.printStackTrace();
@@ -309,7 +304,7 @@ public class DateUtils {
     public static Date parseENDateTime(String dateStr) {
         Date date = null;
         try {
-            SimpleDateFormat dateFormat = new SimpleDateFormat(FORMAT_EN_DATE, Locale.ENGLISH);
+            SimpleDateFormat dateFormat = new SimpleDateFormat(EN_DATE, Locale.ENGLISH);
             date = dateFormat.parse(dateStr);
         } catch (Exception e) {
             e.printStackTrace();

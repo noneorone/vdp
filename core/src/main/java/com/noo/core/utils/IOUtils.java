@@ -1,4 +1,4 @@
-package com.dmio.org.tut.core.utils;
+package com.noo.core.utils;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -6,9 +6,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- * 功能说明：IO流处理<br/>
- * 作者：wangmeng on 2017/3/30 17:52<br/>
- * 邮箱：noneorone@yeah.net
+ * IO流处理<br/>
+ *
+ * @author Mars.Wong(noneorone@yeah.net) at 2017/3/30 17:52<br/>
+ * @since 1.0
  */
 
 public class IOUtils {

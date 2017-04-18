@@ -4,10 +4,11 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 
+import com.dmio.org.tut.application.ExApplication;
 import com.dmio.org.tut.data.model.LoginInfo;
-import com.dmio.org.tut.core.utils.AssertUtils;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.noo.core.utils.AssertUtils;
 
 import java.lang.reflect.Type;
 import java.util.List;
@@ -30,7 +31,7 @@ public class LoginModelImpl implements LoginModel {
         boolean usernameError = true;
         boolean passwordError = true;
 
-        String jsonContent = AssertUtils.getJsonData("login.json");
+        String jsonContent = AssertUtils.getJsonData(ExApplication.getInstance(), "login.json");
         Gson gson = new Gson();
         Type type = new TypeToken<List<LoginInfo>>() {
         }.getType();

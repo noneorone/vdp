@@ -1,4 +1,4 @@
-package com.dmio.org.tut.core.utils;
+package com.noo.view.utils;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -7,14 +7,15 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
-import com.dmio.org.tut.R;
+import com.noo.view.R;
+
 
 /**
- * 功能说明：Fragment相关操作
- * 作者：wangmeng on 2017/3/1 9:39
- * 邮箱：noneorone@yeah.net
+ * Fragment相关操作<br/>
+ *
+ * @author Mars.Wong(noneorone@yeah.net) at 2017/3/1 9:39<br/>
+ * @since 1.0
  */
-
 public class FragmentUtils {
 
     /**
