@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * 功能说明：RecyclerView对应的数据适配器<br/>
  * 作者：wangmeng on 2017/3/29 20:23<br/>
- * 邮箱：wangmeng@pycredit.cn
+ * 邮箱：noneorone@yeah.net
  */
 
 public class ListRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {

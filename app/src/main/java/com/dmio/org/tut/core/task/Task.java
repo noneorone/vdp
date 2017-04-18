@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * 功能说明：基础任务处理<br/>
  * 作者：wangmeng on 2017/3/29 21:15<br/>
- * 邮箱：wangmeng@pycredit.cn
+ * 邮箱：noneorone@yeah.net
  */
 
 public class Task {

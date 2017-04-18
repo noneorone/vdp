@@ -14,7 +14,7 @@ import java.util.concurrent.Executors;
 /**
  * 功能说明：日志记录器<br/>
  * 作者：wangmeng on 2017/3/30 14:39<br/>
- * 邮箱：wangmeng@pycredit.cn
+ * 邮箱：noneorone@yeah.net
  */
 
 public class LoggerRecorder {

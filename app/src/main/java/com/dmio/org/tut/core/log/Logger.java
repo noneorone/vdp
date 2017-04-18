@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat;
 /**
  * 功能说明：日志处理<br/>
  * 作者：wangmeng on 2017/3/29 21:17<br/>
- * 邮箱：wangmeng@pycredit.cn
+ * 邮箱：noneorone@yeah.net
  */
 
 public class Logger {

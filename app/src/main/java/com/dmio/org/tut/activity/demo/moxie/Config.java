@@ -4,7 +4,7 @@ package com.dmio.org.tut.activity.demo.moxie;
  * 配置项<br/>
  * 备注: apiKey和token跟应用的包名和应用名称没有关联关系<br/>
  * wangmeng on 2017/3/28 9:16
- * wangmeng@pycredit.cn
+ * noneorone@yeah.net
  */
 public class Config {
 

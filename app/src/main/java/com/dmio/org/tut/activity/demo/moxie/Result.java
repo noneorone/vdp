@@ -7,7 +7,7 @@ import org.json.JSONObject;
 /**
  * 功能说明：结果<br/>
  * 作者：wangmeng on 2017/3/28 14:25<br/>
- * 邮箱：wangmeng@pycredit.cn<br/>
+ * 邮箱：noneorone@yeah.net<br/>
  */
 
 public class Result {

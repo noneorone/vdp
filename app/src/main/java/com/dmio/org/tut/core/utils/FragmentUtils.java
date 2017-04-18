@@ -12,7 +12,7 @@ import com.dmio.org.tut.R;
 /**
  * 功能说明：Fragment相关操作
  * 作者：wangmeng on 2017/3/1 9:39
- * 邮箱：wangmeng@pycredit.cn
+ * 邮箱：noneorone@yeah.net
  */
 
 public class FragmentUtils {

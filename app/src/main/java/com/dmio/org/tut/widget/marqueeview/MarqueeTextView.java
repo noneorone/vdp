@@ -19,7 +19,7 @@ import com.dmio.org.tut.R;
 /**
  * 功能说明：可以循环滚动文字的View<br/>
  * 作者：wangmeng on 2016/10/13 19:20<br/>
- * 邮箱：wangmeng@pycredit.cn<br/>
+ * 邮箱：noneorone@yeah.net<br/>
  * 备注：参考<a href="https://github.com/deano2390/MarqueeTextView">deanwild 14/03/16</a>
  */
 public class MarqueeTextView extends View {

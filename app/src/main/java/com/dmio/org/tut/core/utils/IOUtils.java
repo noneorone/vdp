@@ -8,7 +8,7 @@ import java.io.IOException;
 /**
  * 功能说明：IO流处理<br/>
  * 作者：wangmeng on 2017/3/30 17:52<br/>
- * 邮箱：wangmeng@pycredit.cn
+ * 邮箱：noneorone@yeah.net
  */
 
 public class IOUtils {
