@@ -17,12 +17,18 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dmio.org.tut.R;
 import com.dmio.org.tut.activity.MainActivity;
 import com.dmio.org.tut.activity.login.presenter.LoginPresenter;
 import com.dmio.org.tut.activity.login.presenter.LoginPresenterImpl;
 import com.dmio.org.tut.activity.login.view.LoginView;
+import com.noo.view.widget.marquee.FlipperView;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 /**
  * A login screen that offers login via email/password.
@@ -38,6 +44,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     private Button mSignInButton;
 
     private LoginPresenter mLoginPresenter;
+
+    private FlipperView mFlipperView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +79,18 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         mProgressView = findViewById(R.id.login_progress);
 
         mLoginPresenter = new LoginPresenterImpl(this);
+
+        mFlipperView = (FlipperView) findViewById(R.id.fv_notice);
+        Map<Object, Object> data = new HashMap<>();
+        data.put("1", UUID.randomUUID());
+        data.put("2", UUID.randomUUID());
+        data.put("3", UUID.randomUUID());
+        mFlipperView.setDataAndListener(data, new FlipperView.OnViewClickListener() {
+            @Override
+            public void onClick(View v, Object key, Object value) {
+                Toast.makeText(v.getContext(), key.toString() + "-" + value.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override

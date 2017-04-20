@@ -1,4 +1,4 @@
-package com.noo.view.utils;
+package com.noo.core.utils;
 
 import android.os.Build;
 import android.support.annotation.IdRes;
@@ -40,6 +40,18 @@ public final class ViewUtils {
     }
 
     /**
+     * 获取指定id的view组件
+     *
+     * @param v 父级view
+     * @param id       view资源ID
+     * @return 返回指定组件对象view
+     */
+    public static <T extends View> T get(View v, @IdRes int id) {
+        View view = v.findViewById(id);
+        return (T) view;
+    }
+
+    /**
      * 获取指定ViewHolder内的视图组件，一般用于List
      *
      * @param view
@@ -47,7 +59,7 @@ public final class ViewUtils {
      * @param <T>
      * @return
      */
-    public static <T extends View> T get(View view, @IdRes int id) {
+    public static <T extends View> T getInHolder(View view, @IdRes int id) {
         if (view == null) return null;
         SparseArray<View> viewHolder = (SparseArray<View>) view.getTag();
         if (viewHolder == null) {

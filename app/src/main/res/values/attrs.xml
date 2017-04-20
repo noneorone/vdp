@@ -37,7 +37,7 @@
         <attr name="autoStart" format="boolean"/>
     </declare-styleable>
 
-    <declare-styleable name="MarqueeTextView">
+    <declare-styleable name="FlipperView">
         <attr name="marqueeEnabled" format="boolean" />
         <attr name="edgeEffectEnabled" format="boolean" />
         <attr name="edgeEffectWidth" format="integer" />

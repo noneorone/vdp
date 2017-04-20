@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 文字大小 -->
+    <dimen name="ts1">18sp</dimen>
+    <dimen name="ts2">17sp</dimen>
+    <dimen name="ts3">16sp</dimen>
+    <dimen name="ts4">15sp</dimen>
+    <dimen name="ts5">13sp</dimen>
+    <dimen name="ts6">12sp</dimen>
+    <dimen name="ts7">11.33sp</dimen>
+
+    <dimen name="t1">12sp</dimen>
+    <dimen name="t2">14sp</dimen>
+    <dimen name="t3">18sp</dimen>
+    <dimen name="t4">24sp</dimen>
+    <dimen name="t5">32sp</dimen>
+
+</resources>

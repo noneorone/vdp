@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- 文字大小 -->
-    <dimen name="ts1">18sp</dimen>
-    <dimen name="ts2">17sp</dimen>
-    <dimen name="ts3">16sp</dimen>
-    <dimen name="ts4">15sp</dimen>
-    <dimen name="ts5">13sp</dimen>
-    <dimen name="ts6">12sp</dimen>
-    <dimen name="ts7">11.33sp</dimen>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
 
-    <dimen name="t1">12sp</dimen>
-    <dimen name="t2">14sp</dimen>
-    <dimen name="t3">18sp</dimen>
-    <dimen name="t4">24sp</dimen>
-    <dimen name="t5">32sp</dimen>
+    <color name="base_colorPrimary">#6cb2e7</color>
+    <color name="base_colorPrimaryDark">#208fd2</color>
+    <color name="base_colorAccent">#96BFD2</color>
 
     <color name="c1">#2084d3</color>
     <color name="c2">#222222</color>

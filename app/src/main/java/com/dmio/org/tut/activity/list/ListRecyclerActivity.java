@@ -17,7 +17,7 @@ import com.google.gson.reflect.TypeToken;
 import com.noo.core.log.Logger;
 import com.noo.core.task.Task;
 import com.noo.core.utils.AssertUtils;
-import com.noo.view.utils.ViewUtils;
+import com.noo.core.utils.ViewUtils;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

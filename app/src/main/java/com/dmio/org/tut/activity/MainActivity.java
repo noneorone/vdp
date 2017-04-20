@@ -7,14 +7,13 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.dmio.org.tut.R;
@@ -30,31 +29,22 @@ import com.dmio.org.tut.activity.demo.widget.swipecard.SwipeCardActivity;
 import com.dmio.org.tut.activity.demo.widget.wheelpicker.WheelPickerActivity;
 import com.dmio.org.tut.activity.guide.GuideMainActivity;
 import com.dmio.org.tut.activity.list.ListRecyclerActivity;
-import com.noo.core.log.Logger;
 import com.dmio.org.tut.utils.DeviceUtils;
+import com.noo.core.log.Logger;
+import com.noo.core.ui.BaseActivity;
 import com.noo.core.utils.AppUtils;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnItemClick;
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     private final int REQ_CODE_PERM_WES = 0x001;
 
     private ComponentAdapter mComponentAdapter;
 
-    @BindView(R.id.toolbar)
-    Toolbar mToolBar;
-
-    @BindView(R.id.lv_list)
-    ListView mLvList;
+    private RecyclerView mLvList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
         initView();
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQ_CODE_PERM_WES);
     }
@@ -85,80 +75,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        setSupportActionBar(mToolBar);
-        mToolBar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
-
+        mLvList = (RecyclerView) getContainer();
         mComponentAdapter = new ComponentAdapter();
+        mLvList.setHasFixedSize(true);
+        mLvList.setLayoutManager(new LinearLayoutManager(this));
         mLvList.setAdapter(mComponentAdapter);
     }
 
-    @OnItemClick({R.id.lv_list})
-    public void onItemClick(android.widget.AdapterView<?> parent, android.view.View view, int position, long id) {
-        try {
-            Class clz = (Class) parent.getAdapter().getItem(position);
-            if (clz != null) {
-                ActivityCompat.startActivity(this, new Intent(getApplicationContext(), clz), null);
-            }
-        } catch (Exception e) {
-            Logger.e(e);
-        }
+    @Override
+    public int getContentLayouResId() {
+        return R.layout.activity_main;
     }
 
-    private class ComponentAdapter extends BaseAdapter {
-
-        @Override
-        public int getCount() {
-            return COMPONENT_CLASSES.length;
-        }
-
-        @Override
-        public Class getItem(int position) {
-            return COMPONENT_CLASSES[position];
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return 0;
-        }
-
-        @Override
-        public View getView(int position, View view, ViewGroup viewGroup) {
-            ViewHolder holder = null;
-            if (view == null) {
-                view = getLayoutInflater().inflate(R.layout.list_main_item, null);
-                holder = new ViewHolder(view);
-                view.setTag(holder);
-            } else {
-                holder = (ViewHolder) view.getTag();
-            }
-
-            Class clz = getItem(position);
-            if (clz != null) {
-                String entry = clz.getSimpleName();
-                int index = entry.toLowerCase().lastIndexOf("activity");
-                if (index != -1) {
-                    entry = entry.substring(0, index);
-                }
-                holder.tvTitle.setText(entry);
-            }
-
-            return view;
-        }
-
-
-        class ViewHolder {
-            private final TextView tvTitle;
-
-            ViewHolder(View root) {
-                tvTitle = (TextView) root.findViewById(R.id.tv_title);
-            }
-        }
-
+    @Override
+    protected void onNavClick() {
+        super.onNavClick();
     }
 
     /**
@@ -178,6 +109,52 @@ public class MainActivity extends AppCompatActivity {
             MoxieActivity.class,
             ListRecyclerActivity.class,
     };
+
+
+    private class ComponentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+
+        @Override
+        public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_main_item, parent, false);
+            return new ItemHolder(view);
+        }
+
+        @Override
+        public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+            ItemHolder itemHolder = (ItemHolder) holder;
+            itemHolder.bindViewData(position);
+        }
+
+        @Override
+        public int getItemCount() {
+            return COMPONENT_CLASSES.length;
+        }
+
+        final class ItemHolder extends RecyclerView.ViewHolder {
+            private final TextView tvTitle;
+
+            public ItemHolder(View root) {
+                super(root);
+                tvTitle = (TextView) root.findViewById(R.id.tv_title);
+            }
+
+            public void bindViewData(int position) {
+                final Class clz = COMPONENT_CLASSES[position];
+                String entry = clz.getSimpleName();
+                int index = entry.toLowerCase().lastIndexOf("activity");
+                if (index != -1) {
+                    entry = entry.substring(0, index);
+                }
+                tvTitle.setText(entry);
+                tvTitle.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ActivityCompat.startActivity(MainActivity.this, new Intent(getApplicationContext(), clz), null);
+                    }
+                });
+            }
+        }
+    }
 
 }
 
