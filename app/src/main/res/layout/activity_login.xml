@@ -33,7 +33,7 @@
         app:flipInterval="2000"
         app:textSingleLine="true"
         app:textColor="@color/c1"
-        app:textSize="@dimen/ts4"/>
+        app:textSize="@dimen/t4"/>
 
     <ScrollView
         android:id="@+id/login_form"

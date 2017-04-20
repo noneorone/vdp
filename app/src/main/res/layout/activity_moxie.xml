@@ -29,7 +29,7 @@
             android:padding="10dp"
             android:text="CREDIT_REPORT"
             android:textColor="@color/c8"
-            android:textSize="@dimen/ts6" />
+            android:textSize="@dimen/t6" />
 
         <TextView
             android:id="@+id/btn_func_shebao"
@@ -40,7 +40,7 @@
             android:padding="10dp"
             android:text="SOCIAL_SECURITY"
             android:textColor="@color/c8"
-            android:textSize="@dimen/ts6" />
+            android:textSize="@dimen/t6" />
 
         <TextView
             android:id="@+id/btn_func_gongjijin"
@@ -51,7 +51,7 @@
             android:padding="10dp"
             android:text="PROVIDENT_FUNDS"
             android:textColor="@color/c8"
-            android:textSize="@dimen/ts6" />
+            android:textSize="@dimen/t6" />
 
         <TextView
             android:id="@+id/btn_func_geshui"
@@ -63,7 +63,7 @@
             android:padding="10dp"
             android:text="PERSONAL_INCOME_TAX"
             android:textColor="@color/c8"
-            android:textSize="@dimen/ts6" />
+            android:textSize="@dimen/t6" />
 
         <TextView
             android:id="@+id/btn_func_yunyingshang"
@@ -75,7 +75,7 @@
             android:padding="10dp"
             android:text="ISP"
             android:textColor="@color/c8"
-            android:textSize="@dimen/ts6" />
+            android:textSize="@dimen/t6" />
 
         <TextView
             android:id="@+id/btn_func_xuexinwang"
@@ -86,7 +86,7 @@
             android:padding="10dp"
             android:text="CHSI"
             android:textColor="@color/c8"
-            android:textSize="@dimen/ts6" />
+            android:textSize="@dimen/t6" />
 
         <TextView
             android:id="@+id/btn_func_taobao"
@@ -98,7 +98,7 @@
             android:padding="10dp"
             android:text="TAOBAO"
             android:textColor="@color/c8"
-            android:textSize="@dimen/ts6" />
+            android:textSize="@dimen/t6" />
 
         <TextView
             android:id="@+id/btn_func_jingdong"
@@ -110,7 +110,7 @@
             android:padding="10dp"
             android:text="JINGDONG"
             android:textColor="@color/c8"
-            android:textSize="@dimen/ts6" />
+            android:textSize="@dimen/t6" />
 
         <TextView
             android:id="@+id/btn_func_xinyongka"
@@ -122,7 +122,7 @@
             android:padding="10dp"
             android:text="ONLINE_BANK"
             android:textColor="@color/c8"
-            android:textSize="@dimen/ts6" />
+            android:textSize="@dimen/t6" />
 
         <TextView
             android:id="@+id/btn_func_email"
@@ -133,7 +133,7 @@
             android:padding="10dp"
             android:text="EMAIL"
             android:textColor="@color/c8"
-            android:textSize="@dimen/ts6" />
+            android:textSize="@dimen/t6" />
 
         <TextView
             android:id="@+id/btn_func_id_verify"
@@ -145,7 +145,7 @@
             android:padding="10dp"
             android:text="ID_VERIFY"
             android:textColor="@color/c8"
-            android:textSize="@dimen/ts6" />
+            android:textSize="@dimen/t6" />
 
     </com.dmio.org.tut.widget.flowlayout.FlowLayout>
 

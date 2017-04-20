@@ -23,6 +23,7 @@ import com.dmio.org.tut.activity.demo.view.image.WaveViewActivity;
 import com.dmio.org.tut.activity.demo.view.paint.PaintActivity;
 import com.dmio.org.tut.activity.demo.widget.blurry.BlurryActivity;
 import com.dmio.org.tut.activity.demo.widget.marqueeview.MarqueeViewActivity;
+import com.dmio.org.tut.activity.demo.widget.progress.ProgressWheelActivity;
 import com.dmio.org.tut.activity.demo.widget.qrcode.DecoderActivity;
 import com.dmio.org.tut.activity.demo.widget.sweetalert.SweetAlertActivity;
 import com.dmio.org.tut.activity.demo.widget.swipecard.SwipeCardActivity;
@@ -92,25 +93,6 @@ public class MainActivity extends BaseActivity {
         super.onNavClick();
     }
 
-    /**
-     * 组件类
-     */
-    private static final Class[] COMPONENT_CLASSES = {
-            PaintActivity.class,
-            WheelPickerActivity.class,
-            SweetAlertActivity.class,
-            DecoderActivity.class,
-            MarqueeViewActivity.class,
-            WaveViewActivity.class,
-            SecurityCAActivity.class,
-            GuideMainActivity.class,
-            SwipeCardActivity.class,
-            BlurryActivity.class,
-            MoxieActivity.class,
-            ListRecyclerActivity.class,
-    };
-
-
     private class ComponentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         @Override
@@ -155,6 +137,26 @@ public class MainActivity extends BaseActivity {
             }
         }
     }
+
+    /**
+     * 组件类
+     */
+    private static final Class[] COMPONENT_CLASSES = {
+            PaintActivity.class,
+            WheelPickerActivity.class,
+            SweetAlertActivity.class,
+            DecoderActivity.class,
+            MarqueeViewActivity.class,
+            WaveViewActivity.class,
+            SecurityCAActivity.class,
+            GuideMainActivity.class,
+            SwipeCardActivity.class,
+            BlurryActivity.class,
+            MoxieActivity.class,
+            ListRecyclerActivity.class,
+            ProgressWheelActivity.class
+    };
+
 
 }
 

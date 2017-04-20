@@ -33,7 +33,7 @@
         android:ellipsize="end"
         android:maxLines="10"
         android:textColor="@color/c4"
-        android:textSize="@dimen/ts5"
+        android:textSize="@dimen/t5"
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

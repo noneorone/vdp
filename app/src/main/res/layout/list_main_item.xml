@@ -16,7 +16,7 @@
         android:gravity="center"
         android:padding="10dp"
         android:textColor="@color/c4"
-        android:textSize="@dimen/ts4"
+        android:textSize="@dimen/t4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         tools:text="text"/>
