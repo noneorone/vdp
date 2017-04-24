@@ -79,11 +79,11 @@ public class FlipperView extends LinearLayout {
     public void initBasicView(AttributeSet attrs) {
         TypedArray typedArray = mContext.obtainStyledAttributes(attrs, R.styleable.FlipperView);
         deletable = typedArray.getBoolean(R.styleable.FlipperView_deletable, true);
-        flipInterval = typedArray.getInt(R.styleable.FlipperView_flipInterval, 3000);
-        flipBackgroundColor = typedArray.getColor(R.styleable.FlipperView_flipBackgroundColor, Color.WHITE);
-        textColor = typedArray.getColor(R.styleable.FlipperView_textColor, Color.BLACK);
-        textSize = typedArray.getDimension(R.styleable.FlipperView_textSize, 12f);
-        textSingleLine = typedArray.getBoolean(R.styleable.FlipperView_textSingleLine, true);
+        flipInterval = typedArray.getInt(R.styleable.FlipperView_flip_interval, 3000);
+        flipBackgroundColor = typedArray.getColor(R.styleable.FlipperView_flip_background_color, Color.WHITE);
+        textColor = typedArray.getColor(R.styleable.FlipperView_text_color, Color.BLACK);
+        textSize = typedArray.getDimension(R.styleable.FlipperView_text_size, 12f);
+        textSingleLine = typedArray.getBoolean(R.styleable.FlipperView_text_single_line, true);
         typedArray.recycle();
 
         flipperTextView = LayoutInflater.from(mContext).inflate(R.layout.flipper_view, null);
