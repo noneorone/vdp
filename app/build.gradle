@@ -1,19 +1,38 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.6.4'
+    }
+}
+
 apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
 apply plugin: 'com.antfortune.freeline'
 apply plugin: 'realm-android'
+apply plugin: 'com.getkeepsafe.dexcount'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '25.0.2'
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
     enforceUniquePackageName = false
     publishNonDefault true
     defaultPublishConfig "debug"
 
+    dexcount {
+        format = "list"
+        includeClasses = true
+        includeFieldCount = true
+        includeTotalMethodCount = true
+        orderByMethodCount = true
+        verbose = true
+    }
+
     defaultConfig {
         applicationId "com.dmio.org.tut"
-        minSdkVersion 15
-        targetSdkVersion 25
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
 
