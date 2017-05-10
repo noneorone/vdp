@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.dmio.org.tut.activity.demo.widget.drag.DragActivity">
+
+    <com.dmio.org.tut.activity.demo.widget.drag.DragLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/c7"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_drag"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@color/c9"
+            android:gravity="center"
+            android:text="Drag"
+            android:textColor="@color/c8"
+            android:textSize="@dimen/t3"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/tv_edge_drag"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="100dp"
+            android:background="@color/c3"
+            android:gravity="center"
+            android:text="No Drag"
+            android:textColor="@color/c8"
+            android:textSize="@dimen/t3"
+            android:textStyle="bold"/>
+
+    </com.dmio.org.tut.activity.demo.widget.drag.DragLayout>
+
+</android.support.constraint.ConstraintLayout>

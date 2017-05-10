@@ -22,6 +22,7 @@ import com.dmio.org.tut.activity.demo.security.ca.SecurityCAActivity;
 import com.dmio.org.tut.activity.demo.view.image.WaveViewActivity;
 import com.dmio.org.tut.activity.demo.view.paint.PaintActivity;
 import com.dmio.org.tut.activity.demo.widget.blurry.BlurryActivity;
+import com.dmio.org.tut.activity.demo.widget.drag.DragActivity;
 import com.dmio.org.tut.activity.demo.widget.marqueeview.MarqueeViewActivity;
 import com.dmio.org.tut.activity.demo.widget.progress.ProgressWheelActivity;
 import com.dmio.org.tut.activity.demo.widget.qrcode.DecoderActivity;
@@ -154,7 +155,8 @@ public class MainActivity extends BaseActivity {
             BlurryActivity.class,
             MoxieActivity.class,
             ListRecyclerActivity.class,
-            ProgressWheelActivity.class
+            ProgressWheelActivity.class,
+            DragActivity.class
     };
 
 

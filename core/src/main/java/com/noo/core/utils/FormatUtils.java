@@ -1,4 +1,4 @@
-package com.dmio.org.tut.utils;
+package com.noo.core.utils;
 
 /**
  * 功能说明：格式化工具<br/>
