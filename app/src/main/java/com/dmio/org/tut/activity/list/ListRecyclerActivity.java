@@ -4,20 +4,25 @@ import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.dmio.org.tut.R;
+import com.dmio.org.tut.activity.MainActivity;
 import com.dmio.org.tut.data.model.Warrior;
+import com.dmio.org.tut.utils.DeviceUtils;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.noo.core.log.Logger;
-import com.noo.core.task.Task;
+import com.noo.core.task.AsynTask;
+import com.noo.core.ui.VdpActivity;
 import com.noo.core.utils.AssertUtils;
 import com.noo.core.utils.ViewUtils;
+import com.noo.core.widget.msv.ViewType;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -28,9 +33,9 @@ import java.util.List;
  * 作者：wangmeng on 2017/3/29 19:56<br/>
  * 邮箱：noneorone@yeah.net
  */
-public class ListRecyclerActivity extends AppCompatActivity implements Task.CallBack<List<Warrior>> {
+public class ListRecyclerActivity extends VdpActivity {
 
-    private Toolbar mToolBar;
+    private static final String TASK_GET_LIST = "_task_get_list";
 
     private RecyclerView mRecyclerView;
     private SwipeRefreshLayout cmpRefresh;
@@ -55,18 +60,26 @@ public class ListRecyclerActivity extends AppCompatActivity implements Task.Call
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_recycler_view);
         initView();
+        setTitle("ListRecycler");
+        showView(ViewType.LOADING);
+        AsynTask.getInstance().exec(TASK_GET_LIST, ListRecyclerActivity.this);
     }
 
-    private void initView() {
-        mToolBar = ViewUtils.get(this, R.id.toolbar);
-        mToolBar.setTitle("RecyclerView Refresh List");
-        mToolBar.setNavigationOnClickListener(new View.OnClickListener() {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuItem item = menu.add("trace");
+        item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
-            public void onClick(View v) {
-                onBackPressed();
+            public boolean onMenuItemClick(MenuItem item) {
+                Toast.makeText(getApplicationContext(), "trace", Toast.LENGTH_SHORT).show();
+                return false;
             }
         });
+        return super.onCreateOptionsMenu(menu);
+    }
 
+
+    private void initView() {
         data = new ArrayList<>();
         mAdapter = new ListRecyclerAdapter(this, data);
         mRecyclerView = ViewUtils.get(this, R.id.rv_list);
@@ -93,7 +106,7 @@ public class ListRecyclerActivity extends AppCompatActivity implements Task.Call
                         getHandler().postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                                Task.getInstance().exec(ListRecyclerActivity.this);
+                                AsynTask.getInstance().exec(TASK_GET_LIST, ListRecyclerActivity.this);
                             }
                         }, 1000L);
                     }
@@ -112,28 +125,24 @@ public class ListRecyclerActivity extends AppCompatActivity implements Task.Call
         cmpRefresh.setColorSchemeResources(R.color.c1);
         cmpRefresh.setDrawingCacheBackgroundColor(R.color.c9);
         cmpRefresh.setProgressBackgroundColorSchemeResource(R.color.c8);
-        cmpRefresh.post(new Runnable() {
-            @Override
-            public void run() {
-                cmpRefresh.setRefreshing(true);
-                Task.getInstance().exec(ListRecyclerActivity.this);
-            }
-        });
+//        cmpRefresh.post(new Runnable() {
+//            @Override
+//            public void run() {
+//                cmpRefresh.setRefreshing(true);
+//                AsynTask.getInstance().exec(TASK_GET_LIST, ListRecyclerActivity.this);
+//            }
+//        });
         cmpRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 data.clear();
-                Task.getInstance().exec(ListRecyclerActivity.this);
+                AsynTask.getInstance().exec(TASK_GET_LIST, ListRecyclerActivity.this);
             }
         });
     }
 
     @Override
-    public void preExec() {
-    }
-
-    @Override
-    public List<Warrior> inHandle() {
+    public Object onBackgroundProcess(String tag, Object... params) {
         String jsonData = AssertUtils.getJsonData(this, "list_recycler.json");
         Gson gson = new Gson();
         Type type = new TypeToken<List<Warrior>>() {
@@ -143,7 +152,8 @@ public class ListRecyclerActivity extends AppCompatActivity implements Task.Call
     }
 
     @Override
-    public void complete(final List<Warrior> list) {
+    public void onResultSuccess(String tag, Object object) {
+        List<Warrior> list = (List<Warrior>) object;
         if (list != null && !list.isEmpty()) {
             data.addAll(list);
             mAdapter.notifyDataSetChanged();
@@ -151,8 +161,8 @@ public class ListRecyclerActivity extends AppCompatActivity implements Task.Call
         isLoading = false;
         cmpRefresh.setRefreshing(false);
         mAdapter.notifyItemRemoved(mAdapter.getItemCount());
+        showView(ViewType.CONTENT);
     }
-
 
     /**
      * Custom item decoration

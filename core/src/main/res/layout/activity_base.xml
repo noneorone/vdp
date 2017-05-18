@@ -6,7 +6,7 @@
     android:background="@android:color/white"
     android:orientation="vertical">
 
-    <include layout="@layout/common_toolbar" />
+    <include layout="@layout/vdp_toolbar" />
 
     <android.support.v7.widget.ViewStubCompat
         android:id="@+id/container"

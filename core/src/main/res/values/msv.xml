@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="MultiStateView">
+        <attr name="msv_loadingView" format="reference"/>
+        <attr name="msv_emptyView" format="reference"/>
+        <attr name="msv_errorView" format="reference"/>
+        <attr name="msv_viewState" format="enum">
+            <enum name="content" value="0"/>
+            <enum name="error" value="1"/>
+            <enum name="empty" value="2"/>
+            <enum name="loading" value="3"/>
+        </attr>
+        <attr name="msv_animateViewChanges" format="boolean"/>
+    </declare-styleable>
+
+    <!-- Styles -->
+    <style name="Button.Retry" parent="@android:style/Widget.Button">
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:background">@drawable/btn_retry</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:textColor">@drawable/color_retry_button</item>
+        <item name="android:gravity">center</item>
+        <item name="android:minHeight">48dp</item>
+    </style>
+
+    <!-- IDs -->
+    <item name="tag_multistateview" type="id"/>
+
+
+    <!-- String -->
+    <string name="msv_error_title_network">Network Error</string>
+    <string name="msv_error_title_unknown">Oops! We messed up.</string>
+    <string name="msv_tap_to_retry">Tap to retry</string>
+
+</resources>

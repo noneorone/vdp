@@ -12,8 +12,8 @@ import java.io.IOException;
  * @since 1.0
  */
 
-public class IOUtils {
-    private IOUtils() {
+public class FileUtils {
+    private FileUtils() {
     }
 
     /**

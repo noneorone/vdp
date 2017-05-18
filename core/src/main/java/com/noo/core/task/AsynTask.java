@@ -15,76 +15,56 @@ import java.util.concurrent.TimeUnit;
  * @author Mars.Wong(noneorone@yeah.net) at 2017/3/29 21:15<br/>
  * @since 1.0
  */
-public class Task {
+public class AsynTask {
 
-    public interface CallBack<T> {
-        /**
-         * 预处理
-         */
-        void preExec();
-
-        /**
-         * 执行中
-         */
-        T inHandle();
-
-        /**
-         * 处理完成
-         */
-        void complete(T t);
-    }
-
-    private static Task instance;
+    private static AsynTask instance;
 
     private ExecutorService executor;
 
-    private CallBack cb;
-
-    public static final Task getInstance() {
+    public static final AsynTask getInstance() {
         if (instance == null) {
-            synchronized (Task.class) {
+            synchronized (AsynTask.class) {
                 if (instance == null) {
-                    instance = new Task();
+                    instance = new AsynTask();
                 }
             }
         }
         return instance;
     }
 
-    private Task() {
-        executor = Executors.newFixedThreadPool(5);
+    private AsynTask() {
+        executor = Executors.newCachedThreadPool();
     }
 
     /**
-     * 5秒任务超时返回
+     * 默认30秒任务超时返回
      *
+     * @param tag
      * @param cb
-     * @return
+     * @return 任务处理完成的对象{@link Object}
      */
-    public Object exec(CallBack cb) {
-        return exec(cb, 5000L);
+    public Object exec(String tag, AsynCallBack cb) {
+        return exec(tag, cb, 30000L);
     }
 
     /**
      * 执行任务
      *
-     * @param cb      {@link CallBack}
+     * @param cb      {@link AsynCallBack}
+     * @param tag     {@link String}
      * @param timeout 超时时间
      * @return 结果对象
      */
-    public Object exec(final CallBack cb, final long timeout) {
+    public Object exec(final String tag, final AsynCallBack cb, final long timeout) {
+        Object obj = null;
         try {
-            if (cb != null) {
-                cb.preExec();
-            }
-
-            Object obj = null;
             if (!executor.isTerminated() && !executor.isShutdown()) {
-                Future<Object> future = executor.submit(new Callable<Object>() {
+                Future<?> future = executor.submit(new Callable<Object>() {
                     @Override
                     public Object call() throws Exception {
                         if (cb != null) {
-                            return cb.inHandle();
+                            Logger.d("task(" + tag + ") background.");
+                            return cb.onBackgroundProcess(tag);
                         }
                         return null;
                     }
@@ -92,18 +72,24 @@ public class Task {
 
                 obj = future.get(timeout, TimeUnit.MILLISECONDS);
                 if (cb != null) {
-                    cb.complete(obj);
+                    Logger.d("task(" + tag + ") success.");
+                    cb.onResultSuccess(tag, obj);
                 }
                 return obj;
             }
 
             if (cb != null) {
-                cb.complete(obj);
+                Logger.d("task(" + tag + ") error.");
+                cb.onResultError(tag, obj);
             }
         } catch (Exception e) {
+            if (cb != null) {
+                Logger.d("task(" + tag + ") error.");
+                cb.onResultError(tag, obj);
+            }
             Logger.e(e);
         }
+
         return null;
     }
-
 }

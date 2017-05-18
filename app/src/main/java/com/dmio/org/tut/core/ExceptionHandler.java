@@ -41,15 +41,16 @@ public class ExceptionHandler implements Thread.UncaughtExceptionHandler {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                Looper.prepare();
                 try {
-                    Thread.sleep(3000L);
+                    Looper.prepare();
+                    Thread.sleep(1000L);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
+                } finally {
+                    Process.killProcess(android.os.Process.myPid());
+                    System.exit(0);
+                    Looper.loop();
                 }
-                Process.killProcess(android.os.Process.myPid());
-                System.exit(0);
-                Looper.loop();
             }
         }) {
         }.start();

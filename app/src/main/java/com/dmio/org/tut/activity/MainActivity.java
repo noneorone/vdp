@@ -33,10 +33,10 @@ import com.dmio.org.tut.activity.guide.GuideMainActivity;
 import com.dmio.org.tut.activity.list.ListRecyclerActivity;
 import com.dmio.org.tut.utils.DeviceUtils;
 import com.noo.core.log.Logger;
-import com.noo.core.ui.BaseActivity;
+import com.noo.core.ui.VdpActivity;
 import com.noo.core.utils.AppUtils;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends VdpActivity {
 
     private final int REQ_CODE_PERM_WES = 0x001;
 
@@ -45,9 +45,16 @@ public class MainActivity extends BaseActivity {
     private RecyclerView mLvList;
 
     @Override
+    protected boolean displayHomeAsUpEnabled() {
+        return false;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
         initView();
+        setTitle("Functions Follows");
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQ_CODE_PERM_WES);
     }
 
@@ -77,21 +84,11 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initView() {
-        mLvList = (RecyclerView) getContainer();
+        mLvList = (RecyclerView) findViewById(R.id.lv_list);
         mComponentAdapter = new ComponentAdapter();
         mLvList.setHasFixedSize(true);
         mLvList.setLayoutManager(new LinearLayoutManager(this));
         mLvList.setAdapter(mComponentAdapter);
-    }
-
-    @Override
-    public int getContentLayouResId() {
-        return R.layout.activity_main;
-    }
-
-    @Override
-    protected void onNavClick() {
-        super.onNavClick();
     }
 
     private class ComponentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {

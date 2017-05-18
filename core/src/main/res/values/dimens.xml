@@ -9,4 +9,7 @@
     <dimen name="t6">12sp</dimen>
     <dimen name="t7">11.33sp</dimen>
 
+    <item name="animDuration" type="integer">@android:integer/config_mediumAnimTime</item>
+    <integer name="animation_default_duration">@integer/animDuration</integer>
+
 </resources>
