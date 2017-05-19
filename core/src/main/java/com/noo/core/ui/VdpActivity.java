@@ -11,9 +11,9 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.noo.core.R;
-import com.noo.core.widget.msv.MultiStateView;
-import com.noo.core.widget.msv.MultiStateViewHelper;
-import com.noo.core.widget.msv.ViewType;
+import com.noo.core.ui.msv.MultiStateView;
+import com.noo.core.ui.msv.MultiStateViewHelper;
+import com.noo.core.ui.msv.ViewType;
 
 /**
  * 扩展{@link AppCompatActivity}基础类

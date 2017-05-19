@@ -1,8 +1,8 @@
-package com.noo.core.widget.msv;
+package com.noo.core.ui.msv;
 
 
 /**
- * 视图类型，根据{@link com.noo.core.widget.msv.MultiStateView.ViewState}关联
+ * 视图类型，根据{@link com.noo.core.ui.msv.MultiStateView.ViewState}关联
  *
  * @author Mars.Wong(noneorone@yeah.net) at 2017/5/15 16:35<br/>
  * @since 1.0

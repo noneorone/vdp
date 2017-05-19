@@ -9,7 +9,7 @@
 
     <include layout="@layout/vdp_toolbar"/>
 
-    <com.noo.core.widget.msv.MultiStateView
+    <com.noo.core.ui.msv.MultiStateView
         android:id="@+id/msv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -20,6 +20,6 @@
         app:msv_loadingView="@layout/msv_loading"
         app:msv_viewState="content">
 
-    </com.noo.core.widget.msv.MultiStateView>
+    </com.noo.core.ui.msv.MultiStateView>
 
 </android.support.design.widget.CoordinatorLayout>

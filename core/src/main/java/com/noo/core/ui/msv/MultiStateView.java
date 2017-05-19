@@ -1,4 +1,4 @@
-package com.noo.core.widget.msv;
+package com.noo.core.ui.msv;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
