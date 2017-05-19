@@ -5,6 +5,7 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,6 +24,7 @@ import com.noo.core.widget.msv.ViewType;
 public abstract class VdpActivity extends AppCompatActivity implements VdpComponent {
 
     private Toolbar toolbar;
+    private AppCompatTextView tvTitle;
     private MultiStateView multiStateView;
 
     @Override
@@ -33,19 +35,20 @@ public abstract class VdpActivity extends AppCompatActivity implements VdpCompon
     @Override
     public void setTitle(CharSequence title) {
         super.setTitle(title);
-        toolbar.setTitle(title);
+        tvTitle.setText(title);
     }
 
     @Override
     public void setTitle(int titleId) {
         super.setTitle(titleId);
-        toolbar.setTitle(titleId);
+        tvTitle.setText(titleId);
     }
 
     @Override
     public void setContentView(@LayoutRes int layoutResID) {
         View container = getLayoutInflater().inflate(R.layout.vdp_container, null);
 
+        tvTitle = (AppCompatTextView) container.findViewById(R.id.tv_title);
         toolbar = (Toolbar) container.findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
