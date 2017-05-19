@@ -6,15 +6,10 @@ import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.dmio.org.tut.R;
-import com.dmio.org.tut.activity.MainActivity;
 import com.dmio.org.tut.data.model.Warrior;
-import com.dmio.org.tut.utils.DeviceUtils;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.noo.core.log.Logger;
@@ -64,20 +59,6 @@ public class ListRecyclerActivity extends VdpActivity {
         showView(ViewType.LOADING);
         AsynTask.getInstance().exec(TASK_GET_LIST, ListRecyclerActivity.this);
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuItem item = menu.add("trace");
-        item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                Toast.makeText(getApplicationContext(), "trace", Toast.LENGTH_SHORT).show();
-                return false;
-            }
-        });
-        return super.onCreateOptionsMenu(menu);
-    }
-
 
     private void initView() {
         data = new ArrayList<>();

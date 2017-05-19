@@ -73,6 +73,7 @@ public class MainActivity extends VdpActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuItem item = menu.add("trace");
+        item.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
         item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
