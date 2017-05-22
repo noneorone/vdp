@@ -1,5 +1,6 @@
 package com.noo.core.utils;
 
+import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -24,7 +25,7 @@ public class ComponentUtils {
      * @param activity {@link FragmentActivity}对象
      * @return true有效, false无效
      */
-    public static boolean isStateValid(FragmentActivity activity) {
+    public static boolean isStateValid(Activity activity) {
         boolean isValid = activity != null && !activity.isFinishing();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             isValid = isValid && !activity.isDestroyed();

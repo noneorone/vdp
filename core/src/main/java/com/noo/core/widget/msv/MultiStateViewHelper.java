@@ -1,11 +1,11 @@
-package com.noo.core.ui.msv;
+package com.noo.core.widget.msv;
 
 import android.content.Context;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.view.View;
 
-import com.noo.core.ui.msv.MultiStateView.ViewState;
+import com.noo.core.widget.msv.MultiStateView.ViewState;
 
 /**
  * MultiStateView处理类

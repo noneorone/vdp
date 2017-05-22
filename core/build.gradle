@@ -1,5 +1,7 @@
 apply plugin: 'com.android.library'
 
+apply plugin: 'realm-android'
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
@@ -19,6 +21,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+}
+
+repositories {
+    maven {
+        url 'https://github.com/uPhyca/stetho-realm/raw/master/maven-repo'
+    }
 }
 
 dependencies {
@@ -29,6 +38,8 @@ dependencies {
     compile 'com.android.support:design:' + rootProject.ext.supportLibraryVersion
     compile 'com.android.support:appcompat-v7:' + rootProject.ext.supportLibraryVersion
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha7'
+    compile 'com.uphyca:stetho_realm:2.0.0'
+
     testCompile 'junit:junit:4.12'
 
 }

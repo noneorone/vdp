@@ -17,7 +17,7 @@ import com.noo.core.task.AsynTask;
 import com.noo.core.ui.VdpActivity;
 import com.noo.core.utils.AssertUtils;
 import com.noo.core.utils.ViewUtils;
-import com.noo.core.ui.msv.ViewType;
+import com.noo.core.widget.msv.ViewType;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -56,6 +56,8 @@ public class ListRecyclerActivity extends VdpActivity {
         setContentView(R.layout.activity_list_recycler_view);
         initView();
         setTitle("ListRecycler");
+//        int i = 0;
+//        int b = 2 / i;
         showView(ViewType.LOADING);
         AsynTask.getInstance().exec(TASK_GET_LIST, ListRecyclerActivity.this);
     }

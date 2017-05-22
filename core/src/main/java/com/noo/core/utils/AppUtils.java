@@ -9,9 +9,11 @@ import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageItemInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.os.Build;
 import android.os.Environment;
 import android.support.v4.os.EnvironmentCompat;
@@ -132,17 +134,30 @@ public class AppUtils {
         return TextUtils.isEmpty(value) ? "" : value;
     }
 
+
     /**
      * 获取应用包信息
      *
      * @return
      */
     public static final PackageInfo getPackageInfo(Context context) {
+        return getPackageInfo(context, null);
+    }
+
+    /**
+     * 获取应用包信息
+     *
+     * @return
+     */
+    public static final PackageInfo getPackageInfo(Context context, String packageName) {
         PackageInfo packageInfo = null;
 
         try {
+            if (TextUtils.isEmpty(packageName)) {
+                packageName = context.getPackageName();
+            }
             PackageManager packageManager = context.getPackageManager();
-            packageInfo = packageManager.getPackageInfo(context.getPackageName(), 0);
+            packageInfo = packageManager.getPackageInfo(packageName, 0);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -189,5 +204,58 @@ public class AppUtils {
         return Environment.MEDIA_MOUNTED.equals(storageState);
     }
 
+    /**
+     * 同{@link AppUtils#getLauncher(Context, String)}
+     *
+     * @param context
+     * @return
+     */
+    public static final ResolveInfo getLauncher(Context context) {
+        return getLauncher(context, null);
+    }
+
+    /**
+     * 获取指定应用包的启动页信息
+     *
+     * @param context     应用上下文
+     * @param packageName 应用包名
+     * @return {@link ResolveInfo}
+     */
+    public static final ResolveInfo getLauncher(Context context, String packageName) {
+        ResolveInfo resolveInfo = null;
+        PackageInfo packageInfo = getPackageInfo(context, packageName);
+        if (packageInfo != null) {
+            String packName = packageInfo.packageName;
+
+            Intent resolveIntent = new Intent(Intent.ACTION_MAIN, null);
+            resolveIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+            resolveIntent.setPackage(packName);
+
+            PackageManager pm = context.getApplicationContext().getPackageManager();
+            List<ResolveInfo> apps = pm.queryIntentActivities(resolveIntent, 0);
+            resolveInfo = apps.iterator().next();
+        }
+        return resolveInfo;
+    }
+
+    /**
+     * 通过指定的应用包名打开指定的应用
+     *
+     * @param context
+     * @param packageName 应用包名
+     */
+    public static final void openApp(Context context, String packageName) {
+        ResolveInfo resolveInfo = getLauncher(context, packageName);
+        if (resolveInfo != null) {
+            String startAppName = resolveInfo.activityInfo.packageName;
+            String className = resolveInfo.activityInfo.name;
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.addCategory(Intent.CATEGORY_LAUNCHER);
+            ComponentName cn = new ComponentName(startAppName, className);
+            intent.setComponent(cn);
+            context.getApplicationContext().startActivity(intent);
+        }
+    }
 
 }

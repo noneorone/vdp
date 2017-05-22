@@ -11,9 +11,10 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.noo.core.R;
-import com.noo.core.ui.msv.MultiStateView;
-import com.noo.core.ui.msv.MultiStateViewHelper;
-import com.noo.core.ui.msv.ViewType;
+import com.noo.core.app.VdpActivityManager;
+import com.noo.core.widget.msv.MultiStateView;
+import com.noo.core.widget.msv.MultiStateViewHelper;
+import com.noo.core.widget.msv.ViewType;
 
 /**
  * 扩展{@link AppCompatActivity}基础类
@@ -30,6 +31,13 @@ public abstract class VdpActivity extends AppCompatActivity implements VdpCompon
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        VdpActivityManager.getInstance().push(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        VdpActivityManager.getInstance().remove(this);
+        super.onDestroy();
     }
 
     @Override
@@ -44,6 +52,15 @@ public abstract class VdpActivity extends AppCompatActivity implements VdpCompon
         tvTitle.setText(titleId);
     }
 
+    /**
+     * 隐藏ActionBar，默认不隐藏
+     *
+     * @return true表示隐藏，false表示不隐藏
+     */
+    protected boolean hideActionBar() {
+        return false;
+    }
+
     @Override
     public void setContentView(@LayoutRes int layoutResID) {
         View container = getLayoutInflater().inflate(R.layout.vdp_container, null);
@@ -53,6 +70,9 @@ public abstract class VdpActivity extends AppCompatActivity implements VdpCompon
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
+            if (hideActionBar()) {
+                actionBar.hide();
+            }
             actionBar.setHomeAsUpIndicator(R.drawable.action_bar_back);
             actionBar.setDisplayHomeAsUpEnabled(displayHomeAsUpEnabled());
             actionBar.setDisplayShowHomeEnabled(false);

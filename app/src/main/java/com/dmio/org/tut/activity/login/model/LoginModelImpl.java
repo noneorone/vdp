@@ -4,7 +4,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 
-import com.dmio.org.tut.application.ExApplication;
+import com.dmio.org.tut.core.ExApplication;
 import com.dmio.org.tut.data.model.LoginInfo;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;

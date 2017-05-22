@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
 import com.dmio.org.tut.R;
-import com.dmio.org.tut.application.ExApplication;
+import com.dmio.org.tut.core.ExApplication;
 import com.moxie.client.model.MxParam;
 
 /**
@@ -38,8 +38,7 @@ public final class MoxieHelper {
         mxParam.setAgreementUrl(Config.AGREEMENT_URL);
         mxParam.setBannerBgColor(Config.BANNER_BG_COLOR);
         mxParam.setBannerTxtColor(Config.BANNER_TXT_COLOR);
-        ExApplication instance = ExApplication.getInstance();
-        String text = instance.getString(R.string.moxie_agreement_entry_text);
+        String text = ExApplication.getInstance().getString(R.string.moxie_agreement_entry_text);
         mxParam.setAgreementEntryText(text);
 
         return mxParam;
