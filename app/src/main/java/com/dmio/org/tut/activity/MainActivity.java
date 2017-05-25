@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -34,6 +35,7 @@ import com.dmio.org.tut.activity.list.ListRecyclerActivity;
 import com.dmio.org.tut.utils.DeviceUtils;
 import com.noo.core.log.Logger;
 import com.noo.core.ui.VdpActivity;
+import com.noo.core.ui.VdpSplashView;
 import com.noo.core.utils.AppUtils;
 
 public class MainActivity extends VdpActivity {
@@ -53,6 +55,12 @@ public class MainActivity extends VdpActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+//        VdpSplashView.show(this, "skip", R.drawable.ic_splash_light, new VdpSplashView.OnActionListener() {
+//            @Override
+//            public void onDismiss() {
+//                Snackbar.make(mLvList, "welcome", Snackbar.LENGTH_SHORT).show();
+//            }
+//        });
         initView();
         setTitle("Functions Follows");
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQ_CODE_PERM_WES);
