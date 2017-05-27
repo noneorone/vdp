@@ -20,7 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dmio.org.tut.R;
-import com.dmio.org.tut.activity.MainActivity;
+import com.dmio.org.tut.activity.main.MainActivity;
 import com.dmio.org.tut.activity.login.presenter.LoginPresenter;
 import com.dmio.org.tut.activity.login.presenter.LoginPresenterImpl;
 import com.dmio.org.tut.activity.login.view.LoginView;

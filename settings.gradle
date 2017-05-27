@@ -1,1 +1,1 @@
-include ':app', ':view', ':core', ':data', ':proxy', ':router'
+include ':app', ':view', ':core'

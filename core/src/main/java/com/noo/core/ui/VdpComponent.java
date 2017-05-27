@@ -4,8 +4,8 @@ import android.support.annotation.LayoutRes;
 import android.view.View;
 
 import com.noo.core.task.AsynCallBack;
-import com.noo.core.widget.msv.MultiStateView;
-import com.noo.core.widget.msv.ViewType;
+import com.noo.core.ui.msv.MultiStateView;
+import com.noo.core.ui.msv.ViewType;
 
 /**
  * VDP结构组件定义

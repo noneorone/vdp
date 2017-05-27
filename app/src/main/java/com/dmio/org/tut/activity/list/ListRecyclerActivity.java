@@ -17,7 +17,7 @@ import com.noo.core.task.AsynTask;
 import com.noo.core.ui.VdpActivity;
 import com.noo.core.utils.AssertUtils;
 import com.noo.core.utils.ViewUtils;
-import com.noo.core.widget.msv.ViewType;
+import com.noo.core.ui.msv.ViewType;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

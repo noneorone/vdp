@@ -5,9 +5,11 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ResolveInfo;
+import android.util.Log;
 
 import com.noo.core.log.Logger;
 import com.noo.core.utils.AppUtils;
+import com.noo.core.utils.PrefsHelper;
 
 /**
  * 异常处理类
@@ -18,14 +20,21 @@ import com.noo.core.utils.AppUtils;
 public class VdpCrashHandler implements Thread.UncaughtExceptionHandler {
 
     public static final String EXTRAS_IS_CRASH = "is_crash";
+    private static final String LAST_CRASH_TIME = "last_crash_time";
 
     private static VdpCrashHandler mCrashHandler;
 
     private Context mContext;
-
-    private long restartInterval = 1000L;
-
     private Class<?> restartComponentCls;
+
+    /**
+     * 前后两次发生异常时间间隔最小限制
+     */
+    private long minusInterval = 10000L;
+    /**
+     * 重启应用的时间间隔
+     */
+    private long restartInterval = 1000L;
 
     private final Thread.UncaughtExceptionHandler mDefaultHandler;
 
@@ -81,8 +90,13 @@ public class VdpCrashHandler implements Thread.UncaughtExceptionHandler {
                 }
             }
 
+            // 比较两次crash时间间隔，是否超过规定值，若超过则重启否则不重启
+            long timeNow = System.currentTimeMillis();
+            long timeLast = PrefsHelper.get(mContext).get(LAST_CRASH_TIME, 0L);
+            boolean greatThanInterval = (timeNow - timeLast > minusInterval);
+
             // 定时重启应用
-            if (restartComponentCls != null) {
+            if (restartComponentCls != null && greatThanInterval) {
                 AlarmManager mgr = (AlarmManager) mContext.getSystemService(Context.ALARM_SERVICE);
 
                 Intent intent = new Intent(mContext, restartComponentCls);
@@ -92,6 +106,9 @@ public class VdpCrashHandler implements Thread.UncaughtExceptionHandler {
 
                 mgr.set(AlarmManager.RTC, System.currentTimeMillis() + restartInterval, restartIntent);
             }
+
+            // 记录当前crash时间
+            PrefsHelper.get(mContext).put(LAST_CRASH_TIME, timeNow);
 
             // 退出应用
             VdpActivityManager.getInstance().finishAll();

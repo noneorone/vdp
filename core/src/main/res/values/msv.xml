@@ -34,6 +34,6 @@
     <!-- String -->
     <string name="msv_error_title_network">Network Error</string>
     <string name="msv_error_title_unknown">Oops! We messed up.</string>
-    <string name="msv_tap_to_retry">Tap to retry</string>
+    <string name="msv_retry">Retry</string>
 
 </resources>

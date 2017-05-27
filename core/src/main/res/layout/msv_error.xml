@@ -3,8 +3,10 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:layout_margin="10dp"
+    android:background="@color/c9"
     android:clickable="true"
     android:descendantFocusability="beforeDescendants"
     android:gravity="center"
@@ -20,22 +22,23 @@
         tools:ignore="ContentDescription"/>
 
     <TextView
-        android:id="@+id/error_title"
+        android:id="@+id/tv_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:ellipsize="end"
         android:gravity="center"
-        android:text="@string/msv_error_title_network"
-        android:textColor="#333"
-        android:textSize="18sp"
+        android:lines="1"
+        android:textColor="@color/c5"
+        android:textSize="@dimen/t6"
         android:textStyle="bold"/>
 
     <Button
-        android:id="@+id/tap_to_retry"
+        android:id="@+id/btn_retry"
         style="@style/Button.Retry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="false"
         android:duplicateParentState="true"
-        android:text="@string/msv_tap_to_retry"/>
+        android:text="@string/msv_retry"/>
 
 </LinearLayout>

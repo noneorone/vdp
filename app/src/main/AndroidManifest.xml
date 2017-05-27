@@ -21,7 +21,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activity.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -44,6 +44,7 @@
         <activity android:name=".activity.demo.moxie.MoxieActivity"/>
         <activity android:name=".activity.demo.moxie.WebViewActivity"/>
         <activity android:name="com.moxie.client.MainActivity"/>
+        <activity android:name="com.noo.core.ui.web.VdpWebViewAct"/>
 
         <meta-data
             android:name="twcal"

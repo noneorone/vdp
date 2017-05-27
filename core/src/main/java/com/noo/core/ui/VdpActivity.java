@@ -12,9 +12,9 @@ import android.view.View;
 
 import com.noo.core.R;
 import com.noo.core.app.VdpActivityManager;
-import com.noo.core.widget.msv.MultiStateView;
-import com.noo.core.widget.msv.MultiStateViewHelper;
-import com.noo.core.widget.msv.ViewType;
+import com.noo.core.ui.msv.MultiStateView;
+import com.noo.core.ui.msv.MultiStateViewHelper;
+import com.noo.core.ui.msv.ViewType;
 
 /**
  * 扩展{@link AppCompatActivity}基础类
@@ -65,7 +65,7 @@ public abstract class VdpActivity extends AppCompatActivity implements VdpCompon
     public void setContentView(@LayoutRes int layoutResID) {
         View container = getLayoutInflater().inflate(R.layout.vdp_container, null);
 
-        tvTitle = (AppCompatTextView) container.findViewById(R.id.tv_title);
+        tvTitle = (AppCompatTextView) container.findViewById(R.id.title);
         toolbar = (Toolbar) container.findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
@@ -84,6 +84,7 @@ public abstract class VdpActivity extends AppCompatActivity implements VdpCompon
         View contentView = getLayoutInflater().inflate(layoutResID, null);
 
         multiStateView = (MultiStateView) container.findViewById(R.id.msv);
+
         MultiStateViewHelper.setAttrs(
                 multiStateView,
                 contentView,
