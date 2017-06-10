@@ -10,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.dmio.org.tut.R;
 import com.dmio.org.tut.utils.DeviceUtils;
@@ -35,12 +36,12 @@ public class MainActivity extends VdpActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        VdpSplashView.show(this, "Skip", R.drawable.ic_splash_light, new VdpSplashView.OnActionListener() {
-            @Override
-            public void onDismiss() {
-//                Snackbar.make(mLvList, "welcome", Snackbar.LENGTH_SHORT).show();
-            }
-        });
+//        VdpSplashView.show(this, "Skip", R.drawable.ic_splash_light, new VdpSplashView.OnActionListener() {
+//            @Override
+//            public void onDismiss() {
+////                Snackbar.make(mLvList, "welcome", Snackbar.LENGTH_SHORT).show();
+//            }
+//        });
         initView();
         setTitle("Functions Follows");
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQ_CODE_PERM_WES);
@@ -60,16 +61,21 @@ public class MainActivity extends VdpActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuItem item = menu.add("trace");
-        item.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
-        item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                DeviceUtils.trackANRTrace(MainActivity.this);
-                return false;
-            }
-        });
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.mi_a:
+                Toast.makeText(this, "mi_a", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.mi_b:
+                Toast.makeText(this, "mi_b", Toast.LENGTH_SHORT).show();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void initView() {

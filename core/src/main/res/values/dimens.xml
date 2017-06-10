@@ -9,6 +9,9 @@
     <dimen name="t6">12sp</dimen>
     <dimen name="t7">11.33sp</dimen>
 
+    <!-- ActionBar高度 -->
+    <dimen name="py_actionbar_height">46dp</dimen>
+
     <item name="animDuration" type="integer">@android:integer/config_mediumAnimTime</item>
     <integer name="animation_default_duration">@integer/animDuration</integer>
 

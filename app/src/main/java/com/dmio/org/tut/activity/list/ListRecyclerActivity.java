@@ -6,18 +6,21 @@ import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.dmio.org.tut.R;
 import com.dmio.org.tut.data.model.Warrior;
+import com.dmio.org.tut.utils.DeviceUtils;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.noo.core.log.Logger;
 import com.noo.core.task.AsynTask;
 import com.noo.core.ui.VdpActivity;
+import com.noo.core.ui.msv.ViewType;
 import com.noo.core.utils.AssertUtils;
 import com.noo.core.utils.ViewUtils;
-import com.noo.core.ui.msv.ViewType;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -60,6 +63,20 @@ public class ListRecyclerActivity extends VdpActivity {
 //        int b = 2 / i;
         showView(ViewType.LOADING);
         AsynTask.getInstance().exec(TASK_GET_LIST, ListRecyclerActivity.this);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuItem item = menu.add("trace");
+        item.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+        item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                DeviceUtils.trackANRTrace(ListRecyclerActivity.this);
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
     }
 
     private void initView() {
