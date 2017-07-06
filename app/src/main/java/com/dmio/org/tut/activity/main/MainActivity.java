@@ -13,10 +13,8 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.dmio.org.tut.R;
-import com.dmio.org.tut.utils.DeviceUtils;
 import com.noo.core.log.Logger;
 import com.noo.core.ui.VdpActivity;
-import com.noo.core.ui.splash.VdpSplashView;
 import com.noo.core.utils.AppUtils;
 
 public class MainActivity extends VdpActivity {

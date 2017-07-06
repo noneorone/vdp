@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="leak_canary_display_activity_label">VDP Leaks</string>
+
+    <!-- max stored dump and leak trace -->
+    <integer name="leak_canary_max_stored_leaks">20</integer>
+
+</resources>

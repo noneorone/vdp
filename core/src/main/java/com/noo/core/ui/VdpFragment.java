@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.noo.core.R;
+import com.noo.core.app.VdpApplication;
 import com.noo.core.ui.msv.MultiStateView;
 import com.noo.core.ui.msv.MultiStateViewHelper;
 import com.noo.core.ui.msv.ViewType;
@@ -37,6 +38,12 @@ public abstract class VdpFragment extends Fragment implements VdpComponent {
         );
         showView(ViewType.CONTENT);
         return multiStateView;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        VdpApplication.getRefWatcher(getContext()).watch(this);
     }
 
     @Override

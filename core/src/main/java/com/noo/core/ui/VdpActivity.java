@@ -12,6 +12,7 @@ import android.view.View;
 
 import com.noo.core.R;
 import com.noo.core.app.VdpActivityManager;
+import com.noo.core.app.VdpApplication;
 import com.noo.core.ui.msv.MultiStateView;
 import com.noo.core.ui.msv.MultiStateViewHelper;
 import com.noo.core.ui.msv.ViewType;
@@ -38,6 +39,7 @@ public abstract class VdpActivity extends AppCompatActivity implements VdpCompon
     protected void onDestroy() {
         VdpActivityManager.getInstance().remove(this);
         super.onDestroy();
+        VdpApplication.getRefWatcher(this).watch(this);
     }
 
     @Override
