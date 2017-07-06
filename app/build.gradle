@@ -38,6 +38,7 @@ android {
         ndk {
             abiFilters "armeabi", "armeabi-v7a"
         }
+        testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
     }
 
     dexOptions {
@@ -90,7 +91,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile files('libs/ikey_sdk.jar')
-    compile(name: 'moxie-client-1.2.7', ext: 'aar')
+    compile(name: 'moxie-client-1.3.2', ext: 'aar')
     compile project(':view')
     compile project(':core')
     compile 'com.jakewharton:butterknife:8.4.0'

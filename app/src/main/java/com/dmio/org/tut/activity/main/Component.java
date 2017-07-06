@@ -14,6 +14,7 @@ import com.dmio.org.tut.activity.demo.widget.swipecard.SwipeCardActivity;
 import com.dmio.org.tut.activity.demo.widget.wheelpicker.WheelPickerActivity;
 import com.dmio.org.tut.activity.guide.GuideMainActivity;
 import com.dmio.org.tut.activity.list.ListRecyclerActivity;
+import com.dmio.org.tut.activity.demo.widget.tourguide.MultipleToolTipActivity;
 import com.noo.core.ui.web.VdpWebViewAct;
 
 /**
@@ -45,7 +46,8 @@ public class Component {
             ListRecyclerActivity.class,
             ProgressWheelActivity.class,
             DragActivity.class,
-            VdpWebViewAct.class
+            VdpWebViewAct.class,
+            MultipleToolTipActivity.class
     };
 
 }

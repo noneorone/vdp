@@ -41,6 +41,7 @@
         <activity android:name=".activity.demo.widget.blurry.BlurryActivity"/>
         <activity android:name=".activity.list.ListRecyclerActivity"/>
         <activity android:name=".activity.demo.widget.progress.ProgressWheelActivity"/>
+        <activity android:name=".activity.demo.widget.tourguide.MultipleToolTipActivity"/>
         <activity android:name=".activity.demo.moxie.MoxieActivity"/>
         <activity android:name=".activity.demo.moxie.WebViewActivity"/>
         <activity android:name="com.moxie.client.MainActivity"/>
