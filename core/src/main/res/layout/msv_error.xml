@@ -6,7 +6,6 @@
     android:layout_width="0dp"
     android:layout_height="0dp"
     android:layout_margin="10dp"
-    android:background="@color/c9"
     android:clickable="true"
     android:descendantFocusability="beforeDescendants"
     android:gravity="center"

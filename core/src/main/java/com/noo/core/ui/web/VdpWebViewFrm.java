@@ -1,6 +1,7 @@
 package com.noo.core.ui.web;
 
 import android.annotation.TargetApi;
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -40,6 +41,7 @@ public class VdpWebViewFrm extends VdpFragment {
     private WebView mWebView;
 
     private String url;
+    private boolean receivedError;
 
     public WebView getWebView() {
         return mWebView;
@@ -56,13 +58,15 @@ public class VdpWebViewFrm extends VdpFragment {
     public View getContentView() {
         ViewGroup view = (ViewGroup) LayoutInflater.from(getContext()).inflate(R.layout.vdp_empty_web, null);
         progressBar = (ProgressBar) view.findViewById(R.id.pb_loading);
-        mWebView = new WebView(getContext().getApplicationContext());
-        mWebView.setLayoutParams(new LinearLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT
-        ));
-        mWebView.setBackgroundResource(R.color.c4);
-        view.addView(mWebView);
+        if (mWebView == null) {
+            mWebView = new WebView(getContext().getApplicationContext());
+            mWebView.setLayoutParams(new LinearLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT
+            ));
+            mWebView.setBackgroundResource(R.color.c6);
+            view.addView(mWebView);
+        }
         return view;
     }
 
@@ -74,8 +78,6 @@ public class VdpWebViewFrm extends VdpFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        getMultiStateView().setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-        getMultiStateView().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.c1));
         initArguments();
         initWebView();
     }
@@ -83,7 +85,7 @@ public class VdpWebViewFrm extends VdpFragment {
     private void initArguments() {
         Bundle extras = getArguments();
         if (extras != null) {
-            url = extras.getString(EXTRA_URL) + "sdfsfdsfsdfsdfsdfdsfdsf";
+            url = extras.getString(EXTRA_URL);
         }
     }
 
@@ -146,17 +148,23 @@ public class VdpWebViewFrm extends VdpFragment {
      * @param description
      */
     private void showErrorView(int errorCode, CharSequence description) {
-        View errorView = getMultiStateView().getView(MultiStateView.VIEW_STATE_ERROR);
+        MultiStateView multiStateView = getMultiStateView();
+        View errorView = multiStateView.getView(MultiStateView.VIEW_STATE_ERROR);
         TextView tvMessage = (TextView) errorView.findViewById(R.id.tv_message);
         Button btnRetry = (Button) errorView.findViewById(R.id.btn_retry);
         tvMessage.setText(errorCode + " : " + description);
         btnRetry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                receivedError = false;
                 reload();
             }
         });
+        int width = multiStateView.getWidth();
+        int height = multiStateView.getHeight();
+        errorView.setLayoutParams(new FrameLayout.LayoutParams(width, height));
         showView(ViewType.ERROR);
+        receivedError = true;
     }
 
     /**
@@ -183,6 +191,16 @@ public class VdpWebViewFrm extends VdpFragment {
             public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
                 showErrorView(errorCode, description);
             }
+
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                super.onPageStarted(view, url, favicon);
+            }
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+            }
         });
     }
 
@@ -200,6 +218,7 @@ public class VdpWebViewFrm extends VdpFragment {
                 Logger.d("newProgress: " + newProgress);
                 if (newProgress == 100) {
                     progressBar.setVisibility(View.GONE);
+                    showView(receivedError ? ViewType.ERROR : ViewType.CONTENT);
                 } else {
                     progressBar.setVisibility(View.VISIBLE);
                     progressBar.setProgress(newProgress);

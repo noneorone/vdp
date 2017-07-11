@@ -11,7 +11,7 @@
         android:id="@+id/pb_loading"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="3dp"
         android:indeterminateOnly="false"
         android:max="100"
         android:progressDrawable="@drawable/progress_webview"/>

@@ -36,7 +36,6 @@ public abstract class VdpFragment extends Fragment implements VdpComponent {
                 MultiStateView.VIEW_STATE_CONTENT,
                 animateViewStateChange()
         );
-        showView(ViewType.CONTENT);
         return multiStateView;
     }
 
