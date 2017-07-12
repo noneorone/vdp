@@ -10,7 +10,7 @@ import io.realm.annotations.Required;
 /**
  * Login model
  *
- * @author wangmeng noneorone@yeah.net
+ * @author Mars.Wong noneorone@yeah.net
  * @since 2017/2/23
  */
 public class LoginInfo extends RealmObject implements Serializable {

@@ -2,7 +2,7 @@ package com.noo.core.utils;
 
 /**
  * 功能说明：格式化工具<br/>
- * 作者：wangmeng on 2017/4/11 11:36<br/>
+ * 作者：Mars.Wong on 2017/4/11 11:36<br/>
  * 邮箱：noneorone@yeah.net
  */
 

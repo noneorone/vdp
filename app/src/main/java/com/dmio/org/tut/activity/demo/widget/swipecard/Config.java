@@ -2,7 +2,7 @@ package com.dmio.org.tut.activity.demo.widget.swipecard;
 
 /**
  * 功能说明：com.dmio.org.tut.activity.demo.widget.swipecard
- * 作者：wangmeng on 2016/12/20 14:47
+ * 作者：Mars.Wong on 2016/12/20 14:47
  * 邮箱：noneorone@yeah.net
  */
 

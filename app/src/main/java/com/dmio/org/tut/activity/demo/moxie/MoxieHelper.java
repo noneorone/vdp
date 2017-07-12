@@ -11,7 +11,7 @@ import com.moxie.client.model.MxParam;
 
 /**
  * Moxie工具类<br/>
- * wangmeng on 2017/3/28 9:16
+ * Mars.Wong on 2017/3/28 9:16
  * noneorone@yeah.net
  */
 

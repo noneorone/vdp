@@ -2,7 +2,7 @@ package com.dmio.org.tut.activity.login.model;
 
 /**
  * 功能说明：数据层
- * 作者：wangmeng on 2017/2/7 17:32
+ * 作者：Mars.Wong on 2017/2/7 17:32
  * 邮箱：noneorone@yeah.net
  */
 

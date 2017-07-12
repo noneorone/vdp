@@ -8,7 +8,7 @@ import com.dmio.org.tut.activity.login.view.LoginView;
 
 /**
  * 功能说明：业务处理
- * 作者：wangmeng on 2017/2/8 9:57
+ * 作者：Mars.Wong on 2017/2/8 9:57
  * 邮箱：noneorone@yeah.net
  */
 

@@ -2,7 +2,7 @@ package com.dmio.org.tut.data.model;
 
 /**
  * 功能说明：武者实体类<br/>
- * 作者：wangmeng on 2017/3/29 20:54<br/>
+ * 作者：Mars.Wong on 2017/3/29 20:54<br/>
  * 邮箱：noneorone@yeah.net
  */
 

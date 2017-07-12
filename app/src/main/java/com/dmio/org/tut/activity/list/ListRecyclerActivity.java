@@ -28,7 +28,7 @@ import java.util.List;
 
 /**
  * 功能说明：带刷新样式的RecyclerView<br/>
- * 作者：wangmeng on 2017/3/29 19:56<br/>
+ * 作者：Mars.Wong on 2017/3/29 19:56<br/>
  * 邮箱：noneorone@yeah.net
  */
 public class ListRecyclerActivity extends VdpActivity {

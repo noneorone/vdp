@@ -15,7 +15,7 @@ import java.util.UUID;
 
 /**
  * 功能说明：本地数据存储工具，用于{@link android.content.SharedPreferences}存储<br/>
- * 作者：wangmeng on 2017/5/4 15:39<br/>
+ * 作者：Mars.Wong on 2017/5/4 15:39<br/>
  * 邮箱：noneorone@yeah.net<br/>
  */
 public class PrefsHelper {

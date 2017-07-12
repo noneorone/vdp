@@ -28,7 +28,7 @@ import java.util.Collections;
 
 /**
  * 功能说明：设备工具类
- * 作者：wangmeng on 2017/2/7 10:57
+ * 作者：Mars.Wong on 2017/2/7 10:57
  * 邮箱：noneorone@yeah.net
  */
 
