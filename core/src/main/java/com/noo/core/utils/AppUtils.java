@@ -14,6 +14,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageItemInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.support.v4.os.EnvironmentCompat;
@@ -241,7 +242,7 @@ public class AppUtils {
     /**
      * 通过指定的应用包名打开指定的应用
      *
-     * @param context
+     * @param context     应用上下文
      * @param packageName 应用包名
      */
     public static final void openApp(Context context, String packageName) {
@@ -256,6 +257,22 @@ public class AppUtils {
             intent.setComponent(cn);
             context.getApplicationContext().startActivity(intent);
         }
+    }
+
+    /**
+     * 判断手机是否有浏览器
+     *
+     * @param context 应用上下文
+     * @return 若存在则返回true，否则返回false
+     */
+    public static final boolean hasBrowser(Context context) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.addCategory(Intent.CATEGORY_BROWSABLE);
+        intent.setData(Uri.parse("http://"));
+
+        PackageManager pm = context.getPackageManager();
+        List<ResolveInfo> infos = pm.queryIntentActivities(intent, PackageManager.GET_INTENT_FILTERS);
+        return (infos != null && infos.size() > 0);
     }
 
 }
