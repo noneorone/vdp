@@ -275,4 +275,40 @@ public class AppUtils {
         return (infos != null && infos.size() > 0);
     }
 
+    /**
+     * 判断应用是否置于后台
+     *
+     * @param context {@link Context}
+     * @return true表示置于后台，否则返回false
+     */
+    public static boolean isBackground(Context context) {
+        ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        List<ActivityManager.RunningAppProcessInfo> appProcesses = activityManager.getRunningAppProcesses();
+        if (appProcesses != null && !appProcesses.isEmpty()) {
+            for (ActivityManager.RunningAppProcessInfo appProcess : appProcesses) {
+                if (appProcess.processName.equals(context.getPackageName()) && appProcess.importance == ActivityManager.RunningAppProcessInfo.IMPORTANCE_BACKGROUND) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
+     * 将应用置于前台
+     *
+     * @param context {@link Context}
+     */
+    public static void moveTaskToFront(Context context) {
+        ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        List<ActivityManager.RunningAppProcessInfo> appProcesses = activityManager.getRunningAppProcesses();
+        if (appProcesses != null && !appProcesses.isEmpty()) {
+            for (ActivityManager.RunningAppProcessInfo appProcess : appProcesses) {
+                if (appProcess.processName.equals(context.getPackageName())) {
+                    activityManager.moveTaskToFront(appProcess.pid, ActivityManager.MOVE_TASK_WITH_HOME);
+                }
+            }
+        }
+    }
+
 }
