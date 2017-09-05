@@ -10,6 +10,7 @@ import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageItemInfo;
 import android.content.pm.PackageManager;
@@ -309,6 +310,22 @@ public class AppUtils {
                 }
             }
         }
+    }
+
+    /**
+     * 检测应用是否为debug模式
+     *
+     * @param context {@link Context}
+     * @return 若为true则是debug模式，否则不是
+     */
+    public static boolean isDebuggable(Context context) {
+        try {
+            ApplicationInfo info = context.getApplicationInfo();
+            return (info.flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
 }
