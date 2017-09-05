@@ -11,8 +11,8 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/py_actionbar_height"
-        android:background="@color/colorPrimary"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/gradient_c17_bg"
         android:elevation="4dp"
         android:fitsSystemWindows="true"
         android:paddingRight="15dp"

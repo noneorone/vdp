@@ -4,18 +4,23 @@
     <color name="colorPrimaryDark">#002984</color>
     <color name="colorAccent">#FF4081</color>
 
-    <color name="c1">#2084d3</color>
-    <color name="c2">#222222</color>
+    <color name="c1">#4772fc</color>
+    <color name="c2">#000000</color>
     <color name="c3">#333333</color>
-    <color name="c4">#666666</color>
-    <color name="c5">#999999</color>
-    <color name="c6">#d8d8d8</color>
-    <color name="c7">#ededed</color>
+    <color name="c4">#616670</color>
+    <color name="c5">#868a96</color>
+    <color name="c6">#cccccc</color>
+    <color name="c7">#f3f4f8</color>
     <color name="c8">#ffffff</color>
-    <color name="c9">#f55c54</color>
-    <color name="c10">#22b573</color>
-    <color name="c11">#ff9c00</color>
+    <color name="c9">#ff5f4b</color>
+    <color name="c10">#00c788</color>
+    <color name="c11">#fba317</color>
     <color name="c12">#f2f2f2</color>
+    <color name="c13">#ff5a9c</color>
+    <color name="c14">#7c7cf6</color>
+    <color name="c15">#3fc4ff</color>
+    <color name="c16">#41d7c9</color>
+    <color name="c17">#568af3</color>
 
 </resources>
 

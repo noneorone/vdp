@@ -1,8 +1,10 @@
 package com.noo.core.ui;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatTextView;
@@ -16,6 +18,7 @@ import com.noo.core.app.VdpApplication;
 import com.noo.core.ui.msv.MultiStateView;
 import com.noo.core.ui.msv.MultiStateViewHelper;
 import com.noo.core.ui.msv.ViewType;
+import com.noo.core.utils.topbar.TranslucentUtils;
 
 /**
  * 扩展{@link AppCompatActivity}基础类
@@ -32,6 +35,7 @@ public abstract class VdpActivity extends AppCompatActivity implements VdpCompon
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initTopBarSetting();
         VdpActivityManager.getInstance().push(this);
     }
 
@@ -98,6 +102,28 @@ public abstract class VdpActivity extends AppCompatActivity implements VdpCompon
         );
 
         super.setContentView(container);
+    }
+
+    /**
+     * 初始化顶部栏位控件(包括顶部状态栏和{@link ActionBar})的配置，主要是设置过渡颜色
+     */
+    protected void initTopBarSetting() {
+        //透明状态栏
+//        TranslucentUtils.setStatusBar(this, getTopNavBarDrawable(), true);
+        // 设定actionbar背景
+        final ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setBackgroundDrawable(getTopNavBarDrawable());
+        }
+    }
+
+    /**
+     * 供不同界面顶部导航栏与状态栏样式设置重载
+     *
+     * @return {@link Drawable}
+     */
+    protected Drawable getTopNavBarDrawable() {
+        return ContextCompat.getDrawable(this, R.drawable.gradient_c17_bg);
     }
 
     /**
