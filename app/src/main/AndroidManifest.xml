@@ -52,7 +52,8 @@
             android:value="E60BD8CEB3E4F587"/>
 
         <activity android:name=".activity.demo.widget.drag.DragActivity"/>
-
+        <activity android:name=".activity.demo.webview.WebViewTestActivity">
+        </activity>
     </application>
 
 </manifest>

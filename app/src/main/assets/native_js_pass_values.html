@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <script type="text/javascript">
+		<!--
+			function native2Js(native_msg) {
+				document.getElementById('tx_content').value = native_msg;
+			}
+
+			function js2Native() {
+				var tx_content_value = document.getElementById('tx_content').value;
+				console.log('tx_content_value: '  + tx_content_value);
+				try {
+					if (typeof(BRIDGE) != 'undefined') {
+					    alert(2222);
+						BRIDGE.js2Native(tx_content_value);
+					}
+				} catch(e) {
+				    alert(e);
+					// console.error(e);
+				}
+			}
+		//>
+
+    </script>
+    <style>
+        textarea {
+            color:#4772fc;
+            font-size:16px;
+        }
+
+        button {
+            padding:8px;
+            color:#ffffff;
+            font-size:16px;
+            background-color:#4772fc;
+        }
+    </style>
+</head>
+
+<body>
+<p>
+    <textarea id="tx_content" cols="30" rows="15"></textarea>
+<p>
+    <button id="btn_send" onclick="js2Native();">send</button>
+
+</body>
+
+</html>
