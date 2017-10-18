@@ -9,21 +9,31 @@
 				document.getElementById('tx_content').value = native_msg;
 			}
 
-			function js2Native() {
+			function js2Native1() {
 				var tx_content_value = document.getElementById('tx_content').value;
 				console.log('tx_content_value: '  + tx_content_value);
 				try {
 					if (typeof(BRIDGE) != 'undefined') {
-					    alert(2222);
 						BRIDGE.js2Native(tx_content_value);
 					}
 				} catch(e) {
-				    alert(e);
-					// console.error(e);
+					console.error(e);
 				}
 			}
-		//>
 
+			function js2Native2() {
+				var tx_content_value = document.getElementById('tx_content').value;
+				console.log('tx_content_value: '  + tx_content_value);
+				document.location = 'js://webview?params=' + tx_content_value;
+			}
+
+			function js2Native3() {
+				var tx_content_value = document.getElementById('tx_content').value;
+				console.log('tx_content_value: '  + tx_content_value);
+				var result = prompt('js://webview?params=' + tx_content_value);
+				alert('result_back: ' + result);
+			}
+		//>
     </script>
     <style>
         textarea {
@@ -37,6 +47,9 @@
             font-size:16px;
             background-color:#4772fc;
         }
+
+
+
     </style>
 </head>
 
@@ -44,7 +57,11 @@
 <p>
     <textarea id="tx_content" cols="30" rows="15"></textarea>
 <p>
-    <button id="btn_send" onclick="js2Native();">send</button>
+    <button onclick="js2Native1();">send1</button>
+    &nbsp;
+    <button onclick="js2Native2();">send2</button>
+    &nbsp;
+    <button onclick="js2Native3();">send3</button>
 
 </body>
 

@@ -17,7 +17,7 @@
         <!--Appbar背景色-->
         <item name="colorPrimary">@color/colorPrimary</item>
         <!--ToolBar上的Title颜色-->
-        <item name="android:textColorPrimary">@color/c8</item>
+        <item name="android:textColorPrimary">@color/c13</item>
         <!--各个控制控件的默认颜色-->
         <item name="android:colorControlNormal" tools:targetApi="lollipop">@color/c8</item>
         <!-- 不使用系统actionbar -->

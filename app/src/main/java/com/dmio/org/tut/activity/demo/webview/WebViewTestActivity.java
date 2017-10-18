@@ -1,23 +1,39 @@
 package com.dmio.org.tut.activity.demo.webview;
 
 import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.webkit.ConsoleMessage;
 import android.webkit.JavascriptInterface;
+import android.webkit.JsPromptResult;
+import android.webkit.JsResult;
+import android.webkit.WebChromeClient;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.dmio.org.tut.R;
 
 import java.text.MessageFormat;
+import java.util.Set;
 
 public class WebViewTestActivity extends AppCompatActivity implements View.OnClickListener {
 
+    // 方式一
     private static String JS_FUNC_NATIVE2JS = "native2Js('%s')";
     private static String JS_OBJECT_NAME = "BRIDGE";
+
+    // 方式二
+    private static String JS_SCHEMA = "js";
+    private static String JS_AUTHORITY = "webview";
+    private static String JS_PARAMS = "params";
 
     private WebView mWebView;
     private EditText etContent;
@@ -51,12 +67,88 @@ public class WebViewTestActivity extends AppCompatActivity implements View.OnCli
     }
 
     /**
+     * 解析Uri
+     *
+     * @param uri
+     * @return
+     */
+    private boolean parseUri(Uri uri, JsPromptResult result) {
+        boolean flag = false;
+        // 一般根据协议格式(schema)和协议名(authority)判断，如url="js:webview?arg1=111&arg2=222"约定
+        if (uri != null && JS_SCHEMA.equals(uri.getScheme())) {
+            if (JS_AUTHORITY.equals(uri.getAuthority())) {
+                String params = uri.getQueryParameter(JS_PARAMS);
+                etContent.setText(params);
+
+                flag = true;
+            }
+        }
+
+        if (result != null) {
+            result.confirm("success? " + flag);
+        }
+
+        return flag;
+    }
+
+    /**
      * 加载网页到webview
      */
     private void loadView() {
         mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.loadUrl("file:///android_asset/native_js_pass_values.html");
-        mWebView.addJavascriptInterface(new JsBridge(), JS_OBJECT_NAME);
+
+        // 方式一：简单但4.2版本以下存在严重的漏洞问题（可通过js注入来调用java反射到指定的类如Runtime类从而执行本地代码）
+        // mWebView.addJavascriptInterface(new JsBridge(), JS_OBJECT_NAME);
+
+        // 方式二：不存在方式一的漏洞，但是要将处理过后的值回传给js的话只能在js中单独定义接收结果的函数并通过webview.loadUrl()的方式去回传
+        mWebView.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                return parseUri(Uri.parse(url), null);
+            }
+
+            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+                return parseUri(request.getUrl(), null);
+            }
+        });
+
+        // 方式三：拦截js的prompt框，因为它可返回任意类型而操作方便，能满足大多数互调场景，但使用起来比较复杂
+        mWebView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public boolean onJsPrompt(WebView view, String url, String message, String defaultValue, JsPromptResult result) {
+                return parseUri(Uri.parse(message), result);
+            }
+
+            @Override
+            public boolean onJsAlert(WebView view, String url, String message, JsResult result) {
+                return super.onJsAlert(view, url, message, result);
+            }
+
+            @Override
+            public boolean onJsConfirm(WebView view, String url, String message, JsResult result) {
+                return super.onJsConfirm(view, url, message, result);
+            }
+
+            @Override
+            public boolean onJsBeforeUnload(WebView view, String url, String message, JsResult result) {
+                return super.onJsBeforeUnload(view, url, message, result);
+            }
+
+            @Override
+            public boolean onJsTimeout() {
+                return super.onJsTimeout();
+            }
+
+            @Override
+            public boolean onConsoleMessage(ConsoleMessage cm) {
+                Log.d("console", String.format("{level: %s, sourceId: %s, lineNumber: %s, message: %s", cm.messageLevel(), cm.sourceId(), cm.lineNumber(), cm.message()));
+                return super.onConsoleMessage(cm);
+            }
+        });
+
     }
 
     /**
