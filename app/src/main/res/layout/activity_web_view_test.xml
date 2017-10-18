@@ -8,8 +8,8 @@
     android:background="@color/c8"
     tools:context="com.dmio.org.tut.activity.demo.webview.WebViewTestActivity">
 
-    <WebView
-        android:id="@+id/wv_content"
+    <LinearLayout
+        android:id="@+id/ll_web"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
@@ -17,6 +17,7 @@
         android:layout_marginRight="5dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/round_corner_stroke_c6_solid_c8"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

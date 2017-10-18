@@ -5,9 +5,11 @@ import android.annotation.TargetApi;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.webkit.ConsoleMessage;
 import android.webkit.JavascriptInterface;
 import android.webkit.JsPromptResult;
@@ -18,11 +20,11 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import com.dmio.org.tut.R;
 
 import java.text.MessageFormat;
-import java.util.Set;
 
 public class WebViewTestActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -35,6 +37,7 @@ public class WebViewTestActivity extends AppCompatActivity implements View.OnCli
     private static String JS_AUTHORITY = "webview";
     private static String JS_PARAMS = "params";
 
+    private LinearLayout llWeb;
     private WebView mWebView;
     private EditText etContent;
     private Button btnSend;
@@ -48,10 +51,32 @@ public class WebViewTestActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void initView() {
-        mWebView = (WebView) findViewById(R.id.wv_content);
+        llWeb = (LinearLayout) findViewById(R.id.ll_web);
         etContent = (EditText) findViewById(R.id.et_content);
         btnSend = (Button) findViewById(R.id.btn_send);
         btnSend.setOnClickListener(this);
+
+        // 动态加入WebView
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT
+        );
+        mWebView = new WebView(getApplicationContext());
+        llWeb.addView(mWebView, lp);
+    }
+
+    @Override
+    protected void onDestroy() {
+        // 先清除WebView以免内存泄露
+        if (mWebView != null) {
+            mWebView.loadDataWithBaseURL(null, "", "text/html", "utf-8", null);
+            mWebView.clearHistory();
+
+            ((ViewGroup) mWebView.getParent()).removeView(mWebView);
+            mWebView.destroy();
+            mWebView = null;
+        }
+        super.onDestroy();
     }
 
     @Override
@@ -95,11 +120,20 @@ public class WebViewTestActivity extends AppCompatActivity implements View.OnCli
      * 加载网页到webview
      */
     private void loadView() {
+        // 启用chrome远程调试
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            WebView.setWebContentsDebuggingEnabled(true);
+        }
+        // 移除可能存在漏洞的远程调用的js接口
+        mWebView.removeJavascriptInterface("accessibility");
+        mWebView.removeJavascriptInterface("accessibilityTraversal");
+        mWebView.removeJavascriptInterface("searchBoxJavaBridge_");
+        // 启用js交互调用
         mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.loadUrl("file:///android_asset/native_js_pass_values.html");
 
         // 方式一：简单但4.2版本以下存在严重的漏洞问题（可通过js注入来调用java反射到指定的类如Runtime类从而执行本地代码）
-        // mWebView.addJavascriptInterface(new JsBridge(), JS_OBJECT_NAME);
+        mWebView.addJavascriptInterface(new JsBridge(), JS_OBJECT_NAME);
 
         // 方式二：不存在方式一的漏洞，但是要将处理过后的值回传给js的话只能在js中单独定义接收结果的函数并通过webview.loadUrl()的方式去回传
         mWebView.setWebViewClient(new WebViewClient() {
@@ -144,7 +178,22 @@ public class WebViewTestActivity extends AppCompatActivity implements View.OnCli
 
             @Override
             public boolean onConsoleMessage(ConsoleMessage cm) {
-                Log.d("console", String.format("{level: %s, sourceId: %s, lineNumber: %s, message: %s}", cm.messageLevel(), cm.sourceId(), cm.lineNumber(), cm.message()));
+                String msg = String.format("{level: %s, sourceId: %s, lineNumber: %s, message: %s}", cm.messageLevel(), cm.sourceId(), cm.lineNumber(), cm.message());
+                switch (cm.messageLevel()) {
+                    case TIP:
+                    case LOG:
+                    case DEBUG:
+                        Log.d("console", msg);
+                        break;
+                    case WARNING:
+                        Log.w("console", msg);
+                        break;
+                    case ERROR:
+                        Log.e("console", msg);
+                        break;
+                    default:
+                        ;
+                }
                 return super.onConsoleMessage(cm);
             }
         });
