@@ -130,7 +130,7 @@ public class WebViewTestActivity extends AppCompatActivity implements View.OnCli
         mWebView.removeJavascriptInterface("searchBoxJavaBridge_");
         // 启用js交互调用
         mWebView.getSettings().setJavaScriptEnabled(true);
-        mWebView.loadUrl("file:///android_asset/native_js_pass_values.html");
+        mWebView.loadUrl("file:///android_asset/native_js_interact.html");
 
         // 方式一：简单但4.2版本以下存在严重的漏洞问题（可通过js注入来调用java反射到指定的类如Runtime类从而执行本地代码）
         mWebView.addJavascriptInterface(new JsBridge(), JS_OBJECT_NAME);
