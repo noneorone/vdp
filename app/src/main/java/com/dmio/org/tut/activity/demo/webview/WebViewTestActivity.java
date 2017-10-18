@@ -144,7 +144,7 @@ public class WebViewTestActivity extends AppCompatActivity implements View.OnCli
 
             @Override
             public boolean onConsoleMessage(ConsoleMessage cm) {
-                Log.d("console", String.format("{level: %s, sourceId: %s, lineNumber: %s, message: %s", cm.messageLevel(), cm.sourceId(), cm.lineNumber(), cm.message()));
+                Log.d("console", String.format("{level: %s, sourceId: %s, lineNumber: %s, message: %s}", cm.messageLevel(), cm.sourceId(), cm.lineNumber(), cm.message()));
                 return super.onConsoleMessage(cm);
             }
         });
