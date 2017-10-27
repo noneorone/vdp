@@ -37,17 +37,17 @@ dependencies {
     })
     compile 'com.android.support:design:' + rootProject.ext.supportLibraryVersion
     compile 'com.android.support:appcompat-v7:' + rootProject.ext.supportLibraryVersion
-    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha7'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.uphyca:stetho_realm:2.0.0'
     testCompile 'junit:junit:4.12'
 
     /* this is for debugging memory leak: https://github.com/square/leakcanary */
-    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.1'
-    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.1'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
     testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
 
     // Set this dependency to build and run Espresso tests
-    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
-    androidTestCompile 'com.android.support:support-annotations:' + rootProject.ext.supportLibraryVersion
+    testCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
+    testCompile 'com.android.support:support-annotations:' + rootProject.ext.supportLibraryVersion
 
 }
