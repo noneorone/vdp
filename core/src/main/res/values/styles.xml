@@ -2,7 +2,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <!--状态栏颜色-->
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -11,29 +11,66 @@
         <!-- 设置点击波纹效果颜色 -->
         <item name="android:colorControlHighlight" tools:targetApi="lollipop">@color/c1</item>
         <!--页面背景色-->
-        <item name="android:windowBackground">@color/c7</item>
+        <item name="android:windowBackground">@color/c12</item>
         <!--底部导航栏颜色-->
         <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/c3</item>
         <!--Appbar背景色-->
         <item name="colorPrimary">@color/colorPrimary</item>
         <!--ToolBar上的Title颜色-->
         <item name="android:textColorPrimary">@color/c13</item>
+        <!--ToolBar的menu收起图标颜色-->
+        <item name="android:textColorSecondary">@color/c11</item>
         <!--各个控制控件的默认颜色-->
-        <item name="android:colorControlNormal" tools:targetApi="lollipop">@color/c8</item>
+        <item name="android:colorControlNormal" tools:targetApi="lollipop">@color/c5</item>
         <!-- 不使用系统actionbar -->
         <item name="windowActionBar">false</item>
         <!-- 无标题栏 -->
         <item name="android:windowNoTitle">true</item>
         <!-- 字体样式 -->
         <item name="android:typeface">monospace</item>
-        <!-- actionbar样式 -->
-        <item name="android:actionBarStyle">@style/normal_actionbar_style</item>
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!--<item name="android:editTextStyle">@style/normal_edittext_style</item>-->
+        <!--<item name="android:windowBackground">@color/layout_background</item>-->
+        <!--<item name="android:background">@android:color/transparent</item>-->
+        <!--<item name="android:windowEnterAnimation">@anim/common_push_in_right_anim</item>-->
+        <!--<item name="android:windowExitAnimation">@anim/common_push_out_left_anim</item>-->
+        <!--<item name="android:actionMenuTextAppearance">@style/normal_actionBar_menu</item>-->
+        <!--&lt;!&ndash; actionbar样式 &ndash;&gt;-->
+        <!--<item name="android:actionBarStyle">@style/normal_actionbar_style</item>-->
+        <!--<item name="actionBarStyle">@style/normal_actionbar_style</item>-->
+        <!--<item name="android:spinnerStyle">@style/normal_spinner_style</item>-->
+        <!--<item name="android:spinnerItemStyle">@style/normal_spinneritem_style</item>-->
+        <!--<item name="android:spinnerDropDownItemStyle">@style/normal_dropdownitem_style</item>-->
+        <!--<item name="android:dropDownListViewStyle">@style/normal_dropdownlistview_style</item>-->
+        <!--<item name="android:textAppearanceLargePopupMenu">@style/normal_popupmenu_textAppearance-->
+        <!--</item>-->
+        <!--<item name="android:itemBackground">@drawable/actionbar_bg_selector</item>-->
+        <!--<item name="android:itemTextAppearance">@style/actionbar_title_text</item>-->
         <!-- menu样式 -->
-        <item name="actionOverflowMenuStyle">@style/OverFlowMenu</item>
+        <item name="actionOverflowMenuStyle">@style/OverFlowMenuStyle</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="actionBarSize">@dimen/py_actionbar_height</item>
+    </style>
+
+    <style name="normal_edittext_style" parent="android:Widget.EditText">
+        <item name="android:background">@drawable/py_editext_bg</item>
+        <item name="android:cursorVisible">true</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textCursorDrawable">@drawable/normal_edittext_cursor</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:height">?android:attr/listPreferredItemHeightSmall</item>
+    </style>
+
+    <style name="normal_actionBar_menu">
+        <item name="android:textSize">@dimen/t2</item>
+        <item name="android:textColor">@color/c12</item>
     </style>
 
     <!-- ActionBar样式 -->
-    <style name="normal_actionbar_style" parent="Widget.AppCompat.ActionBar.Solid">
+    <style name="normal_actionbar_style" parent="Widget.AppCompat.Light.ActionBar">
         <item name="background">?attr/colorPrimary</item>
         <item name="backgroundStacked">?attr/colorPrimary</item>
         <item name="backgroundSplit">?attr/colorPrimary</item>
@@ -49,19 +86,75 @@
 
     <!-- ActionBar样式 -->
     <style name="ToolbarPopupTheme" parent="ThemeOverlay.AppCompat.Dark">
-        <item name="actionOverflowMenuStyle">@style/OverFlowMenu</item>
+        <item name="actionOverflowMenuStyle">@style/OverFlowMenuStyle</item>
     </style>
 
     <!-- Menu样式 -->
-    <style name="OverFlowMenu" parent="Widget.AppCompat.PopupMenu.Overflow">
+    <style name="OverFlowMenuStyle" parent="Widget.AppCompat.PopupMenu.Overflow">
         <item name="android:windowDisablePreview">true</item>
         <item name="overlapAnchor">false</item>
         <item name="android:overlapAnchor" tools:targetApi="lollipop">false</item>
-        <item name="android:popupBackground">@null</item>
+        <item name="android:popupBackground">@android:color/transparent</item>
+        <item name="android:paddingRight">5dp</item>
         <item name="android:dropDownWidth">wrap_content</item>
-        <item name="android:dropDownVerticalOffset">80.0dp</item>
-        <item name="android:dropDownHorizontalOffset">5.0dp</item>
+        <item name="android:dropDownVerticalOffset">5.0dp</item>
+        <item name="android:dropDownHorizontalOffset">-5.0dp</item>
+        <item name="android:textColor">@color/c9</item>
     </style>
 
+    <style name="normal_spinner_style" parent="android:Widget.Spinner">
+        <item name="android:background">@drawable/normal_spinner_bg</item>
+        <item name="android:clickable">true</item>
+        <item name="android:spinnerMode">dropdown</item>
+        <item name="android:dropDownSelector">@android:drawable/list_selector_background</item>
+        <item name="android:popupBackground">@drawable/common_dropdown_bg</item>
+        <item name="android:dropDownVerticalOffset">0dp</item>
+        <item name="android:dropDownHorizontalOffset">0dp</item>
+        <item name="android:dropDownWidth">wrap_content</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="normal_spinneritem_style" parent="android:Widget.DropDownItem.Spinner">
+        <item name="android:background">@android:color/white</item>
+        <item name="android:textAppearance">@style/normal_spinner_textAppearance</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:minHeight">?android:attr/listPreferredItemHeightSmall</item>
+        <item name="android:maxHeight">?android:attr/listPreferredItemHeightSmall</item>
+        <item name="android:checkMark">@null</item>
+    </style>
+
+    <style name="normal_spinner_textAppearance">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/t2</item>
+    </style>
+
+    <style name="normal_dropdownitem_style" parent="android:Widget.DropDownItem.Spinner">
+        <item name="android:background">@android:color/white</item>
+        <item name="android:textAppearance">@style/normal_spinner_textAppearance</item>
+        <item name="android:paddingLeft">12dp</item>
+        <item name="android:paddingRight">12dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:checkMark">@null</item>
+    </style>
+
+    <style name="normal_dropdownlistview_style" parent="android:Widget.ListView.DropDown">
+        <item name="android:cacheColorHint">@null</item>;
+        <item name="android:divider">@drawable/popupmenu_horizontal_divider</item>
+        <item name="android:scrollbars">none</item>
+        <item name="android:listSelector">@drawable/actionbar_bg_selector</item>
+    </style>
+
+    <style name="actionbar_title_text" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/c3</item>
+        <item name="android:textSize">@dimen/t3</item>
+    </style>
+
+    <style name="normal_popupmenu_textAppearance">
+        <item name="android:textColor">@color/c3</item>
+        <item name="android:textSize">@dimen/t3</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_centerInParent">true</item>
+    </style>
 
 </resources>
