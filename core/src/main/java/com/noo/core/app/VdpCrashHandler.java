@@ -5,7 +5,6 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ResolveInfo;
-import android.util.Log;
 
 import com.noo.core.log.Logger;
 import com.noo.core.utils.AppUtils;
@@ -92,7 +91,7 @@ public class VdpCrashHandler implements Thread.UncaughtExceptionHandler {
 
             // 比较两次crash时间间隔，是否超过规定值，若超过则重启否则不重启
             long timeNow = System.currentTimeMillis();
-            long timeLast = PrefsHelper.get(mContext).get(LAST_CRASH_TIME, 0L);
+            long timeLast = PrefsHelper.get().get(LAST_CRASH_TIME, 0L);
             boolean greatThanInterval = (timeNow - timeLast > minusInterval);
 
             // 定时重启应用
@@ -108,7 +107,7 @@ public class VdpCrashHandler implements Thread.UncaughtExceptionHandler {
             }
 
             // 记录当前crash时间
-            PrefsHelper.get(mContext).put(LAST_CRASH_TIME, timeNow);
+            PrefsHelper.get().put(LAST_CRASH_TIME, timeNow);
 
             // 退出应用
             VdpActivityManager.getInstance().finishAll();
