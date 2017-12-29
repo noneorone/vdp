@@ -52,11 +52,11 @@
         <!-- menu样式 -->
         <item name="actionOverflowMenuStyle">@style/OverFlowMenuStyle</item>
         <item name="android:windowContentOverlay">@null</item>
-        <item name="actionBarSize">@dimen/py_actionbar_height</item>
+        <item name="actionBarSize">@dimen/vdp_actionbar_height</item>
     </style>
 
     <style name="normal_edittext_style" parent="android:Widget.EditText">
-        <item name="android:background">@drawable/py_editext_bg</item>
+        <item name="android:background">@drawable/vdp_editext_bg</item>
         <item name="android:cursorVisible">true</item>
         <item name="android:singleLine">true</item>
         <item name="android:textCursorDrawable">@drawable/normal_edittext_cursor</item>
@@ -79,9 +79,9 @@
         <item name="contentInsetStart">0dp</item>
         <item name="contentInsetEnd">0dp</item>
         <!-- actionbar高度设置 -->
-        <item name="actionBarSize">@dimen/py_actionbar_height</item>
-        <item name="android:actionBarSize">@dimen/py_actionbar_height</item>
-        <item name="height">@dimen/py_actionbar_height</item>
+        <item name="actionBarSize">@dimen/vdp_actionbar_height</item>
+        <item name="android:actionBarSize">@dimen/vdp_actionbar_height</item>
+        <item name="height">@dimen/vdp_actionbar_height</item>
     </style>
 
     <!-- ActionBar样式 -->
