@@ -110,6 +110,17 @@ public class VdpWebViewFrm extends VdpFragment {
             settings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
         }
 
+        // 禁用部分可能存在外部调用风险的属性和js接口调用配置
+        settings.setSavePassword(false);
+        settings.setAllowFileAccess(false);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            settings.setAllowFileAccessFromFileURLs(false);
+            settings.setAllowUniversalAccessFromFileURLs(false);
+        }
+        mWebView.removeJavascriptInterface("accessibility");
+        mWebView.removeJavascriptInterface("accessibilityTraversal");
+        mWebView.removeJavascriptInterface("searchBoxJavaBridge_");
+
         // 支持缩放
         settings.setSupportZoom(true);
         // 禁用内置缩放控件
