@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">core</string>
+    <string name="app_name_en">core</string>
+
+    <!-- 文件 -->
+    <string name="file_is_empty">文件不能空</string>
+    <string name="file_invalid">无效的文件或目录</string>
+    <string name="file_cannot_be_open">此文件无其他应用支持打开</string>
+
+
 </resources>

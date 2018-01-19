@@ -5,7 +5,7 @@ import android.os.Environment;
 
 import com.noo.core.utils.AppUtils;
 import com.noo.core.utils.DateUtils;
-import com.noo.core.utils.FileUtils;
+import com.noo.core.utils.topbar.IOUtils;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -158,7 +158,7 @@ public class LoggerRecorder {
                             file.renameTo(new File(file.getParentFile(), newName));
                             writeToFile(type, content);
                         } else {
-                            FileUtils.writeStringToFile(file, content, true);
+                            IOUtils.writeStringToFile(file, content, true);
                             file.setLastModified(System.currentTimeMillis());
                         }
                         return true;

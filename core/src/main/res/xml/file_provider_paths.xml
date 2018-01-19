@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <paths>
+        <root-path
+            name="camera_photos"
+            path="" />
+        <external-path
+            name="external_files"
+            path="." />
+        <cache-path
+            name="cache_dir"
+            path="vdp/cache" />
+    </paths>
+</resources>

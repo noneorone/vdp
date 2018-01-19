@@ -26,7 +26,7 @@ public class VdpWebViewAct extends VdpActivity {
 
     private void initView() {
         Bundle extras = new Bundle();
-        extras.putString(VdpWebViewFrm.EXTRA_URL, "http://www.baidu.com");
+        extras.putString(VdpWebViewFrm.EXTRA_URL, "http://www.tianxiaxinyong.com");
         webViewFrm = new VdpWebViewFrm();
         ComponentUtils.initFrament(webViewFrm, this, R.id.vdp_content_area, extras);
     }

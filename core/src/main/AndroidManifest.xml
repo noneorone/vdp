@@ -1,5 +1,4 @@
-<manifest
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.noo.core">
 
     <application
@@ -8,22 +7,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-<!--
-        &lt;!&ndash; LeakCanary &ndash;&gt;
-        <service
-            android:name=".app.VdpLeakService"
-            android:enabled="false"/>
+        <!-- 7.0 uri file provider -->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_provider_paths" />
+        </provider>
 
-        &lt;!&ndash; LeakCanary &ndash;&gt;
+
         <activity
-            android:name="com.squareup.leakcanary.internal.DisplayLeakActivity"
-            android:enabled="false"
-            android:icon="@drawable/leak_canary_icon"
-            android:label="@string/leak_canary_display_activity_label"
-            android:taskAffinity="com.squareup.leakcanary"
-            android:theme="@style/leak_canary_LeakCanary.Base"/>
--->
-
+            android:name=".utils.permission.PermRequestActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
     </application>
 </manifest>

@@ -1,18 +1,21 @@
 package com.noo.core.ui.web;
 
+import android.Manifest;
 import android.annotation.TargetApi;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
+import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -26,6 +29,8 @@ import com.noo.core.ui.msv.MultiStateView;
 import com.noo.core.ui.msv.ViewType;
 import com.noo.core.utils.ComponentUtils;
 import com.noo.core.utils.DeviceUtils;
+import com.noo.core.utils.permission.PermChecker;
+import com.noo.core.utils.permission.PermRequestActivity;
 
 /**
  * 包含{@link WebView}封装{@link VdpFragment}
@@ -80,6 +85,20 @@ public class VdpWebViewFrm extends VdpFragment {
         super.onActivityCreated(savedInstanceState);
         initArguments();
         initWebView();
+    }
+
+    @Override
+    public void onDestroy() {
+        if (mWebView != null) {
+            ViewParent parent = mWebView.getParent();
+            if (parent != null && parent instanceof ViewGroup) {
+                ((ViewGroup) parent).removeAllViews();
+            }
+            mWebView.removeAllViews();
+            mWebView.destroy();
+            mWebView = null;
+        }
+        super.onDestroy();
     }
 
     private void initArguments() {
@@ -161,8 +180,8 @@ public class VdpWebViewFrm extends VdpFragment {
     private void showErrorView(int errorCode, CharSequence description) {
         MultiStateView multiStateView = getMultiStateView();
         View errorView = multiStateView.getView(MultiStateView.VIEW_STATE_ERROR);
-        TextView tvMessage = (TextView) errorView.findViewById(R.id.tv_message);
-        Button btnRetry = (Button) errorView.findViewById(R.id.btn_retry);
+        TextView tvMessage = errorView.findViewById(R.id.tv_message);
+        Button btnRetry = errorView.findViewById(R.id.btn_retry);
         tvMessage.setText(errorCode + " : " + description);
         btnRetry.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -185,11 +204,15 @@ public class VdpWebViewFrm extends VdpFragment {
         initSettings();
         setClient();
         setChromeClient();
+        setDownloadManager();
 
         mWebView.requestFocusFromTouch();
         mWebView.loadUrl(url);
     }
 
+    /**
+     * 扩展{@link WebViewClient}
+     */
     private void setClient() {
         mWebView.setWebViewClient(new WebViewClientExt() {
             @TargetApi(Build.VERSION_CODES.M)
@@ -215,6 +238,9 @@ public class VdpWebViewFrm extends VdpFragment {
         });
     }
 
+    /**
+     * 扩展{@link WebChromeClient}
+     */
     private void setChromeClient() {
         mWebView.setWebChromeClient(new WebChromeClientExt(getContext()) {
             @Override
@@ -238,6 +264,27 @@ public class VdpWebViewFrm extends VdpFragment {
         });
     }
 
+    /**
+     * 设置文件下载监听处理
+     */
+    private void setDownloadManager() {
+        final VdpDownloadManager.Mode downloadMode = VdpDownloadManager.Mode.USER_DEFINED;
+        if (VdpDownloadManager.Mode.USER_DEFINED.equals(downloadMode)) {
+            String[] perms = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+            PermRequestActivity.requestPermissions(getContext(), perms, new PermChecker.RequestPermCallback() {
+                @Override
+                public void onRequestSuccess() {
+                    mWebView.setDownloadListener(new VdpDownloadManager(getContext(), downloadMode));
+                }
+
+                @Override
+                public void onRequestFail() {
+                }
+            });
+        } else {
+            mWebView.setDownloadListener(new VdpDownloadManager(getContext(), downloadMode));
+        }
+    }
 
     /**
      * 回退历史
