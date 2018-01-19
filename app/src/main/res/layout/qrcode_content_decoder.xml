@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-  <com.dmio.org.tut.widget.qrcode.dlazaro66.qrcodereaderview.QRCodeReaderView
+  <com.noo.app.widget.qrcode.dlazaro66.qrcodereaderview.QRCodeReaderView
       android:id="@+id/qrdecoderview"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
@@ -13,7 +12,7 @@
       android:layout_alignParentTop="true"
       />
 
-  <com.dmio.org.tut.activity.demo.widget.qrcode.PointsOverlayView
+  <com.noo.app.activity.demo.widget.qrcode.PointsOverlayView
       android:id="@+id/points_overlay_view"
       android:layout_width="match_parent"
       android:layout_height="match_parent"

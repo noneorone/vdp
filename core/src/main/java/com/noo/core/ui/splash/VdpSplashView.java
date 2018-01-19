@@ -194,7 +194,7 @@ public class VdpSplashView extends FrameLayout implements View.OnClickListener {
         splash.setBackgroundColor(ContextCompat.getColor(activity, R.color.c6));
 
         activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        ViewGroup contentView = (ViewGroup) activity.getWindow().getDecorView().findViewById(android.R.id.content);
+        ViewGroup contentView = activity.getWindow().getDecorView().findViewById(android.R.id.content);
         RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT

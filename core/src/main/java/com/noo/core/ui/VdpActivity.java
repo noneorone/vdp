@@ -18,7 +18,6 @@ import com.noo.core.app.VdpApplication;
 import com.noo.core.ui.msv.MultiStateView;
 import com.noo.core.ui.msv.MultiStateViewHelper;
 import com.noo.core.ui.msv.ViewType;
-import com.noo.core.utils.topbar.TranslucentUtils;
 
 /**
  * 扩展{@link AppCompatActivity}基础类
@@ -43,7 +42,6 @@ public abstract class VdpActivity extends AppCompatActivity implements VdpCompon
     protected void onDestroy() {
         VdpActivityManager.getInstance().remove(this);
         super.onDestroy();
-        VdpApplication.getRefWatcher(this).watch(this);
     }
 
     @Override
@@ -71,8 +69,8 @@ public abstract class VdpActivity extends AppCompatActivity implements VdpCompon
     public void setContentView(@LayoutRes int layoutResID) {
         View container = getLayoutInflater().inflate(R.layout.vdp_container, null);
 
-        tvTitle = (AppCompatTextView) container.findViewById(R.id.title);
-        toolbar = (Toolbar) container.findViewById(R.id.toolbar);
+        tvTitle = container.findViewById(R.id.title);
+        toolbar = container.findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -89,7 +87,7 @@ public abstract class VdpActivity extends AppCompatActivity implements VdpCompon
 
         View contentView = getLayoutInflater().inflate(layoutResID, null);
 
-        multiStateView = (MultiStateView) container.findViewById(R.id.msv);
+        multiStateView = container.findViewById(R.id.msv);
 
         MultiStateViewHelper.setAttrs(
                 multiStateView,

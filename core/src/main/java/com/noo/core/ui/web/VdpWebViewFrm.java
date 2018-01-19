@@ -62,7 +62,7 @@ public class VdpWebViewFrm extends VdpFragment {
     @Override
     public View getContentView() {
         ViewGroup view = (ViewGroup) LayoutInflater.from(getContext()).inflate(R.layout.vdp_empty_web, null);
-        progressBar = (ProgressBar) view.findViewById(R.id.pb_loading);
+        progressBar = view.findViewById(R.id.pb_loading);
         if (mWebView == null) {
             mWebView = new WebView(getContext().getApplicationContext());
             mWebView.setLayoutParams(new LinearLayout.LayoutParams(

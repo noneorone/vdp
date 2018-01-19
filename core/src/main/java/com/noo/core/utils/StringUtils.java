@@ -145,10 +145,7 @@ public final class StringUtils {
      * @return
      */
     public static boolean validatePort(int port) {
-        if (port < 0 || port > 65535) {
-            return false;
-        }
-        return true;
+        return !(port < 0 || port > 65535);
     }
 
     /**

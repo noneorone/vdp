@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/c8"
-    tools:context="com.dmio.org.tut.activity.demo.webview.WebViewTestActivity">
+    android:background="@color/c8">
 
     <LinearLayout
         android:id="@+id/ll_web"
@@ -22,7 +19,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ll_content"
-        app:layout_constraintVertical_bias="0.0"/>
+        app:layout_constraintVertical_bias="0.0" />
 
     <LinearLayout
         android:id="@+id/ll_content"
@@ -42,7 +39,7 @@
             android:background="@drawable/round_corner_stroke_c1"
             android:ems="10"
             android:inputType="textMultiLine"
-            android:textColor="@color/c9"/>
+            android:textColor="@color/c9" />
 
         <Button
             android:id="@+id/btn_send"
@@ -51,7 +48,7 @@
             android:layout_marginLeft="5dp"
             android:layout_weight="1"
             android:background="@color/c1"
-            android:text="Send"/>
+            android:text="Send" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

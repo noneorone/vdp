@@ -6,7 +6,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.0'
+        classpath 'com.android.tools.build:gradle:3.0.1'
         classpath 'com.antfortune.freeline:gradle:0.6.3'
         classpath 'io.realm:realm-gradle-plugin:2.3.1'
 
@@ -29,8 +29,8 @@ task clean(type: Delete) {
 ext{
     // Sdk and tools
     minSdkVersion = 16
-    targetSdkVersion = 26
-    compileSdkVersion = 26
+    targetSdkVersion = 27
+    compileSdkVersion = 27
     buildToolsVersion = '27.0.0'
     // App dependencies
     supportLibraryVersion = '25.3.1'

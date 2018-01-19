@@ -35,7 +35,7 @@ public class TranslucentUtils {
                 window.setStatusBarColor(Color.TRANSPARENT);
             }
             ViewGroup decorViewGroup = (ViewGroup) window.getDecorView();
-            ViewGroup rootView = (ViewGroup) decorViewGroup.findViewById(android.R.id.content);
+            ViewGroup rootView = decorViewGroup.findViewById(android.R.id.content);
             if (rootView != null) {
                 View contentView = rootView.getChildAt(0);
                 if (contentView != null) {

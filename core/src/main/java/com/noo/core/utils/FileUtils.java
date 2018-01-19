@@ -824,7 +824,6 @@ public class FileUtils {
                             Looper.loop();
                         }
 
-                        ;
                     }.start();
                 }
             }

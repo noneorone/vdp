@@ -123,7 +123,7 @@ public class JsonUtils {
             while (iter.hasNext()) {
                 Entry ety = (Entry) iter.next();
                 if (ety.getKey() instanceof String) {
-                    ret.put((String) ety.getKey(), toJsonObject(ety.getValue(), (String) null));
+                    ret.put((String) ety.getKey(), toJsonObject(ety.getValue(), null));
                 }
             }
         }
@@ -160,7 +160,7 @@ public class JsonUtils {
                 try {
                     Object e = object.get(key);
                     if (JSONObject.NULL.equals(e)) {
-                        map.put(key, (Object) null);
+                        map.put(key, null);
                     } else if (e instanceof JSONObject) {
                         map.put(key, praseJSONObject((JSONObject) e));
                     } else if (e instanceof JSONArray) {

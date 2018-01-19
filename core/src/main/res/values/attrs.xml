@@ -1,3 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Progress -->
+    <!-- CircleText -->
+    <declare-styleable name="CircleTextProgressbar">
+        <attr name="in_circle_color" format="color"/>
+    </declare-styleable>
+
+    <!-- TextView -->
+    <!-- FlipperTextView -->
+    <declare-styleable name="FlipperView">
+        <attr name="deletable" format="boolean" />
+        <attr name="flip_interval" format="integer" />
+        <attr name="flip_background_color" format="color" />
+        <attr name="text_color" format="color" />
+        <attr name="text_size" format="dimension" />
+        <attr name="text_single_line" format="boolean" />
+    </declare-styleable>
 </resources>

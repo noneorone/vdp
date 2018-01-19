@@ -99,7 +99,6 @@ public class VdpDownloadManager implements DownloadListener {
                 byUserDefinedMode();
                 break;
             default:
-                ;
         }
     }
 

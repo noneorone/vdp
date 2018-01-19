@@ -192,7 +192,7 @@ public class PermChecker implements OnRequestPermissionsResultDelegate, OnActivi
     public Intent getSettingsIntent() {
         if (contextRef.get() != null) {
             Intent intent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
-            intent.setData(Uri.fromParts("package", contextRef.get().getPackageName(), (String) null));
+            intent.setData(Uri.fromParts("package", contextRef.get().getPackageName(), null));
             return intent;
         }
         return null;
