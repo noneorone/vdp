@@ -1,1 +1,1 @@
-android opensource component collection.
+> *_```android```_* **component** note.

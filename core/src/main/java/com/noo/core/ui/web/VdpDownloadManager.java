@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
+import android.text.TextUtils;
 import android.webkit.CookieManager;
 import android.webkit.DownloadListener;
 import android.widget.Toast;
@@ -125,7 +126,6 @@ public class VdpDownloadManager implements DownloadListener {
             request.setVisibleInDownloadsUi(true);
             request.addRequestHeader("Cookie", CookieManager.getInstance().getCookie(url));
             request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, getFileName());
-            request.setShowRunningNotification(true);
             request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
 
             Activity activity = (Activity) context;
@@ -199,7 +199,7 @@ public class VdpDownloadManager implements DownloadListener {
                         }
                     }
                 } catch (Exception e) {
-                    setProgressMessage(dialog, "exception OCCURED!!!");
+                    setProgressMessage(dialog, "exception OCCURED!!!\n" + e.getMessage());
                     Logger.e(e);
                 } finally {
                     isCallFinished[0] = true;
@@ -233,7 +233,11 @@ public class VdpDownloadManager implements DownloadListener {
                 }
             }
         }
-        return contentDisposition;
+        if (!TextUtils.isEmpty(contentDisposition)) {
+            return contentDisposition;
+        } else {
+            return url.substring(url.lastIndexOf("/") + 1);
+        }
     }
 
     /**

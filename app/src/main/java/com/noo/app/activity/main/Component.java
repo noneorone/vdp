@@ -22,12 +22,12 @@ public class Component {
      * 组件类
      */
     public static final Class[] ENTRANCE = {
+            VdpWebViewAct.class,
+            WebViewTestActivity.class,
             PaintActivity.class,
             DecoderActivity.class,
             ListRecyclerActivity.class,
-            DragActivity.class,
-            VdpWebViewAct.class,
-            WebViewTestActivity.class
+            DragActivity.class
     };
 
 }
