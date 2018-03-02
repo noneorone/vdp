@@ -40,6 +40,9 @@
         <activity
             android:name=".activity.demo.webview.WebViewTestActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.demo.webview.WebViewH5Activity"
+            android:screenOrientation="portrait" />
 
     </application>
 

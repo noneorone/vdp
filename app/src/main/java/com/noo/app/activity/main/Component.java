@@ -1,6 +1,7 @@
 package com.noo.app.activity.main;
 
 import com.noo.app.activity.demo.view.paint.PaintActivity;
+import com.noo.app.activity.demo.webview.WebViewH5Activity;
 import com.noo.app.activity.demo.webview.WebViewTestActivity;
 import com.noo.app.activity.demo.widget.drag.DragActivity;
 import com.noo.app.activity.demo.widget.qrcode.DecoderActivity;
@@ -24,6 +25,7 @@ public class Component {
     public static final Class[] ENTRANCE = {
             VdpWebViewAct.class,
             WebViewTestActivity.class,
+            WebViewH5Activity.class,
             PaintActivity.class,
             DecoderActivity.class,
             ListRecyclerActivity.class,

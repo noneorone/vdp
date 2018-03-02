@@ -57,6 +57,10 @@ public class MainActivity extends VdpActivity {
         }
     }
 
+    public String state() {
+        return "state invoked!!!";
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
