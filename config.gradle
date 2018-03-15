@@ -1,0 +1,16 @@
+ext {
+    // sdk tools
+    compileSdkVersion = 27
+    buildToolsVersion = '26.0.2'
+    minSdkVersion = 15
+    targetSdkVersion = 27
+
+    // version config
+    versionCode = 1
+    versionName = '1.0'
+
+    // app dependencies
+    supportLibraryVersion = '27.1.0'
+    daggerVersion = '2.15'
+    guavaVersion = '18.0'
+}

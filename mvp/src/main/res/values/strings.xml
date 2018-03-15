@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Mvp</string>
+    <string name="title_activity_main">YuanNote</string>
+    <string name="action_settings">Settings</string>
+    <string name="note_update">Update</string>
+    <string name="note_reset">Reset</string>
+</resources>

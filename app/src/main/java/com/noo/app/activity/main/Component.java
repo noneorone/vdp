@@ -8,6 +8,8 @@ import com.noo.app.activity.demo.widget.qrcode.DecoderActivity;
 import com.noo.app.activity.list.ListRecyclerActivity;
 import com.noo.core.ui.web.VdpWebViewAct;
 
+import noneorone.org.mvp.ui.*;
+
 /**
  * 组件配置
  *
@@ -23,6 +25,7 @@ public class Component {
      * 组件类
      */
     public static final Class[] ENTRANCE = {
+            YuanNoteActivity.class,
             VdpWebViewAct.class,
             WebViewTestActivity.class,
             WebViewH5Activity.class,
