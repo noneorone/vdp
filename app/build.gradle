@@ -47,6 +47,7 @@ android {
     sourceSets {
         main {
             jniLibs.srcDirs("jniLibs")
+            java.srcDirs = ['src/main/java']
         }
 
         // Move the tests to tests/java, tests/res, etc...
@@ -72,6 +73,25 @@ android {
     repositories {
         flatDir {
             dirs 'libs'
+        }
+    }
+
+    flavorDimensions 'default'
+    flavorDimensions 'default'
+
+    productFlavors {
+        mock {
+            dimension 'default'
+            applicationIdSuffix '.mock'
+        }
+        prod {
+            dimension 'default'
+        }
+    }
+
+    android.variantFilter { variant ->
+        if (variant.buildType.name == 'release' && variant.getFlavors().get(0).name == 'mock') {
+            variant.setIgnore(true)
         }
     }
 }

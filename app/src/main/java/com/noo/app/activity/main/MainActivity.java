@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.noo.app.R;
+import com.noo.app.data.Data;
 import com.noo.core.log.Logger;
 import com.noo.core.ui.VdpActivity;
 import com.noo.core.utils.AppUtils;
@@ -41,7 +42,7 @@ public class MainActivity extends VdpActivity {
 //            }
 //        });
         initView();
-        setTitle("Functions Follows");
+        setTitle("Flavor" + Data.getSourceType());
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQ_CODE_PERM_WES);
     }
 
