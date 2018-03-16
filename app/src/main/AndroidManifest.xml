@@ -44,6 +44,17 @@
             android:name=".activity.demo.webview.WebViewH5Activity"
             android:screenOrientation="portrait" />
 
+        <!-- parent and child has combination -->
+        <activity
+            android:name=".activity.inherit.ChildActivity"
+            android:parentActivityName=".activity.inherit.ParentActivity"
+            tools:ignore="UnusedAttribute">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.inherit.ParentActivity" />
+        </activity>
+        <activity android:name=".activity.inherit.ParentActivity" />
+
     </application>
 
 </manifest>

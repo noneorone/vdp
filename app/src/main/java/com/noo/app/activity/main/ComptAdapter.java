@@ -3,6 +3,7 @@ package com.noo.app.activity.main;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.noo.app.R;
+import com.noo.app.activity.inherit.ChildActivity;
 
 public class ComptAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -55,6 +57,12 @@ public class ComptAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             tvTitle.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    // test parent forward
+                    if (ChildActivity.class.equals(clz)) {
+                        Intent intent = new Intent(mContext, clz);
+                        TaskStackBuilder.create(mContext).addNextIntentWithParentStack(intent).startActivities();
+                        return;
+                    }
                     ActivityCompat.startActivity(mContext, new Intent(mContext, clz), null);
                 }
             });
