@@ -15,7 +15,6 @@ apply from: rootProject.projectDir.absolutePath + '/config.gradle'
 
 android {
     compileSdkVersion project.ext.compileSdkVersion
-    buildToolsVersion project.ext.buildToolsVersion
 
     dexcount {
         format = "list"
@@ -94,6 +93,7 @@ android {
             variant.setIgnore(true)
         }
     }
+    buildToolsVersion '27.0.3'
 }
 
 
