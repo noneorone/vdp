@@ -35,12 +35,12 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
     // dagger2
-    compile "com.google.dagger:dagger:$project.ext.daggerVersion"
+    implementation "com.google.dagger:dagger:$project.ext.daggerVersion"
     annotationProcessor "com.google.dagger:dagger-compiler:$project.ext.daggerVersion"
-    compile "com.google.dagger:dagger-android:$project.ext.daggerVersion"
-    compile "com.google.dagger:dagger-android-support:$project.ext.daggerVersion"
+    implementation "com.google.dagger:dagger-android:$project.ext.daggerVersion"
+    implementation "com.google.dagger:dagger-android-support:$project.ext.daggerVersion"
     annotationProcessor "com.google.dagger:dagger-android-processor:$project.ext.daggerVersion"
 
     // guava
-    compile "com.google.guava:guava:$project.ext.guavaVersion"
+    implementation "com.google.guava:guava:$project.ext.guavaVersion"
 }
