@@ -93,6 +93,7 @@ android {
             variant.setIgnore(true)
         }
     }
+    buildToolsVersion '27.0.3'
 }
 
 
@@ -103,23 +104,23 @@ repositories {
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestImplementation("com.android.support.test.espresso:espresso-core:$project.ext.testEspressoCoreVersion", {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    testImplementation "junit:junit:$project.ext.junitVersion"
-    androidTestImplementation "com.android.support.test:runner:$project.ext.testRunnerVersion"
-    androidTestImplementation "com.android.support.test.espresso:espresso-core:$project.ext.testEspressoCoreVersion"
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation project(':core')
     implementation 'com.pnikosis:materialish-progress:1.0'
     implementation 'com.facebook.stetho:stetho:1.4.2'
     implementation 'com.google.zxing:core:3.2.1'
-    implementation 'com.github.bumptech.glide:glide:4.7.1'
+    implementation 'com.github.bumptech.glide:glide:4.0.0'
     implementation 'jp.wasabeef:blurry:2.1.0'
     implementation 'com.google.code.gson:gson:2.8.2'
     implementation 'org.greenrobot:eventbus:3.0.0'
     implementation 'com.cleveroad:fireworkypulltorefresh:1.0.3'
-    compile 'com.baoyz.pullrefreshlayout:library:1.2.0'
+    implementation 'com.baoyz.pullrefreshlayout:library:1.2.0'
     implementation 'com.cjj.materialrefeshlayout:library:1.3.0'
     // google easy permission
     implementation 'pub.devrel:easypermissions:1.1.2'
