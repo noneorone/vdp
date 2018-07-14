@@ -52,7 +52,24 @@
         <!-- menu样式 -->
         <item name="actionOverflowMenuStyle">@style/OverFlowMenuStyle</item>
         <item name="android:windowContentOverlay">@null</item>
-        <item name="actionBarSize">@dimen/vdp_actionbar_height</item>
+        <item name="actionBarSize">@dimen/actionbar_height</item>
+    </style>
+
+
+    <style name="AppThemeNoTitle" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+    </style>
+
+    <style name="AppSplashTheme" parent="AppThemeNoTitle">
+        <item name="android:windowBackground">@color/c8</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
     <style name="normal_edittext_style" parent="android:Widget.EditText">
@@ -79,9 +96,9 @@
         <item name="contentInsetStart">0dp</item>
         <item name="contentInsetEnd">0dp</item>
         <!-- actionbar高度设置 -->
-        <item name="actionBarSize">@dimen/vdp_actionbar_height</item>
-        <item name="android:actionBarSize">@dimen/vdp_actionbar_height</item>
-        <item name="height">@dimen/vdp_actionbar_height</item>
+        <item name="actionBarSize">@dimen/actionbar_height</item>
+        <item name="android:actionBarSize">@dimen/actionbar_height</item>
+        <item name="height">@dimen/actionbar_height</item>
     </style>
 
     <!-- ActionBar样式 -->
@@ -156,5 +173,51 @@
         <item name="android:layout_gravity">center</item>
         <item name="android:layout_centerInParent">true</item>
     </style>
+
+
+    <!-- 对话框 -->
+    <style name="common_dialog" parent="android:Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <!-- 按钮 -->
+    <style name="normal_btn_style" parent="@style/Widget.AppCompat.Button.Borderless">
+        <item name="android:background">@drawable/round_corner_stroke_c6</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/t3</item>
+        <item name="android:height">@dimen/btn_height</item>
+    </style>
+
+    <style name="common_dark_btn_style" parent="normal_btn_style">
+        <item name="android:background">@drawable/common_dark_btn_bg</item>
+        <item name="android:textColor">@color/common_dark_text_color</item>
+    </style>
+
+    <style name="common_light_btn_style" parent="normal_btn_style">
+        <item name="android:background">@drawable/common_light_btn_bg</item>
+        <item name="android:textColor">@color/common_light_text_color</item>
+    </style>
+
+    <style name="blue_btn_style" parent="normal_btn_style">
+        <item name="android:background">@drawable/blue_btn_bg</item>
+        <item name="android:textColor">@color/blue_btn_text_color</item>
+    </style>
+
+    <style name="white_btn_blue_text_style" parent="normal_btn_style">
+        <item name="android:background">@drawable/white_btn_bg</item>
+        <item name="android:textColor">@color/white_btn_blue_text_color</item>
+    </style>
+
+    <style name="white_btn_red_text_style" parent="normal_btn_style">
+        <item name="android:background">@drawable/white_btn_bg</item>
+        <item name="android:textColor">@color/white_btn_blue_text_color</item>
+    </style>
+
 
 </resources>

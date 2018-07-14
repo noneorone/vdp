@@ -5,7 +5,7 @@ import android.os.Environment;
 
 import com.noo.core.utils.AppUtils;
 import com.noo.core.utils.DateUtils;
-import com.noo.core.utils.topbar.IOUtils;
+import com.noo.core.utils.IOUtils;
 
 import java.io.File;
 import java.text.SimpleDateFormat;

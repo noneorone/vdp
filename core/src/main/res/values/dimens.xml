@@ -8,9 +8,11 @@
     <dimen name="t5">13sp</dimen>
     <dimen name="t6">12sp</dimen>
     <dimen name="t7">11.33sp</dimen>
+    <dimen name="t8">10sp</dimen>
 
     <!-- ActionBar高度 -->
-    <dimen name="vdp_actionbar_height">48dp</dimen>
+    <dimen name="actionbar_height">48dp</dimen>
+    <dimen name="btn_height">45dp</dimen>
 
     <item name="animDuration" type="integer">@android:integer/config_mediumAnimTime</item>
     <integer name="animation_default_duration">@integer/animDuration</integer>

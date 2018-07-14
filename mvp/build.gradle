@@ -19,8 +19,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
-    buildToolsVersion '27.0.3'
 }
 
 dependencies {
@@ -28,19 +26,19 @@ dependencies {
 
     implementation "com.android.support:appcompat-v7:$project.ext.supportLibraryVersion"
     implementation "com.android.support:design:$project.ext.supportLibraryVersion"
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation "com.android.support.constraint:constraint-layout:$project.ext.constraintVersion"
 
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    testImplementation "junit:junit:$project.ext.junitVersion"
+    androidTestImplementation "com.android.support.test:runner:$project.ext.testRunnerVersion"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$project.ext.testEspressoCoreVersion"
 
     // dagger2
-    compile "com.google.dagger:dagger:$project.ext.daggerVersion"
+    implementation "com.google.dagger:dagger:$project.ext.daggerVersion"
     annotationProcessor "com.google.dagger:dagger-compiler:$project.ext.daggerVersion"
-    compile "com.google.dagger:dagger-android:$project.ext.daggerVersion"
-    compile "com.google.dagger:dagger-android-support:$project.ext.daggerVersion"
+    implementation "com.google.dagger:dagger-android:$project.ext.daggerVersion"
+    implementation "com.google.dagger:dagger-android-support:$project.ext.daggerVersion"
     annotationProcessor "com.google.dagger:dagger-android-processor:$project.ext.daggerVersion"
 
     // guava
-    compile "com.google.guava:guava:$project.ext.guavaVersion"
+    implementation "com.google.guava:guava:$project.ext.guavaVersion-android"
 }

@@ -1,13 +1,12 @@
 apply plugin: 'com.android.application'
+apply from: rootProject.projectDir.getAbsolutePath() + '/config.gradle'
 
 android {
-    compileSdkVersion 27
-
-
+    compileSdkVersion project.ext.compileSdkVersion
 
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 27
+        minSdkVersion project.ext.minSdkVersion
+        targetSdkVersion project.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
 
@@ -27,9 +26,9 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'com.android.support:appcompat-v7:27.1.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    implementation "com.android.support:appcompat-v7:$project.ext.supportLibraryVersion"
+    implementation "com.android.support.constraint:constraint-layout:$project.ext.constraintVersion"
+    testImplementation "junit:junit:$project.ext.junitVersion"
+    androidTestImplementation "com.android.support.test:runner:$project.ext.testRunnerVersion"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$project.ext.testEspressoCoreVersion"
 }

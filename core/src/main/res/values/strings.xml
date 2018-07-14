@@ -3,6 +3,14 @@
     <string name="app_name">core</string>
     <string name="app_name_en">core</string>
 
+    <string name="money_cn">¥</string>
+    <string name="more">更多</string>
+    <string name="confirm">确定</string>
+    <string name="cancel">取消</string>
+    <string name="next_step">下一步</string>
+    <string name="complete">完成</string>
+    <string name="list_empty_data">暂无数据</string>
+
     <!-- 文件 -->
     <string name="file_is_empty">文件不能空</string>
     <string name="file_invalid">无效的文件或目录</string>

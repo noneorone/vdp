@@ -1,4 +1,4 @@
-package com.noo.core.utils.topbar;
+package com.noo.core.utils;
 
 import java.io.BufferedWriter;
 import java.io.File;
